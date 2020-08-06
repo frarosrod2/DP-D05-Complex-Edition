@@ -122,8 +122,14 @@
 				<canvas id="graph8"></canvas>
 			</acme:form-panel>
 		</div>
-	</div>
 
+		<div class="col-md-6">
+			<acme:form-panel code="administrator.dashboard.chart.label.applicationsPerDay">
+					<canvas id="graph9"></canvas>
+			</acme:form-panel>
+		</div>
+		
+	</div>
 </acme:form>
 
 <script type="text/javascript">
@@ -161,10 +167,10 @@
 	    return dd+'/'+mm+'/'+yyyy;
 	 }
 
-	function getDaysLast4Weeks () {
+	function getDaysLast15Days () {
 	    var result = [];
 	    
-	    for (var i=0; i<28; i++) {
+	    for (var i=0; i<15; i++) {
 	        var date = new Date();
 	        date.setDate(date.getDate() - i);
 	        result.push(formatDate(date))
@@ -241,6 +247,37 @@
 			<c:out value='${ratioOfBridgeInvestmentRound}'></c:out>
 		]
 
+		// D05
+		var last15Days = getDaysLast15Days();
+		var pendingApplicationsLastDays = {
+				<c:forEach items="${pendingApplicationsPerDay}" var="day">
+				"${day[1]}": ${day[0]},
+				</c:forEach>
+		}
+		var rejectedApplicationsLastDays = {
+				<c:forEach items="${rejectedApplicationsPerDay}" var="day">
+				"${day[1]}": ${day[0]},
+				</c:forEach>
+		}
+		var acceptedApplicationsLastDays = {
+				<c:forEach items="${acceptedApplicationsPerDay}" var="day">
+				"${day[1]}": ${day[0]},
+				</c:forEach>
+		}
+		
+		function getTimeseriesData(dataDict, lastDays) {
+			var res = [];
+			for (var i in lastDays) {
+				if (dataDict.hasOwnProperty(lastDays[i])) {
+					res.push(dataDict[lastDays[i]]);
+				} else {
+					res.push(0);
+				}
+			}
+			return res;
+		}
+		
+		
 		var barGraph1 = {
 				labels: technologyRecordsSectors,
 				datasets: [{
@@ -313,6 +350,8 @@
 				},]
 		}
 		
+		
+		
 		var pieGraph8 = {
 				labels: investmentRoundKindLabels,
 				datasets: [{
@@ -323,7 +362,36 @@
 				},]
 		}
 		
-
+		var barGraph9 = {
+				labels: last15Days,
+				datasets: [
+				{
+					label: "Pending",
+					backgroundColor: "#FFCD56",
+					borderColor: "#FFCD56",
+					data: getTimeseriesData(pendingApplicationsLastDays, last15Days),
+					fill: false,
+					lineTension: 0,  
+					
+				},
+				{
+					label: "Accepted",
+					backgroundColor: "#4BC0C0",
+					borderColor: "#4BC0C0",
+					data: getTimeseriesData(acceptedApplicationsLastDays, last15Days),
+					fill: false,
+					lineTension: 0,
+				},
+				{
+					label: "Rejected",
+					backgroundColor: "#FF6384",
+					borderColor: "#FF6384",
+					data: getTimeseriesData(rejectedApplicationsLastDays, last15Days),
+					fill: false,
+					lineTension: 0,
+				}
+			]
+		}
 			window.onload = function() {
 			var ctxGraph1 = document.getElementById('graph1').getContext('2d');
 			var ctxGraph2 = document.getElementById('graph2').getContext('2d');
@@ -333,7 +401,8 @@
 			var ctxGraph6 = document.getElementById('graph6').getContext('2d'); 
 			var ctxGraph7 = document.getElementById('graph7').getContext('2d'); 
 			var ctxGraph8 = document.getElementById('graph8').getContext('2d'); 
-			
+			var ctxGraph9 = document.getElementById('graph9').getContext('2d'); 
+
 			window.graph1 = new Chart(ctxGraph1, {
 				type: 'bar',
 				data: barGraph1,
@@ -393,6 +462,28 @@
 				type: 'pie',
 				data: pieGraph8,
 			});
+			
+			window.graph9 = new Chart(ctxGraph9, {
+				type: 'bar',
+				data: barGraph9,
+				options: {
+			        scales: {
+			            xAxes: [{
+			            	ticks: {
+			            	    autoSkip: false,
+			            	    stepSize: 1,
+			            	}
+			            }],
+			            yAxes: [{
+			            	ticks: {
+			            		beginAtZero: true,
+			            	    stepSize: 1,
+			            	}
+			            }]
+			        }
+			    }
+			})
+
 
 		};
 	});

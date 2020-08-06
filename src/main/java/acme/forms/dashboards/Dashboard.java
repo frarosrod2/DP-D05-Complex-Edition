@@ -53,4 +53,10 @@ public class Dashboard implements Serializable {
 	Double						ratioOfPendingApplications;
 	Double						ratioOfAcceptedApplications;
 	Double						ratioOfRejectedApplications;
+
+	// D05
+
+	Object[]					pendingApplicationsPerDay;
+	Object[]					rejectedApplicationsPerDay;
+	Object[]					acceptedApplicationsPerDay;
 }

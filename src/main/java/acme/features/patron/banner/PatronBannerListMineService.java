@@ -10,11 +10,11 @@ import acme.entities.banners.Banner;
 import acme.entities.roles.Patron;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
-import acme.framework.entities.Administrator;
+import acme.framework.entities.Principal;
 import acme.framework.services.AbstractListService;
 
 @Service
-public class PatronBannerListService implements AbstractListService<Patron, Banner> {
+public class PatronBannerListMineService implements AbstractListService<Patron, Banner> {
 
 	@Autowired
 	PatronBannerRepository repository;
@@ -41,8 +41,11 @@ public class PatronBannerListService implements AbstractListService<Patron, Bann
 		assert request != null;
 
 		Collection<Banner> result;
+		Principal principal;
 
-		result = this.repository.findMany();
+		principal = request.getPrincipal();
+
+		result = this.repository.findManyByPatronId(principal.getActiveRoleId());
 		return result;
 	}
 

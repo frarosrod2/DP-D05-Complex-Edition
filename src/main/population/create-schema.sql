@@ -70,6 +70,7 @@
         `picture` varchar(255),
         `slogan` varchar(255),
         `targeturl` varchar(255),
+        `patron_id` integer not null,
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -380,6 +381,11 @@ create index IDX3qtg1fe48q71u218rdyieeurl on `investment_round` (`creation_momen
        add constraint FK_h52w0f3wjoi68b63wv9vwon57 
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
+
+    alter table `banner` 
+       add constraint `FKdocr1jjfgwx9ef5jbf675l360` 
+       foreign key (`patron_id`) 
+       references `patron` (`id`);
 
     alter table `bookkeeper` 
        add constraint FK_krvjp9eaqyapewl2igugbo9o8 

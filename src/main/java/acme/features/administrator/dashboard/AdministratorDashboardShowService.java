@@ -34,7 +34,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 			"minimumMoneyActiveOvertures", "maximumMoneyActiveOvertures", "averageMoneyActiveOvertures", "standardDeviationMoneyActiveOvertures", "numberOfTechnologyRecordsBySector", "numberOfToolRecordsBySector", "technologyRecordsSectors",
 			"toolRecordsSectors", "ratioOpenTechnologies", "ratioClosedTechnologies", "ratioOpenTools", "ratioClosedTools", "averageNumberInvestmentRoundsEntrepreneur", "averageNumberApplicationsEntrepreneur", "averageNumberApplicationsInvestor",
 			"ratioOfSeedInvestmentRound", "ratioOfAngelInvestmentRound", "ratioOfSeriesAInvestmentRound", "ratioOfSeriesBInvestmentRound", "ratioOfSeriesCInvestmentRound", "ratioOfBridgeInvestmentRound", "ratioOfPendingApplications",
-			"ratioOfAcceptedApplications", "ratioOfRejectedApplications");
+			"ratioOfAcceptedApplications", "ratioOfRejectedApplications", "pendingApplicationsPerDay", "rejectedApplicationsPerDay", "acceptedApplicationsPerDay");
 	}
 
 	@Override
@@ -80,6 +80,10 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		result.setRatioOfPendingApplications(this.repository.getRatioOfPendingApplications());
 		result.setRatioOfAcceptedApplications(this.repository.getRatioOfAcceptedApplications());
 		result.setRatioOfRejectedApplications(this.repository.getRatioOfRejectedApplications());
+
+		result.setPendingApplicationsPerDay(this.repository.getPendingApplicationsPerDay());
+		result.setAcceptedApplicationsPerDay(this.repository.getRejectedApplicationsPerDay());
+		result.setAcceptedApplicationsPerDay(this.repository.getAcceptedApplicationsPerDay());
 
 		return result;
 	}

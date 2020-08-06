@@ -13,3 +13,7 @@ patron.banner.list.label.url = Dirección
 
 patron.banner.error.past-year = El año está en pasado
 patron.banner.error.past-month = El mes está en pasado
+
+patron.banner.error.pictureSpamWord = La foto tiene una palabra spam
+patron.banner.error.sloganSpamWord = El eslogan tiene una palabra spam
+patron.banner.error.targetUrlSpamWord = La direccion url tiene una palabra spam

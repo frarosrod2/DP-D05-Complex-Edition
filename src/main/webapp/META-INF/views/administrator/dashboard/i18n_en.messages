@@ -45,3 +45,6 @@ administrator.dashboard.chart.label.seriesc = Series C
 administrator.dashboard.chart.label.bridge = Bridge
 administrator.dashboard.chart.label.ratioOfApplicationsGroupedByStatus = Ratio of applications by status
 
+administrator.dashboard.chart.label.applicationsPerDay = Applications Per Day
+
+

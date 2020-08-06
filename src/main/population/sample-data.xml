@@ -503,7 +503,7 @@
 	
 	<bean id="application1" class="acme.entities.applications.Application">
 		<property name="ticker" value="ART-20-000002"/>
-		<property name="creationMoment" value="2020/05/05 10:10"/>
+		<property name="creationMoment" value="2020/08/05 10:10"/>
 		<property name="statement" value="Nice statement"/>
 		<property name="investmentOffer" value="15.00€"/>
 		<property name="status" value="pending"/>
@@ -515,7 +515,7 @@
 	
 	<bean id="application2" class="acme.entities.applications.Application">
 		<property name="ticker" value="ART-20-000004"/>
-		<property name="creationMoment" value="2020/06/04 14:10"/>
+		<property name="creationMoment" value="2020/08/04 14:10"/>
 		<property name="statement" value="Good statement"/>
 		<property name="investmentOffer" value="5.00€"/>
 		<property name="status" value="pending"/>
@@ -525,7 +525,7 @@
 	
 	<bean id="application3" class="acme.entities.applications.Application">
 		<property name="ticker" value="SCI-20-000005"/>
-		<property name="creationMoment" value="2020/01/04 10:10"/>
+		<property name="creationMoment" value="2020/08/04 10:10"/>
 		<property name="statement" value="Fantastic statement"/>
 		<property name="status" value="accepted"/>
 		<property name="investmentOffer" value="6.00€"/>
@@ -535,7 +535,7 @@
 	
 	<bean id="application4" class="acme.entities.applications.Application">
 		<property name="ticker" value="SCI-20-000010"/>
-		<property name="creationMoment" value="2020/02/07 10:30"/>
+		<property name="creationMoment" value="2020/07/28 10:30"/>
 		<property name="statement" value="Easy statement"/>
 		<property name="status" value="accepted"/>
 		<property name="investmentOffer" value="4.00€"/>
