@@ -36,6 +36,7 @@ public class Activity extends DomainEntity {
 	private Date				end;
 
 	@NotNull
+	@Valid
 	private Money				budget;
 
 	//Relations

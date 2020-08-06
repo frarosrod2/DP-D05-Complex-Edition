@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Index;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,8 +23,10 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.validator.constraints.URL;
 
+import acme.entities.accountingRecords.AccountingRecord;
 import acme.entities.activities.Activity;
 import acme.entities.applications.Application;
+import acme.entities.forums.Forum;
 import acme.entities.roles.Entrepreneur;
 import acme.framework.datatypes.Money;
 import acme.framework.entities.DomainEntity;
@@ -38,50 +41,61 @@ import lombok.Setter;
 })
 public class InvestmentRound extends DomainEntity {
 
-	private static final long		serialVersionUID	= 1L;
+	private static final long				serialVersionUID	= 1L;
 
 	@Pattern(regexp = "^[A-Z]{3}-[0-9]{2}-[0-9]{6}")
 	@NotBlank
-	private String					ticker;
+	private String							ticker;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Past
 	@NotNull
-	private Date					creationMoment;
+	private Date							creationMoment;
 
 	@NotBlank
 	@Pattern(regexp = "^(SEED)?(ANGEL)?(SERIES-A)?(SERIES-B)?(SERIES-C)?(BRIDGE)?$")
-	private String					round;
+	private String							round;
 
 	@NotBlank
-	private String					title;
+	private String							title;
 
 	@NotBlank
-	private String					description;
+	private String							description;
 
 	@NotNull
 	@Valid
-	private Money					money;
+	private Money							money;
 
 	@URL
-	private String					link;
+	private String							link;
 
 	//Relations
 
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
-	private Entrepreneur			entrepreneur;
+	private Entrepreneur					entrepreneur;
 
 	@NotNull
 	@Valid
 	@OneToMany(mappedBy = "investmentRound", fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
-	private Collection<Activity>	workProgramme;
+	private Collection<Activity>			workProgramme;
 
 	@NotNull
 	@Valid
 	@OneToMany(mappedBy = "investmentRound", fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
-	private Collection<Application>	applications;
+	private Collection<Application>			applications;
+
+	@NotNull
+	@Valid
+	@OneToMany(mappedBy = "investmentRound", fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
+	private Collection<AccountingRecord>	accountingRecords;
+
+	@NotNull
+	@Valid
+	@OneToOne(optional = false)
+	private Forum							forum;
 }

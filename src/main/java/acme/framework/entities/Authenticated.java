@@ -6,14 +6,22 @@
  * In keeping with the traditional purpose of furthering education and research, it is
  * the policy of the copyright owner to permit non-commercial use and redistribution of
  * this software. It has been tested carefully, but it is not guaranteed for any particular
- * purposes.  The copyright owner does not offer any warranties or representations, nor do
+ * purposes. The copyright owner does not offer any warranties or representations, nor do
  * they accept any liabilities with respect to them.
  */
 
 package acme.framework.entities;
 
-import javax.persistence.Entity;
+import java.util.Collection;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import acme.entities.forums.Forum;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,4 +40,7 @@ public class Authenticated extends UserRole {
 
 	// Relationships ----------------------------------------------------------
 
+	@ManyToMany(mappedBy = "users", fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
+	private Collection<Forum> forums;
 }

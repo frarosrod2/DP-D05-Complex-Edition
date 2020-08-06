@@ -1,3 +1,4 @@
+
 package acme.entities.roles;
 
 import javax.persistence.Entity;
@@ -10,15 +11,14 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Bookkeeper extends UserRole{
-	
-	private static final long serialVersionUID = 1L;
-	
+public class Bookkeeper extends UserRole {
+
+	private static final long	serialVersionUID	= 1L;
+
 	@NotBlank
-	private String name;
-	
+	private String				name;
+
 	@NotBlank
-	private String reponsabilityStatement;
-	
+	private String				responsabilityStatement;
 
 }

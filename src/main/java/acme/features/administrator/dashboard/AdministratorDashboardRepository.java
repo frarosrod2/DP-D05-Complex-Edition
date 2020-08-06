@@ -42,6 +42,15 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 	@Query("select COALESCE(stddev((o.minMoney.amount + o.maxMoney.amount)/2), 0) from Overture o where o.deadline > current_date()")
 	Object[] getStandardDeviationMoneyActiveOvertures();
 
+	@Query("select avg(select count(ir) from InvestmentRound ir where ir.entrepreneur.id=e.id) from Entrepreneur e")
+	Double getAverageNumberInvestmentRoundsEntrepreneur();
+
+	@Query("select avg(select count(a) from Application a where exists(select ir from InvestmentRound ir where ir.entrepreneur.id=e.id and a.investmentRound.id=ir.id)) from Entrepreneur e")
+	Double getAverageNumberApplicationsEntrepreneur();
+
+	@Query("select avg(select count(a) from Application a where a.investor.id=i.id) from Investor i")
+	Double getAverageNumberApplicationsInvestor();
+
 	// Grouping by sector ---------------------------------------------------------------------
 
 	@Query("select count(tr) from TechnologyRecord tr group by tr.activitySector")
@@ -69,5 +78,32 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 
 	@Query("select 1.0 * count(a) / (select count(b) from ToolRecord b) from ToolRecord a where a.openSource=FALSE")
 	Double getRatioClosedTools();
+
+	@Query("select 1.0 * count(a) / (select count(b) from InvestmentRound b) from InvestmentRound a where a.round = 'SEED'")
+	Double getRatioOfSeedInvestmentRound();
+
+	@Query("select 1.0 * count(a) / (select count(b) from InvestmentRound b) from InvestmentRound a where a.round = 'ANGEL'")
+	Double getRatioOfAngelInvestmentRound();
+
+	@Query("select 1.0 * count(a) / (select count(b) from InvestmentRound b) from InvestmentRound a where a.round = 'SERIES-A'")
+	Double getRatioOfSeriesAInvestmentRound();
+
+	@Query("select 1.0 * count(a) / (select count(b) from InvestmentRound b) from InvestmentRound a where a.round = 'SERIES-B'")
+	Double getRatioOfSeriesBInvestmentRound();
+
+	@Query("select 1.0 * count(a) / (select count(b) from InvestmentRound b) from InvestmentRound a where a.round = 'SERIES-C'")
+	Double getRatioOfSeriesCInvestmentRound();
+
+	@Query("select 1.0 * count(a) / (select count(b) from InvestmentRound b) from InvestmentRound a where a.round = 'BRIDGE'")
+	Double getRatioOfBridgeInvestmentRound();
+
+	@Query("select 1.0 * count(a) / (select count(b) from Application b) from Application a where a.status = 'pending'")
+	Double getRatioOfPendingApplications();
+
+	@Query("select 1.0 * count(a) / (select count(b) from Application b) from Application a where a.status = 'accepted'")
+	Double getRatioOfAcceptedApplications();
+
+	@Query("select 1.0 * count(a) / (select count(b) from Application b) from Application a where a.status = 'rejected'")
+	Double getRatioOfRejectedApplications();
 
 }

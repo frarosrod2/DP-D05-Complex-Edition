@@ -37,6 +37,10 @@ public class Application extends DomainEntity {
 	private Date				creationMoment;
 
 	@NotBlank
+	@Pattern(regexp = "^(accepted)?(rejected)?(pending)?$")
+	private String				status;
+
+	@NotBlank
 	private String				statement;
 
 	@NotNull

@@ -61,9 +61,6 @@
 			<acme:menu-suboption code="master.menu.administrator.notice.create" action="/administrator/notice/create"/>
 			<acme:menu-suboption code="master.menu.administrator.notice.list" action="/administrator/notice/list"/>
 			<acme:menu-separator/>			
-			<acme:menu-suboption code="master.menu.administrator.createBanners" action="/administrator/banner/create"/>
-			<acme:menu-suboption code="master.menu.administrator.listBanners" action="/administrator/banner/list"/>
-			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.createInquiries" action="/administrator/inquiry/create"/>
 			<acme:menu-suboption code="master.menu.administrator.listInquiries" action="/administrator/inquiry/list"/>
 			<acme:menu-separator/>
@@ -82,6 +79,18 @@
 			<acme:menu-suboption code="master.menu.administrator.shutdown" action="/master/shutdown"/>
 		</acme:menu-option>
 				
+		<!-- 		Role Menu 			 -->
+				
+				
+		<acme:menu-option code="master.menu.patron" access="hasRole('Patron')">		
+			<acme:menu-suboption code="master.menu.patron.createBanners" action="/patron/banner/create"/>
+			<acme:menu-suboption code="master.menu.patron.listBanners" action="/patron/banner/list"/>
+		</acme:menu-option>			
+				
+		<acme:menu-option code="master.menu.bookkeeper" access="hasRole('Bookkeeper')">
+			<acme:menu-suboption code="master.menu.bookkeeper.investmentRound.listWritten" action="/bookkeeper/investment-round/list-written"/>
+			<acme:menu-suboption code="master.menu.bookkeeper.investmentRound.list" action="/bookkeeper/investment-round/list"/>
+		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.provider" access="hasRole('Provider')">
 			<acme:menu-suboption code="master.menu.provider.favourite-link" action="http://www.example.com/"/>
@@ -93,8 +102,12 @@
 		
 		<acme:menu-option code="master.menu.entrepreneur" access="hasRole('Entrepreneur')">
 			<acme:menu-suboption code="master.menu.entrepreneur.investment-round.list_mine" action="/entrepreneur/investment-round/list_mine"/>
+			<acme:menu-suboption code="master.menu.entrepreneur.application.list_mine" action="/entrepreneur/application/list_mine"/>			
 		</acme:menu-option>
 		
+		<acme:menu-option code="master.menu.investor" access="hasRole('Investor')">
+			<acme:menu-suboption code="master.menu.investor.application.list_mine" action="/investor/application/list_mine"/>			
+		</acme:menu-option>
 		
 		<!-- 		Authenticated Menu 			 -->		
 
@@ -112,7 +125,10 @@
 			<acme:menu-suboption code="master.menu.authenticated.challenge.list" action="/authenticated/challenge/list"/>
 			<acme:menu-separator/>					
 			<acme:menu-suboption code="master.menu.authenticated.investmentRound.list" action="/authenticated/investment-round/list"/>
-			
+		</acme:menu-option>
+		<acme:menu-option code="master.menu.authenticated.menu.forums" access="isAuthenticated()">
+			<acme:menu-suboption code="master.menu.authenticated.forums.list" action="/authenticated/forum/list"/>
+<%-- 			<acme:menu-suboption code="master.menu.authenticated.forums.create" action="/authenticated/forum/create"/> --%>
 		</acme:menu-option>
 		
 	</acme:menu-left>
