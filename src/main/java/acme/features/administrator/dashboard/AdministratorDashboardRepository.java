@@ -106,4 +106,15 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 	@Query("select 1.0 * count(a) / (select count(b) from Application b) from Application a where a.status = 'rejected'")
 	Double getRatioOfRejectedApplications();
 
+	//D05
+
+	@Query("select count(a), date_format(a.creationMoment, '%d/%m/%Y') from Application a " + "where datediff(now(), date(a.creationMoment)) < 15 and a.status = 'pending'" + "group by date(creationMoment)")
+	Object[] getPendingApplicationsPerDay();
+
+	@Query("select count(a), date_format(a.creationMoment, '%d/%m/%Y') from Application a " + "where datediff(now(), date(a.creationMoment)) < 15 and a.status = 'rejected' " + "group by date(creationMoment)")
+	Object[] getRejectedApplicationsPerDay();
+
+	@Query("select count(a), date_format(a.creationMoment, '%d/%m/%Y') from Application a " + "where datediff(now(), date(a.creationMoment)) < 15 and a.status = 'accepted' " + "group by date(creationMoment)")
+	Object[] getAcceptedApplicationsPerDay();
+
 }
