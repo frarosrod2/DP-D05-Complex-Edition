@@ -14,7 +14,7 @@ public interface AdministratorBookkeeperRequestRepository extends AbstractReposi
 	@Query("select b from BookkeeperRequest b")
 	Collection<BookkeeperRequest> findMany();
 	
-	@Query("select b from BookkeeperRequest b where b.id =? 1")
+	@Query("select b from BookkeeperRequest b where b.id =?1")
 	BookkeeperRequest findOneById(int id);
 	
 	
