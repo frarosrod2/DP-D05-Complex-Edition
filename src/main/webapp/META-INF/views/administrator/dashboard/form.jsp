@@ -52,6 +52,28 @@
 		</div>
 	</acme:form-panel>	
 	
+	<!-- 	 -->	
+	
+	<acme:form-panel code="administrator.dashboard.form.label.investmentRounds">
+		<div class="row">
+			<div class="col-md-3">
+				<acme:form-integer placeholder="0" code="administrator.dashboard.form.label.averageNumberInvestmentRoundsEntrepreneur" path="averageNumberInvestmentRoundsEntrepreneur"/>
+			</div>
+		</div>
+	</acme:form-panel>
+	<acme:form-panel code="administrator.dashboard.form.label.application">
+		<div class="row">
+			<div class="col-md-3">
+				<acme:form-integer placeholder="0" code="administrator.dashboard.form.label.averageNumberApplicationsEntrepreneur" path="averageNumberApplicationsEntrepreneur"/>
+			</div>
+			<div class="col-md-3">
+				<acme:form-integer placeholder="0" code="administrator.dashboard.form.label.averageNumberApplicationsInvestor" path="averageNumberApplicationsInvestor"/>
+			</div>
+		</div>
+	</acme:form-panel>
+	
+	<!-- 	 -->
+	
 	<acme:form-panel code="administrator.dashboard.chart.label.technologyRecordsBySectors">
 		<div class="row">
 			<div class="col-md-6">
@@ -88,6 +110,19 @@
 		</div>
 	</div>
 
+	<div class="row">
+		<div class="col-md-6">
+			<acme:form-panel code="administrator.dashboard.chart.label.ratioOfApplicationsGroupedByStatus">
+				<canvas id="graph7"></canvas>
+			</acme:form-panel>
+		</div>
+		
+		<div class="col-md-6">
+			<acme:form-panel code="administrator.dashboard.chart.label.ratioOfInvestmentRoundsGroupedByKind">
+				<canvas id="graph8"></canvas>
+			</acme:form-panel>
+		</div>
+	</div>
 
 </acme:form>
 
@@ -175,6 +210,36 @@
 			"<acme:message code='administrator.dashboard.chart.label.open'/>",
 			"<acme:message code='administrator.dashboard.chart.label.closed'/>"
 		]
+		
+		var applicationStatusLabels = [
+			"<acme:message code='administrator.dashboard.chart.label.pending'/>",
+			"<acme:message code='administrator.dashboard.chart.label.accepted'/>",
+			"<acme:message code='administrator.dashboard.chart.label.rejected'/>"
+		]
+		
+		var applicationStatusData = [
+			<c:out value='${ratioOfPendingApplications}'></c:out>,
+			<c:out value='${ratioOfAcceptedApplications}'></c:out>,
+			<c:out value='${ratioOfRejectedApplications}'></c:out>
+		]
+		
+		var investmentRoundKindLabels = [
+			"<acme:message code='administrator.dashboard.chart.label.seed'/>",
+			"<acme:message code='administrator.dashboard.chart.label.angel'/>",
+			"<acme:message code='administrator.dashboard.chart.label.seriesa'/>",
+			"<acme:message code='administrator.dashboard.chart.label.seriesb'/>",
+			"<acme:message code='administrator.dashboard.chart.label.seriesc'/>",
+			"<acme:message code='administrator.dashboard.chart.label.bridge'/>"
+		]
+		
+		var investmentRoundKindData = [
+			<c:out value='${ratioOfSeedInvestmentRound}'></c:out>,
+			<c:out value='${ratioOfAngelInvestmentRound}'></c:out>,
+			<c:out value='${ratioOfSeriesAInvestmentRound}'></c:out>,
+			<c:out value='${ratioOfSeriesBInvestmentRound}'></c:out>,
+			<c:out value='${ratioOfSeriesCInvestmentRound}'></c:out>,
+			<c:out value='${ratioOfBridgeInvestmentRound}'></c:out>
+		]
 
 		var barGraph1 = {
 				labels: technologyRecordsSectors,
@@ -222,7 +287,7 @@
 				labels: ratioTechnologiesLabels,
 				datasets: [{
 					label: "<acme:message code='administrator.dashboard.chart.label.ratioOpenVsClosedTechnologies'/>",
-					backgroundColor: ["#999999", "#4BC0C0"],
+					backgroundColor: ["#4BC0C0", "#999999"],
 					borderWidth: 1,
 					data: ratioTechnologiesData,
 				},]
@@ -232,9 +297,29 @@
 				labels: ratioToolsLabels,
 				datasets: [{
 					label: "<acme:message code='administrator.dashboard.chart.label.ratioOpenVsClosedTools'/>",
-					backgroundColor: ["#FFCD56", "#4BC0C0", "#FF6384"],
+					backgroundColor: ["#4BC0C0", "#999999"],
 					borderWidth: 1,
 					data: ratioToolsData,
+				},]
+		}
+		
+		var pieGraph7 = {
+				labels: applicationStatusLabels,
+				datasets: [{
+					label: "<acme:message code='administrator.dashboard.chart.label.ratioOfApplicationsGroupedByStatus'/>",
+					backgroundColor: ["#FFCC00", "#00CC00", "#CC0000"],
+					borderWidth: 1,
+					data: applicationStatusData,
+				},]
+		}
+		
+		var pieGraph8 = {
+				labels: investmentRoundKindLabels,
+				datasets: [{
+					label: "<acme:message code='administrator.dashboard.chart.label.ratioOfInvestmentRoundsGroupedByKind'/>",
+					backgroundColor: ["#1E90FF", "#FF00FF", "#FFFF00", "#FF0000", "#00FF00", "#2F4F4F"],
+					borderWidth: 1,
+					data: investmentRoundKindData,
 				},]
 		}
 		
@@ -246,6 +331,8 @@
 			var ctxGraph4 = document.getElementById('graph4').getContext('2d');
 			var ctxGraph5 = document.getElementById('graph5').getContext('2d'); 
 			var ctxGraph6 = document.getElementById('graph6').getContext('2d'); 
+			var ctxGraph7 = document.getElementById('graph7').getContext('2d'); 
+			var ctxGraph8 = document.getElementById('graph8').getContext('2d'); 
 			
 			window.graph1 = new Chart(ctxGraph1, {
 				type: 'bar',
@@ -295,6 +382,16 @@
 			window.graph6 = new Chart(ctxGraph6, {
 				type: 'pie',
 				data: pieGraph6,
+			});
+			
+			window.graph7 = new Chart(ctxGraph7, {
+				type: 'pie',
+				data: pieGraph7,
+			});
+			
+			window.graph8 = new Chart(ctxGraph8, {
+				type: 'pie',
+				data: pieGraph8,
 			});
 
 		};

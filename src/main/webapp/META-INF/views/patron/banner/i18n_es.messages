@@ -1,0 +1,15 @@
+patron.banner.form.label.picture = Imagen
+patron.banner.form.label.slogan = Eslogan
+patron.banner.form.label.url = Dirección
+patron.banner.form.legend.creditCard = Tarjeta de crédito
+patron.banner.form.button.return = Volver
+patron.banner.form.button.update = Actualizar
+patron.banner.form.button.delete = Eliminar
+patron.banner.form.button.create = Crear
+
+patron.banner.list.label.picture = Imagen
+patron.banner.list.label.slogan = Eslogan
+patron.banner.list.label.url = Dirección
+
+patron.banner.error.past-year = El año está en pasado
+patron.banner.error.past-month = El mes está en pasado

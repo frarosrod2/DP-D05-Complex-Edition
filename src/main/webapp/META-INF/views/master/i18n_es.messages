@@ -42,8 +42,6 @@ master.menu.administrator.dashboard = Dashboard
 master.menu.administrator.shutdown = Parar el sistema
 master.menu.administrator.notice.list = Lista de noticias
 master.menu.administrator.notice.create = Crear noticia
-master.menu.administrator.listBanners = Listar banners
-master.menu.administrator.createBanners = Crear banner
 master.menu.administrator.listInquiries = Listar peticiones
 master.menu.administrator.createInquiries = Crear petición
 master.menu.administrator.listOvertures = Listar propuestas
@@ -55,20 +53,32 @@ master.menu.administrator.listTechnologyRecords = Lista de registros tecnológic
 master.menu.administrator.createToolRecords = Crear registros de herramientas
 master.menu.administrator.listToolRecords = Lista de registros de herramientas
 
-# master.menu.provider ########################################################
+# master.menu.patron ########################################################
+master.menu.patron = Patrocinador
+master.menu.patron.listBanners = Listar banners
+master.menu.patron.createBanners = Crear banner
 
+# master.menu.bookkeeper ########################################################
+master.menu.bookkeeper = Contable
+master.menu.bookkeeper.investmentRound.listWritten = Rondas de inversión con registros de contabilidad escritos
+master.menu.bookkeeper.investmentRound.list = Rondas de inversión sin registros de contabilidad escritos
+
+# master.menu.provider ########################################################
 master.menu.provider = Proveedor
 master.menu.provider.favourite-link = Enlace favorito
 
 # master.menu.consumer ##########################################################
-
 master.menu.consumer = Consumidor
 master.menu.consumer.favourite-link = Enlace favorito
 
 # master.menu.entrepreneur ##########################################################
 master.menu.entrepreneur = Emprendedor
-master.menu.entrepreneur.investment-round.list_mine = Lista de rondas de inversiones
+master.menu.entrepreneur.investment-round.list_mine = Lista de mis rondas de inversiones
+master.menu.entrepreneur.application.list_mine = Lista de mis aplicaciones
 
+# master.menu.investor ##########################################################
+master.menu.investor = Inversor
+master.menu.investor.application.list_mine = List my applications
 
 # master.menu.user-account ####################################################
 
@@ -102,6 +112,8 @@ master.menu.authenticated.toolRecord.list = Lista de registros de herramientas
 master.menu.authenticated.technologyRecord.list = Lista de registros tecnológicos
 master.menu.authenticated.challenge.list = Lista de desafíos
 master.menu.authenticated.investmentRound.list = Lista de ronda de inversiones
+master.menu.authenticated.menu.forums = Foros
+master.menu.authenticated.forums.list = Lista de foros
 
 # master.menu.anonymous.technologyRecord ###############################################################
 

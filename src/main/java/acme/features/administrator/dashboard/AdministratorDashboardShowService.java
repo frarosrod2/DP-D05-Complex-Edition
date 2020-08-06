@@ -32,8 +32,9 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 
 		request.unbind(entity, model, "numberOfNotices", "numberOfTechnologyRecords", "numberOfToolRecords", "minimumMoneyActiveInquiries", "maximumMoneyActiveInquiries", "averageMoneyActiveInquiries", "standardDeviationMoneyActiveInquiries",
 			"minimumMoneyActiveOvertures", "maximumMoneyActiveOvertures", "averageMoneyActiveOvertures", "standardDeviationMoneyActiveOvertures", "numberOfTechnologyRecordsBySector", "numberOfToolRecordsBySector", "technologyRecordsSectors",
-			"toolRecordsSectors", "ratioOpenTechnologies", "ratioClosedTechnologies", "ratioOpenTools", "ratioClosedTools");
-
+			"toolRecordsSectors", "ratioOpenTechnologies", "ratioClosedTechnologies", "ratioOpenTools", "ratioClosedTools", "averageNumberInvestmentRoundsEntrepreneur", "averageNumberApplicationsEntrepreneur", "averageNumberApplicationsInvestor",
+			"ratioOfSeedInvestmentRound", "ratioOfAngelInvestmentRound", "ratioOfSeriesAInvestmentRound", "ratioOfSeriesBInvestmentRound", "ratioOfSeriesCInvestmentRound", "ratioOfBridgeInvestmentRound", "ratioOfPendingApplications",
+			"ratioOfAcceptedApplications", "ratioOfRejectedApplications");
 	}
 
 	@Override
@@ -56,6 +57,10 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		result.setAverageMoneyActiveOvertures((double) this.repository.getAverageMoneyActiveOvertures()[0]);
 		result.setStandardDeviationMoneyActiveOvertures((double) this.repository.getStandardDeviationMoneyActiveOvertures()[0]);
 
+		result.setAverageNumberInvestmentRoundsEntrepreneur(this.repository.getAverageNumberInvestmentRoundsEntrepreneur());
+		result.setAverageNumberApplicationsEntrepreneur(this.repository.getAverageNumberApplicationsEntrepreneur());
+		result.setAverageNumberApplicationsInvestor(this.repository.getAverageNumberApplicationsInvestor());
+
 		result.setNumberOfTechnologyRecordsBySector(this.repository.getNumberOfTechnologyRecordsBySector());
 		result.setNumberOfToolRecordsBySector(this.repository.getNumberOfToolRecordsBySector());
 		result.setTechnologyRecordsSectors(this.repository.getTechnologyRecordsSectors());
@@ -65,6 +70,16 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		result.setRatioOpenTools(this.repository.getRatioOpenTools());
 		result.setRatioClosedTechnologies(this.repository.getRatioClosedTechnologies());
 		result.setRatioClosedTools(this.repository.getRatioClosedTools());
+
+		result.setRatioOfSeedInvestmentRound(this.repository.getRatioOfSeedInvestmentRound());
+		result.setRatioOfAngelInvestmentRound(this.repository.getRatioOfAngelInvestmentRound());
+		result.setRatioOfSeriesAInvestmentRound(this.repository.getRatioOfSeriesAInvestmentRound());
+		result.setRatioOfSeriesBInvestmentRound(this.repository.getRatioOfSeriesBInvestmentRound());
+		result.setRatioOfSeriesCInvestmentRound(this.repository.getRatioOfSeriesCInvestmentRound());
+		result.setRatioOfBridgeInvestmentRound(this.repository.getRatioOfBridgeInvestmentRound());
+		result.setRatioOfPendingApplications(this.repository.getRatioOfPendingApplications());
+		result.setRatioOfAcceptedApplications(this.repository.getRatioOfAcceptedApplications());
+		result.setRatioOfRejectedApplications(this.repository.getRatioOfRejectedApplications());
 
 		return result;
 	}
