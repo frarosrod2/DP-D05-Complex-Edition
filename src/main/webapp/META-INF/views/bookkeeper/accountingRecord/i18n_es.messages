@@ -1,0 +1,10 @@
+bookkeeper.accountingRecord.form.label.title = Título
+bookkeeper.accountingRecord.form.label.status = Estatus
+bookkeeper.accountingRecord.form.label.creationMoment = Momento de creación
+bookkeeper.accountingRecord.form.label.body = Cuerpo
+
+bookkeeper.accountingRecord.list.label.title = Título
+bookkeeper.accountingRecord.list.label.status = Estatus
+bookkeeper.accountingRecord.list.label.creationMoment = Momento de creación
+
+bookkeeper.accountingRecord.form.button.return = Volver

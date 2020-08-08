@@ -17,6 +17,7 @@ public class Patron extends UserRole {
 
 	private static final long	serialVersionUID	= 1L;
 
+	//Organisation name
 	@NotBlank
 	private String				name;
 

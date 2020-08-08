@@ -28,6 +28,11 @@ public class Dashboard implements Serializable {
 	Double						maximumMoneyActiveOvertures;
 	Double						averageMoneyActiveOvertures;
 	Double						standardDeviationMoneyActiveOvertures;
+
+	Double						averageNumberInvestmentRoundsEntrepreneur;
+	Double						averageNumberApplicationsEntrepreneur;
+	Double						averageNumberApplicationsInvestor;
+
 	//chart
 	Object[]					numberOfTechnologyRecordsBySector;
 	Object[]					numberOfToolRecordsBySector;
@@ -38,4 +43,20 @@ public class Dashboard implements Serializable {
 	Double						ratioOpenTechnologies;
 	Double						ratioClosedTools;
 	Double						ratioOpenTools;
+
+	Double						ratioOfSeedInvestmentRound;
+	Double						ratioOfAngelInvestmentRound;
+	Double						ratioOfSeriesAInvestmentRound;
+	Double						ratioOfSeriesBInvestmentRound;
+	Double						ratioOfSeriesCInvestmentRound;
+	Double						ratioOfBridgeInvestmentRound;
+	Double						ratioOfPendingApplications;
+	Double						ratioOfAcceptedApplications;
+	Double						ratioOfRejectedApplications;
+
+	// D05
+
+	Object[]					pendingApplicationsPerDay;
+	Object[]					rejectedApplicationsPerDay;
+	Object[]					acceptedApplicationsPerDay;
 }

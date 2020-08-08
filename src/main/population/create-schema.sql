@@ -1,4 +1,3 @@
-
     create table `activity` (
        `id` integer not null,
         `version` integer not null,

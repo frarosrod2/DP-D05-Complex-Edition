@@ -15,6 +15,13 @@ administrator.dashboard.form.label.maximumMoneyActiveOvertures = Máximo
 administrator.dashboard.form.label.averageMoneyActiveOvertures = Media
 administrator.dashboard.form.label.standardDeviationMoneyActiveOvertures = Desviación estándar
 
+administrator.dashboard.form.label.investmentRounds = Rondas de Inversión
+administrator.dashboard.form.label.application = Aplicaciones
+
+administrator.dashboard.form.label.averageNumberInvestmentRoundsEntrepreneur = Media de rondas de inversión por empresario
+administrator.dashboard.form.label.averageNumberApplicationsEntrepreneur = Media de aplicaciones por empresario
+administrator.dashboard.form.label.averageNumberApplicationsInvestor = Media de aplicaciones por inversor
+
 administrator.dashboard.chart.label.technologyRecords = Registros Tecnológicos
 administrator.dashboard.chart.label.toolRecords = Archivos Tecnológicos
 administrator.dashboard.chart.label.open = Código Abierto
@@ -25,5 +32,18 @@ administrator.dashboard.chart.label.technologyRecordsSectors = Registros Tecnol�
 administrator.dashboard.chart.label.toolRecordsSectors = Archivos Tecnológicos por Sectores
 
 
+administrator.dashboard.chart.label.ratioOfInvestmentRoundsGroupedByKind = Proporción de rondas de inversión por tipo
 administrator.dashboard.chart.label.ratioOpenVsClosedTechnologies = Proporción de tecnologías abiertas y cerradas
 administrator.dashboard.chart.label.ratioOpenVsClosedTools = Proporción de herramientas abiertas y cerradas
+administrator.dashboard.chart.label.pending = Pendiente
+administrator.dashboard.chart.label.accepted = Aceptado
+administrator.dashboard.chart.label.rejected = Rechazado
+administrator.dashboard.chart.label.seed = Semilla
+administrator.dashboard.chart.label.angel = Ángel
+administrator.dashboard.chart.label.seriesa = Serie A
+administrator.dashboard.chart.label.seriesb = Serie B
+administrator.dashboard.chart.label.seriesc = Serie C
+administrator.dashboard.chart.label.bridge = Puente
+administrator.dashboard.chart.label.ratioOfApplicationsGroupedByStatus = Proporción de aplicaciones por estado
+
+administrator.dashboard.chart.label.applicationsPerDay = Aplicaciones por dia

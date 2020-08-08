@@ -42,8 +42,6 @@ master.menu.administrator.dashboard = Dashboard
 master.menu.administrator.shutdown = Shut down
 master.menu.administrator.notice.create = Create notice
 master.menu.administrator.notice.list = List of notices
-master.menu.administrator.listBanners = List banners
-master.menu.administrator.createBanners = Create banner
 master.menu.administrator.listInquiries = List inquiries
 master.menu.administrator.createInquiries = Create inquiry
 master.menu.administrator.listOvertures = List overtures
@@ -55,21 +53,36 @@ master.menu.administrator.listTechnologyRecords = List technology records
 master.menu.administrator.createToolRecords = Create tool records
 master.menu.administrator.listToolRecords = List tool records
 master.menu.administrator.acceptBookkeeper = Accept request to become bookkeeper
-
-
 # master.menu.provider ########################################################
 
+# master.menu.patron ########################################################
+master.menu.patron = Patron
+master.menu.patron.listBanners = List banners
+master.menu.patron.createBanners = Create banner
+
+# master.menu.provider ########################################################
 master.menu.provider = Provider
 master.menu.provider.favourite-link = Favourite link
 
-# master.menu.consumer ##########################################################
 
+
+# master.menu.bookkeeper ########################################################
+master.menu.bookkeeper = Bookkeeper
+master.menu.bookkeeper.investmentRound.listWritten = Investment rounds with accounting record written 
+master.menu.bookkeeper.investmentRound.list = Investment rounds without accounting record written 
+		
+# master.menu.consumer ##########################################################
 master.menu.consumer = Consumer
 master.menu.consumer.favourite-link = Favourite link
 
 # master.menu.entrepreneur ##########################################################
 master.menu.entrepreneur = Entrepreneur
 master.menu.entrepreneur.investment-round.list_mine = List my investment rounds
+master.menu.entrepreneur.application.list_mine = List my applications
+
+# master.menu.investor ##########################################################
+master.menu.investor = Investor
+master.menu.investor.application.list_mine = List my applications
 
 # master.menu.user-account ####################################################
 
@@ -81,6 +94,8 @@ master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
 master.menu.user-account.become-bookkeepeer = Become a bookkeeper
 master.menu.user-account.bookkeeper = Bookkeeper data
+master.menu.user-account.become-patron = Become a patron
+master.menu.user-account.patron = Patron data
 
 # master.menu.bulletin ###############################################################
 
@@ -105,6 +120,8 @@ master.menu.authenticated.technologyRecord.list = List of technology records
 master.menu.authenticated.toolRecord.list = List of tool records
 master.menu.authenticated.challenge.list = List of challenges
 master.menu.authenticated.investmentRound.list = List of investment rounds
+master.menu.authenticated.menu.forums = Forums
+master.menu.authenticated.forums.list = List of forums
 
 # master.menu.anonymous.technologyRecord ###############################################################
 

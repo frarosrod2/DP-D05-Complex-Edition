@@ -1,0 +1,13 @@
+entrepreneur.application.list.label.ticker = Ticker
+entrepreneur.application.list.label.creationMoment = Creation moment
+entrepreneur.application.list.label.statement = Statement
+entrepreneur.application.list.label.status = Status
+
+entrepreneur.application.form.label.ticker = Ticker
+entrepreneur.application.form.label.creationMoment = Creation moment
+entrepreneur.application.form.label.statement = Statement
+entrepreneur.application.form.label.investmentOffer = Investment Offer
+entrepreneur.application.form.label.status = Status
+
+entrepreneur.application.form.button.return = Return
+

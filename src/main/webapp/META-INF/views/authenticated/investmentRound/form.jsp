@@ -9,7 +9,7 @@
 	<acme:form-textbox code="authenticated.investmentRound.form.label.title" path="title"/>
 	<acme:form-textbox code="authenticated.investmentRound.form.label.creationMoment" path="creationMoment"/>
 	<acme:form-textarea code="authenticated.investmentRound.form.label.description" path="description"/>
-	<acme:form-textbox code="authenticated.investmentRound.form.label.money" path="money"/>
+	<acme:form-money code="authenticated.investmentRound.form.label.money" path="money"/>
 	<acme:form-textbox code="authenticated.investmentRound.form.label.link" path="link"/>
 	<acme:form-panel code="authenticated.investmentRound.form.label.workProgramme">
 		<table class="table table-striped">	
