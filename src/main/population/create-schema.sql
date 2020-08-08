@@ -76,6 +76,7 @@
         `name` varchar(255),
         `responsability_statement` varchar(255),
         `state` varchar(255),
+        `authenticated_id` integer not null,
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -337,6 +338,11 @@ create index IDX3qtg1fe48q71u218rdyieeurl on `investment_round` (`creation_momen
        add constraint FK_krvjp9eaqyapewl2igugbo9o8 
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
+
+    alter table `bookkeeper_request` 
+       add constraint `FKhdducua8c58xhfrls8oiih3j0` 
+       foreign key (`authenticated_id`) 
+       references `authenticated` (`id`);
 
     alter table `bookkeeper_request` 
        add constraint FK_4m34h1uxtm7i0d83g5g2ihq5u 

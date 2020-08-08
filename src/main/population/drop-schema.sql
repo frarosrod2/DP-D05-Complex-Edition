@@ -29,6 +29,10 @@
 
     alter table `bookkeeper_request` 
        drop 
+       foreign key `FKhdducua8c58xhfrls8oiih3j0`;
+
+    alter table `bookkeeper_request` 
+       drop 
        foreign key FK_4m34h1uxtm7i0d83g5g2ihq5u;
 
     alter table `consumer` 

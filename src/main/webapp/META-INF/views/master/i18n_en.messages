@@ -54,6 +54,9 @@ master.menu.administrator.createTechnologyRecords = Create technology records
 master.menu.administrator.listTechnologyRecords = List technology records
 master.menu.administrator.createToolRecords = Create tool records
 master.menu.administrator.listToolRecords = List tool records
+master.menu.administrator.acceptBookkeeper = Accept request to become bookkeeper
+
+
 # master.menu.provider ########################################################
 
 master.menu.provider = Provider
@@ -76,6 +79,8 @@ master.menu.user-account.provider = Provider data
 master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
+master.menu.user-account.become-bookkeepeer = Become a bookkeeper
+master.menu.user-account.bookkeeper = Bookkeeper data
 
 # master.menu.bulletin ###############################################################
 

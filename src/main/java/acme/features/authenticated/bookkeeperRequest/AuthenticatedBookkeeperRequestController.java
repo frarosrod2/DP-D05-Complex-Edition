@@ -1,3 +1,4 @@
+
 package acme.features.authenticated.bookkeeperRequest;
 
 import javax.annotation.PostConstruct;
@@ -13,18 +14,15 @@ import acme.framework.entities.Authenticated;
 
 @Controller
 @RequestMapping("/authenticated/bookkeeper-request")
-public class AuthenticatedBookkeeperRequestController extends AbstractController<Authenticated, BookkeeperRequest>{
+public class AuthenticatedBookkeeperRequestController extends AbstractController<Authenticated, BookkeeperRequest> {
 
 	@Autowired
 	private AuthenticatedBookkeeperRequestCreateService createService;
-	
-	@Autowired
-	private AuthenticatedBookkeeperRequestUpdateService updateService;
-	
+
+
 	@PostConstruct
 	private void initialise() {
-		super.addBasicCommand(BasicCommand.CREATE, createService);
-		super.addBasicCommand(BasicCommand.UPDATE, updateService);
+		super.addBasicCommand(BasicCommand.CREATE, this.createService);
 	}
 
 }

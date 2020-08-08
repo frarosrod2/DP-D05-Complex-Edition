@@ -9,10 +9,10 @@
 </acme:form>
 
 <acme:form>
-	<acme:form-select code="administrator.bookkeeperRequest.form.label.confirmed" path="state">
-		<acme:form-option code="administrator.bookkeeperRequest.form.label.confirmed.pending" value="Pending"/>
-		<acme:form-option code="administrator.bookkeeperRequest.form.label.confirmed.accepted" value="Accepted"/>	
-		<acme:form-option code="administrator.bookkeeperRequest.form.label.confirmed.rejected" value="Rejected"/>			
+	<acme:form-select code="administrator.bookkeeperRequest.form.label.state" path="state">
+		<acme:form-option code="administrator.bookkeeperRequest.form.label.confirmed.pending" value="pending"/>
+		<acme:form-option code="administrator.bookkeeperRequest.form.label.confirmed.accepted" value="accepted"/>	
+		<acme:form-option code="administrator.bookkeeperRequest.form.label.confirmed.rejected" value="rejected"/>			
 	</acme:form-select>
 	
 	<acme:form-submit code="administrator.bookkeeperRequest.form.button.update" action="/administrator/bookkeeper-request/update?id=${id}"/>

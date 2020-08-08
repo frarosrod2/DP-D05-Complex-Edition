@@ -1,3 +1,4 @@
+
 package acme.features.administrator.bookkeeperRequest;
 
 import java.util.Collection;
@@ -12,37 +13,34 @@ import acme.framework.entities.Administrator;
 import acme.framework.services.AbstractListService;
 
 @Service
-public class AdministratorBookkeeperRequestListService implements AbstractListService<Administrator, BookkeeperRequest>{
+public class AdministratorBookkeeperRequestListService implements AbstractListService<Administrator, BookkeeperRequest> {
 
 	@Autowired
 	private AdministratorBookkeeperRequestRepository repository;
-	
+
+
 	@Override
-	public boolean authorise(Request<BookkeeperRequest> request) {
+	public boolean authorise(final Request<BookkeeperRequest> request) {
 		assert request != null;
 		return true;
 	}
 
 	@Override
-	public void unbind(Request<BookkeeperRequest> request, BookkeeperRequest entity, Model model) {
+	public void unbind(final Request<BookkeeperRequest> request, final BookkeeperRequest entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
-		
-		request.unbind(entity, model, "name", "responsabilityStatement", "state");
-		
+
+		request.unbind(entity, model, "name", "responsabilityStatement");
+
 	}
 
 	@Override
-	public Collection<BookkeeperRequest> findMany(Request<BookkeeperRequest> request) {
+	public Collection<BookkeeperRequest> findMany(final Request<BookkeeperRequest> request) {
 		assert request != null;
 		Collection<BookkeeperRequest> result;
-		result = this.repository.findMany();
+		result = this.repository.findPendingRequest();
 		return result;
 	}
 
-	
-	
-	
-	
 }
