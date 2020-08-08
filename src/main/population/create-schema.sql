@@ -65,7 +65,17 @@
         `version` integer not null,
         `user_account_id` integer,
         `name` varchar(255),
-        `reponsability_statement` varchar(255),
+        `responsability_statement` varchar(255),
+        primary key (`id`)
+    ) engine=InnoDB;
+
+    create table `bookkeeper_request` (
+       `id` integer not null,
+        `version` integer not null,
+        `user_account_id` integer,
+        `name` varchar(255),
+        `responsability_statement` varchar(255),
+        `state` varchar(255),
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -325,6 +335,11 @@ create index IDX3qtg1fe48q71u218rdyieeurl on `investment_round` (`creation_momen
 
     alter table `bookkeeper` 
        add constraint FK_krvjp9eaqyapewl2igugbo9o8 
+       foreign key (`user_account_id`) 
+       references `user_account` (`id`);
+
+    alter table `bookkeeper_request` 
+       add constraint FK_4m34h1uxtm7i0d83g5g2ihq5u 
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
 

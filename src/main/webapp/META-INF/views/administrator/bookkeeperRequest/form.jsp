@@ -15,6 +15,6 @@
 		<acme:form-option code="administrator.bookkeeperRequest.form.label.confirmed.rejected" value="Rejected"/>			
 	</acme:form-select>
 	
-	<acme:form-submit code="administrator.bookkeeperRequest.form.button.update" action="/administrator/bookkeeperRequest/update?id=${id}"/>
+	<acme:form-submit code="administrator.bookkeeperRequest.form.button.update" action="/administrator/bookkeeper-request/update?id=${id}"/>
 	<acme:form-return code="administrator.bookkeeperRequest.form.button.return"/>
 </acme:form>

@@ -320,7 +320,7 @@
 		<property name="userAccount" ref="entrepreneur2UserAccount" />
 	</bean>
 	
-		<!-- Investor -->
+			<!-- Investor -->
 	
 	
 	<bean name="investor1UserAccount" class="acme.framework.entities.UserAccount">

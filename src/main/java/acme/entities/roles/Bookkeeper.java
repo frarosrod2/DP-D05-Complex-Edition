@@ -18,7 +18,7 @@ public class Bookkeeper extends UserRole{
 	private String name;
 	
 	@NotBlank
-	private String reponsabilityStatement;
+	private String responsabilityStatement;
 	
 
 }

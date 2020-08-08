@@ -6,11 +6,11 @@
 	
 <tiles-definitions>	
 
-	<definition name="administrator/bookkeeperRequest/list" extends="master">
+	<definition name="administrator/bookkeeper-request/list" extends="master">
 		<put-attribute name="body" type="template" value="../administrator/bookkeeperRequest/list.jsp"/>
 	</definition>
 
-	<definition name="administrator/bookkeeperRequest/form" extends="master">
+	<definition name="administrator/bookkeeper-request/form" extends="master">
 		<put-attribute name="body" type="template" value="../administrator/bookkeeperRequest/form.jsp"/>
 	</definition>
 

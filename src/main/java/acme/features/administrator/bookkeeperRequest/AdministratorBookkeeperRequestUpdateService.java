@@ -81,7 +81,7 @@ public class AdministratorBookkeeperRequestUpdateService implements AbstractUpda
 			Bookkeeper bk = new Bookkeeper();
 			
 			bk.setName(entity.getName());
-			bk.setReponsabilityStatement(entity.getReponsabilityStatement());
+			bk.setResponsabilityStatement(entity.getResponsabilityStatement());
 			bk.setUserAccount(entity.getUserAccount());
 			
 			this.repositoryBK.save(bk);

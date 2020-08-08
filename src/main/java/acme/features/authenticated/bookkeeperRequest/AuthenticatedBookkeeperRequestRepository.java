@@ -13,6 +13,6 @@ public interface AuthenticatedBookkeeperRequestRepository extends AbstractReposi
 	@Query("select ua from UserAccount ua where ua.id = ?1")
 	UserAccount findOneUserAccountById(int id);
 
-	@Query("select br from BookkeeperRequest br where br.userAccount.id  ?1")
+	@Query("select br from BookkeeperRequest br where br.userAccount.id = ?1")
 	BookkeeperRequest findOneBookkeeperRequestByUserAccountId(int id);
 }

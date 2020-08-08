@@ -20,7 +20,7 @@ public class BookkeeperRequest extends UserRole{
 	private String name;
 	
 	@NotBlank
-	private String reponsabilityStatement;
+	private String responsabilityStatement;
 	
 	private String state;
 	
