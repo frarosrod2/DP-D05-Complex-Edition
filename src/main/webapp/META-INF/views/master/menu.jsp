@@ -76,6 +76,8 @@
 			<acme:menu-suboption code="master.menu.administrator.createToolRecords" action="/administrator/tool-record/create"/>
 			<acme:menu-suboption code="master.menu.administrator.listToolRecords" action="/administrator/tool-record/list"/>
 			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.administrator.acceptBookkeeper" action="/administrator/bookkeeper-request/list"/>
+			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.shutdown" action="/master/shutdown"/>
 		</acme:menu-option>
 				
@@ -143,6 +145,8 @@
 			<acme:menu-suboption code="master.menu.user-account.provider" action="/authenticated/provider/update" access="hasRole('Provider')"/>
 			<acme:menu-suboption code="master.menu.user-account.become-consumer" action="/authenticated/consumer/create" access="!hasRole('Consumer')"/>
 			<acme:menu-suboption code="master.menu.user-account.consumer" action="/authenticated/consumer/update" access="hasRole('Consumer')"/>
+			<acme:menu-suboption code="master.menu.user-account.become-bookkeepeer" action="/authenticated/bookkeeper-request/create" access="!hasRole('Bookkeeper')"/>
+			<acme:menu-suboption code="master.menu.user-account.bookkeeper" action="/authenticated/bookkeeper/update" access="hasRole('Bookkeeper')"/>
 			<acme:menu-suboption code="master.menu.user-account.become-patron" action="/authenticated/patron/create" access="!hasRole('Patron')"/>
 			<acme:menu-suboption code="master.menu.user-account.patron" action="/authenticated/patron/update" access="hasRole('Patron')"/>				
 		</acme:menu-option>
