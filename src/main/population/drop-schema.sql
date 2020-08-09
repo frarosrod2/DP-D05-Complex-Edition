@@ -47,6 +47,10 @@
        drop 
        foreign key FK_r6tqltqvrlh1cyy8rsj5pev1q;
 
+    alter table `forum` 
+       drop 
+       foreign key `FKmjij2r3vmcex49205x7iqck3f`;
+
     alter table `forum_authenticated` 
        drop 
        foreign key `FKbfu7rkr4imldqrkswlqieb4dv`;
@@ -74,6 +78,14 @@
     alter table `investor` 
        drop 
        foreign key FK_dcek5rr514s3rww0yy57vvnpq;
+
+    alter table `involved_user` 
+       drop 
+       foreign key `FKtdjfvr1t34oywmymvqnq56f84`;
+
+    alter table `involved_user` 
+       drop 
+       foreign key `FK83poh8m3ta2omwcedsvh8jxtf`;
 
     alter table `patron` 
        drop 
@@ -118,6 +130,8 @@
     drop table if exists `investment_round`;
 
     drop table if exists `investor`;
+
+    drop table if exists `involved_user`;
 
     drop table if exists `message`;
 

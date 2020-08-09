@@ -138,6 +138,7 @@
         `version` integer not null,
         `moment` datetime(6),
         `title` varchar(255),
+        `creator_id` integer not null,
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -189,6 +190,15 @@
         `activity_sector` varchar(255),
         `name` varchar(255),
         `profile` varchar(255),
+        primary key (`id`)
+    ) engine=InnoDB;
+
+    create table `involved_user` (
+       `id` integer not null,
+        `version` integer not null,
+        `search_user` varchar(255),
+        `authenticated_id` integer,
+        `forum_id` integer,
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -402,6 +412,11 @@ create index IDX3qtg1fe48q71u218rdyieeurl on `investment_round` (`creation_momen
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
 
+    alter table `forum` 
+       add constraint `FKmjij2r3vmcex49205x7iqck3f` 
+       foreign key (`creator_id`) 
+       references `user_account` (`id`);
+
     alter table `forum_authenticated` 
        add constraint `FKbfu7rkr4imldqrkswlqieb4dv` 
        foreign key (`users_id`) 
@@ -436,6 +451,16 @@ create index IDX3qtg1fe48q71u218rdyieeurl on `investment_round` (`creation_momen
        add constraint FK_dcek5rr514s3rww0yy57vvnpq 
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
+
+    alter table `involved_user` 
+       add constraint `FKtdjfvr1t34oywmymvqnq56f84` 
+       foreign key (`authenticated_id`) 
+       references `authenticated` (`id`);
+
+    alter table `involved_user` 
+       add constraint `FK83poh8m3ta2omwcedsvh8jxtf` 
+       foreign key (`forum_id`) 
+       references `forum` (`id`);
 
     alter table `patron` 
        add constraint FK_8xx5nujhuio3advxc2freyu65 
