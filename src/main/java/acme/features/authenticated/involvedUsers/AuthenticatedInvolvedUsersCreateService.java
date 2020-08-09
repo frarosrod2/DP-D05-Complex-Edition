@@ -26,7 +26,7 @@ public class AuthenticatedInvolvedUsersCreateService implements AbstractCreateSe
 		
 		Forum forum = this.repository.findForumById(forumId);
 		
-		if (forum.getUsers().contains(request.getPrincipal().getAccountId())) {
+		if (forum.getCreator().getId() == request.getPrincipal().getAccountId()) {
 			res = true;
 		}
 		

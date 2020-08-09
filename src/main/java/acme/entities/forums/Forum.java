@@ -1,12 +1,14 @@
 
 package acme.entities.forums;
 
+import java.beans.Transient;
 import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,6 +23,7 @@ import org.hibernate.annotations.FetchMode;
 import acme.entities.messages.Message;
 import acme.framework.entities.Authenticated;
 import acme.framework.entities.DomainEntity;
+import acme.framework.entities.UserAccount;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -47,5 +50,14 @@ public class Forum extends DomainEntity {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
 	private Collection<Authenticated>	users;
+	
+	@ManyToOne(optional = false)
+	@NotNull
+	private UserAccount			creator;
 
+	@Transient
+	public String getCreatorUserName() {
+		return this.creator.getUsername();
+	}
+	
 }

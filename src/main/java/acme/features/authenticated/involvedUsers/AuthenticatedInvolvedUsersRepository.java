@@ -30,4 +30,11 @@ public interface AuthenticatedInvolvedUsersRepository extends AbstractRepository
 	
 	@Query("select count(i) from InvolvedUser i where i.forum.id = ?2 and i.authenticated.userAccount.username = ?1 ")
 	int countSearchUserInInvolvedUser(String searchUser, int forumId);
+	
+	@Query("select i.forum.id from InvolvedUser i where i.id = ?1")
+	int findForumIdByInvolvedUserId(int involvedUserId);
+	
+	@Query("select ua.id from InvolvedUser i, Authenticated a, UserAccount ua where i.id = ?1 and a.id = i.authenticated.id and a.userAccount.id = ua.id")
+	int findAuthenticatedIdByInvolvedUserId(int involvedUserId);
+
 }

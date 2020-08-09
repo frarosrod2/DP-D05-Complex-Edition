@@ -3,6 +3,7 @@ package acme.features.authenticated.involvedUsers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.forums.Forum;
 import acme.entities.involvedUsers.InvolvedUser;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
@@ -18,37 +19,65 @@ public class AuthenticatedInvolvedUsersDeleteService implements AbstractDeleteSe
 	
 	@Override
 	public boolean authorise(Request<InvolvedUser> request) {
-		// TODO Auto-generated method stub
-		return false;
+		assert request != null;
+		
+		int involvedUserId = request.getModel().getInteger("id");
+		int forumId = this.repository.findForumIdByInvolvedUserId(involvedUserId);
+		Forum forum = this.repository.findForumById(forumId);
+		int authenticatedId = this.repository.findAuthenticatedIdByInvolvedUserId(involvedUserId);
+		
+		boolean isCreator = forum.getCreator().getId() == request.getPrincipal().getAccountId();
+		boolean notCreator = authenticatedId != request.getPrincipal().getAccountId();
+		
+		return isCreator && notCreator;
 	}
 
 	@Override
 	public void bind(Request<InvolvedUser> request, InvolvedUser entity, Errors errors) {
-		// TODO Auto-generated method stub
+		assert request != null;
+		assert entity != null;
+		assert errors != null;
+		
+		request.bind(entity, errors);
 		
 	}
 
 	@Override
 	public void unbind(Request<InvolvedUser> request, InvolvedUser entity, Model model) {
-		// TODO Auto-generated method stub
-		
+		assert request != null;
+		assert entity != null;
+		assert model != null;		
+
+		request.unbind(entity, model, "searchUser");
 	}
 
 	@Override
 	public InvolvedUser findOne(Request<InvolvedUser> request) {
-		// TODO Auto-generated method stub
-		return null;
+		assert request != null;
+		
+		InvolvedUser result;
+		int id;
+		
+		id = request.getModel().getInteger("id");
+		result = this.repository.findOne(id);
+		
+		return result;
 	}
 
 	@Override
 	public void validate(Request<InvolvedUser> request, InvolvedUser entity, Errors errors) {
-		// TODO Auto-generated method stub
+		assert request != null;
+		assert entity != null;
+		assert errors != null;
 		
 	}
 
 	@Override
 	public void delete(Request<InvolvedUser> request, InvolvedUser entity) {
-		// TODO Auto-generated method stub
+		assert request != null;
+		assert entity != null;
+		
+		this.repository.save(entity);
 		
 	}
 	
