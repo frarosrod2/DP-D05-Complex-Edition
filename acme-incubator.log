@@ -1,0 +1,46 @@
+WARN [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authenticatedForumController': Unsatisfied dependency expressed through field 'deleteService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'acme.features.authenticated.forums.AuthenticatedForumDeleteService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+ERROR [org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter] ***************************
+APPLICATION FAILED TO START
+***************************
+Description:
+Field deleteService in acme.features.authenticated.forums.AuthenticatedForumController required a bean of type 'acme.features.authenticated.forums.AuthenticatedForumDeleteService' that could not be found.
+The injection point has the following annotations:
+- @org.springframework.beans.factory.annotation.Autowired(required=true)
+Action:
+Consider defining a bean of type 'acme.features.authenticated.forums.AuthenticatedForumDeleteService' in your configuration.
+WARN [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authenticatedForumController': Unsatisfied dependency expressed through field 'deleteService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'acme.features.authenticated.forums.AuthenticatedForumDeleteService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+ERROR [org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter] ***************************
+APPLICATION FAILED TO START
+***************************
+Description:
+Field deleteService in acme.features.authenticated.forums.AuthenticatedForumController required a bean of type 'acme.features.authenticated.forums.AuthenticatedForumDeleteService' that could not be found.
+The injection point has the following annotations:
+- @org.springframework.beans.factory.annotation.Autowired(required=true)
+Action:
+Consider defining a bean of type 'acme.features.authenticated.forums.AuthenticatedForumDeleteService' in your configuration.
+WARN [com.zaxxer.hikari.pool.HikariPool] {} - Thread starvation or clock leap detected (housekeeper delta={}).
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] HTTP GET /acme-incubator/META-INF/views/framework/page.jsp HTTP/1.1
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] Status: 500
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] Exception: acme.framework.helpers.Assert.state(Assert.java:40): Access is not authorised
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] HTTP GET /acme-incubator/META-INF/views/framework/page.jsp HTTP/1.1
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] Status: 500
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] Exception: acme.framework.helpers.Assert.state(Assert.java:40): End-point not available
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] HTTP GET /acme-incubator/META-INF/views/framework/page.jsp HTTP/1.1
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] Status: 500
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] Exception: acme.framework.helpers.Assert.state(Assert.java:40): End-point not available
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] HTTP GET /acme-incubator/META-INF/views/framework/page.jsp HTTP/1.1
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] Status: 500
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] Exception: java.lang.NullPointerException
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] HTTP GET /acme-incubator/META-INF/views/framework/page.jsp HTTP/1.1
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] Status: 500
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] Exception: java.lang.NullPointerException
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] HTTP GET /acme-incubator/META-INF/views/framework/page.jsp HTTP/1.1
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] Status: 500
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] Exception: java.lang.NullPointerException
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] HTTP POST /acme-incubator/META-INF/views/framework/page.jsp HTTP/1.1
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] Status: 500
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] Exception: org.springframework.orm.jpa.EntityManagerFactoryUtils.convertJpaAccessExceptionIfPossible(EntityManagerFactoryUtils.java:373): Entity must not be null!; nested exception is java.lang.IllegalArgumentException: Entity must not be null!
+org.springframework.util.Assert.notNull(Assert.java:198): Entity must not be null!
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] HTTP GET /acme-incubator/META-INF/views/framework/page.jsp HTTP/1.1
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] Status: 500
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] Exception: java.lang.NullPointerException

@@ -17,4 +17,7 @@ authenticated.forum.form.button.addMessage = + Añadir mensaje
 
 authenticated.forum.form.button.return = Volver
 authenticated.forum.form.button.create = Crear
-authenticated.forum.form.button.update = Actualizar
+authenticated.forum.form.button.delete = Borrar
+
+master.menu.authenticated.forums.create = Crear
+authenticated.forum.list.button.return = Volver

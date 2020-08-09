@@ -6,10 +6,16 @@
 
 
 <acme:form>
-	<acme:form-textbox code="authenticated.forum.show.label.title" path="title"/>
+	
+	<c:if test="${ command == 'create' }">
+		<acme:form-textbox code="authenticated.forum.show.label.title" path="title"/>
+	</c:if>
 	
 	<c:if test="${ command == 'show' }">
+		<acme:form-textbox code="authenticated.forum.show.label.title" path="title" readonly="true"/>
+	
 		<acme:form-moment code="authenticated.forum.show.label.moment" path="moment" readonly="true" />
+		
 	</c:if>
 
 	
@@ -48,10 +54,16 @@
 			</tbody>
 		</table>
 	</acme:form-panel>
+	
 	</c:if>
 	
-  	<acme:form-return code="authenticated.forum.form.button.return"/>
-<%--   	<acme:form-submit test="${ command != 'create' }" code="authenticated.forum.form.button.update" action="/authenticated/forum/update" /> --%>
+	<c:if test="${ command == 'show' }">
+		<acme:form-submit code="authenticated.forum.form.button.delete" action="/authenticated/forum/delete?id=${id}" />
+	</c:if>
+	
+	<acme:form-return code="authenticated.forum.form.button.return"/>
+
+
 	<acme:form-submit test="${ command == 'create' }" code="authenticated.forum.form.button.create" action="/authenticated/forum/create" />
 </acme:form>
 
