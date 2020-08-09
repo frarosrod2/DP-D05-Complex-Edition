@@ -17,3 +17,5 @@ patron.banner.error.past-month = El mes está en pasado
 patron.banner.error.pictureSpamWord = La foto tiene una palabra spam
 patron.banner.error.sloganSpamWord = El eslogan tiene una palabra spam
 patron.banner.error.targetUrlSpamWord = La direccion url tiene una palabra spam
+patron.banner.error.cardNameSpamWord = El nombre tiene una palabra spam
+patron.banner.error.cardBrandSpamWord =  La marca tiene una palabra spam
