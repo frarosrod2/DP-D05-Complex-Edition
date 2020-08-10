@@ -49,7 +49,7 @@
 
     alter table `forum` 
        drop 
-       foreign key `FKmjij2r3vmcex49205x7iqck3f`;
+       foreign key `FK49evxvl11kdqxjybm2sn41x6f`;
 
     alter table `forum_authenticated` 
        drop 

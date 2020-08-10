@@ -6,18 +6,49 @@
 
 
 <acme:form>
-	
-	<c:if test="${ command == 'create' }">
-		<acme:form-textbox code="authenticated.forum.show.label.title" path="title"/>
-	</c:if>
-	
-	<c:if test="${ command == 'show' }">
-		<acme:form-textbox code="authenticated.forum.show.label.title" path="title" readonly="true"/>
-	
-		<acme:form-moment code="authenticated.forum.show.label.moment" path="moment" readonly="true" />
+		<c:if test="${ command == 'show' }">	
+		<acme:form-textbox code="authenticated.forum.show.label.title" path="title" readonly="true" />
+		</c:if>
 		
+		<c:if test="${ command == 'create' }">	
+		<acme:form-textbox code="authenticated.forum.show.label.title" path="title" />
+		</c:if>
+	<c:if test="${ command == 'show' }">	
+		<acme:form-moment code="authenticated.forum.show.label.moment" path="moment" readonly="true" />
 	</c:if>
 
+	<c:if test="${ command == 'create' }">	
+	<div class="form-group">
+		
+		<label for="users-involved"><acme:message code="authenticated.thread.form.label.usersInvolved"/></label>
+		<select name="users" id="users-involved" class="form-control" multiple>
+			<c:forEach var="authenticatedUser" items="${ authenticatedUsers }">
+				<option value="${authenticatedUser.userAccount.username}" <c:if test="${fn:contains(users, authenticatedUser)}">selected</c:if>>${authenticatedUser.userAccount.username}</option>
+			</c:forEach>
+		</select>
+		 <small class="text-muted">
+	      <strong><acme:message code="authenticated.thread.form.label.usersInvolved"/></strong>: <span id="users-involved-help-text"></span>
+	    </small>
+	    <acme:form-errors path="users"/>
+    </div>
+
+	</c:if>
+	
+	<c:if test="${ command == 'show' }">	
+<div class="form-group">
+		
+		<label for="users-involved"><acme:message code="authenticated.thread.form.label.usersInvolved"/></label>
+		<select name="users" id="users-involved" class="form-control" multiple>
+			<c:forEach var="authenticatedUser" items="${ authenticatedUsers }">
+				<option value="${authenticatedUser.userAccount.username}" <c:if test="${fn:contains(users, authenticatedUser)}">selected</c:if>>${authenticatedUser.userAccount.username}</option>
+			</c:forEach>
+		</select>
+		 <small class="text-muted">
+	      <strong><acme:message code="authenticated.thread.form.label.usersInvolved"/></strong>: <span id="users-involved-help-text"></span>
+	    </small>
+	    <acme:form-errors path="users"/>
+    </div>
+	</c:if>
 	
 	<c:if test="${ command != 'create' }">
 	<acme:form-panel code="authenticated.forum.show.legend.messages">
@@ -57,9 +88,8 @@
 	
 	</c:if>
 	
-	<c:if test="${ command == 'show' }">
-		<acme:form-submit code="authenticated.forum.form.button.delete" action="/authenticated/forum/delete?id=${id}" />
-	</c:if>
+	<acme:form-submit test="${command != 'create'}" code="authenticated.forum.form.button.delete" action="/authenticated/forum/delete" />
+
 	
 	<acme:form-return code="authenticated.forum.form.button.return"/>
 

@@ -413,9 +413,9 @@ create index IDX3qtg1fe48q71u218rdyieeurl on `investment_round` (`creation_momen
        references `user_account` (`id`);
 
     alter table `forum` 
-       add constraint `FKmjij2r3vmcex49205x7iqck3f` 
+       add constraint `FK49evxvl11kdqxjybm2sn41x6f` 
        foreign key (`creator_id`) 
-       references `user_account` (`id`);
+       references `authenticated` (`id`);
 
     alter table `forum_authenticated` 
        add constraint `FKbfu7rkr4imldqrkswlqieb4dv` 

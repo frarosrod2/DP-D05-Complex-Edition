@@ -10,10 +10,10 @@ import acme.entities.forums.Forum;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Authenticated;
-import acme.framework.services.AbstractShowService;
+import acme.framework.services.AbstractListService;
 
 @Service
-public class AuthenticatedForumShowService implements AbstractShowService<Authenticated, Forum> {
+public class AuthenticatedForumListMineService implements AbstractListService<Authenticated, Forum> {
 
 	//Internal state----------------------------------------------
 
@@ -21,14 +21,13 @@ public class AuthenticatedForumShowService implements AbstractShowService<Authen
 	AuthenticatedForumRepository repository;
 
 
+	//AbstractListService<Authenticated, Challenge> interface ------------
+
 	@Override
 	public boolean authorise(final Request<Forum> request) {
 		assert request != null;
 
-		Collection<Forum> userForums = this.repository.getUserInvolvedForums(request.getPrincipal().getActiveRoleId());
-		Forum forum = this.repository.getForumById(request.getModel().getInteger("id"));
-
-		return userForums.contains(forum);
+		return true;
 	}
 
 	@Override
@@ -37,20 +36,18 @@ public class AuthenticatedForumShowService implements AbstractShowService<Authen
 		assert entity != null;
 		assert model != null;
 
-		Collection<Authenticated> authenticatedUsers = this.repository.getAuthenticatedUsers();
-		request.unbind(entity, model, "title", "moment", "messages", "users", "creator");
-
-		model.setAttribute("authenticatedUsers", authenticatedUsers);
+		request.unbind(entity, model, "title", "moment");
 	}
 
 	@Override
-	public Forum findOne(final Request<Forum> request) {
+	public Collection<Forum> findMany(final Request<Forum> request) {
 		assert request != null;
 
-		Forum result = null;
-		int forumId = request.getModel().getInteger("id");
-		result = this.repository.getForumById(forumId);
+		Collection<Forum> result;
+
+		result = this.repository.getMyForums(request.getPrincipal().getActiveRoleId());
 
 		return result;
 	}
+
 }

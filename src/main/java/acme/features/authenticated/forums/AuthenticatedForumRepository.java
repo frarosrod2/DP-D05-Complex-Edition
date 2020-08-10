@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.entities.forums.Forum;
+import acme.entities.messages.Message;
 import acme.framework.entities.Authenticated;
 import acme.framework.repositories.AbstractRepository;
 
@@ -27,4 +28,10 @@ public interface AuthenticatedForumRepository extends AbstractRepository {
 
 	@Query("select t from Forum t where t.id = ?1")
 	Forum getForumById(int forumId);
+
+	@Query("select f from Forum f where f.creator.id = ?1")
+	Collection<Forum> getMyForums(int activeRoleId);
+
+	@Query("select f.messages from Forum f where f.id = ?1")
+	Collection<Message> findAllMessagesByForumId(int id);
 }

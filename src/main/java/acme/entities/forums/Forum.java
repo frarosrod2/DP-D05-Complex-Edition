@@ -5,6 +5,7 @@ import java.beans.Transient;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
@@ -23,7 +24,6 @@ import org.hibernate.annotations.FetchMode;
 import acme.entities.messages.Message;
 import acme.framework.entities.Authenticated;
 import acme.framework.entities.DomainEntity;
-import acme.framework.entities.UserAccount;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -43,21 +43,22 @@ public class Forum extends DomainEntity {
 	private Date						moment;
 
 	@Valid
-	@OneToMany(fetch = FetchType.EAGER)
-	@Fetch(value = FetchMode.SUBSELECT)
+	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	private Collection<Message>			messages;
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
 	private Collection<Authenticated>	users;
-	
-	@ManyToOne(optional = false)
+
 	@NotNull
-	private UserAccount			creator;
+	@Valid
+	@ManyToOne(optional = false)
+	private Authenticated				creator;
+
 
 	@Transient
 	public String getCreatorUserName() {
-		return this.creator.getUsername();
+		return this.creator.getUserAccount().getUsername();
 	}
-	
+
 }

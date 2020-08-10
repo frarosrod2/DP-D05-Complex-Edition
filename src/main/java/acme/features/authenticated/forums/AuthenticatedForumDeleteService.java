@@ -1,77 +1,97 @@
+
 package acme.features.authenticated.forums;
+
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.forums.Forum;
+import acme.entities.messages.Message;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Authenticated;
+import acme.framework.entities.Principal;
 import acme.framework.services.AbstractDeleteService;
 
 @Service
-public class AuthenticatedForumDeleteService implements AbstractDeleteService<Authenticated, Forum>{
+public class AuthenticatedForumDeleteService implements AbstractDeleteService<Authenticated, Forum> {
 
 	@Autowired
 	private AuthenticatedForumRepository repository;
-	
+
+
 	@Override
-	public boolean authorise(Request<Forum> request) {
+	public boolean authorise(final Request<Forum> request) {
 		assert request != null;
-		return true;
+
+		boolean result;
+		int forumId;
+		Forum forum;
+		Authenticated authenticated;
+		Principal principal;
+
+		forumId = request.getModel().getInteger("id");
+		forum = this.repository.getForumById(forumId);
+		authenticated = forum.getCreator();
+		principal = request.getPrincipal();
+		result = authenticated.getUserAccount().getId() == principal.getAccountId();
+
+		return result;
 	}
 
 	@Override
-	public void bind(Request<Forum> request, Forum entity, Errors errors) {
+	public void bind(final Request<Forum> request, final Forum entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-		
+
 		request.bind(entity, errors);
-		
+
 	}
 
 	@Override
-	public void unbind(Request<Forum> request, Forum entity, Model model) {
+	public void unbind(final Request<Forum> request, final Forum entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
-		
-		request.unbind(entity, model, "title", "moment");
-		
+
+		request.unbind(entity, model, "title", "moment", "messages");
+
 	}
 
 	@Override
-	public Forum findOne(Request<Forum> request) {
+	public Forum findOne(final Request<Forum> request) {
 		assert request != null;
-		
-		Forum forum;
-		
+
+		Forum result;
+
 		int id;
-		
+
 		id = request.getModel().getInteger("id");
-		forum = this.repository.getForumById(id);
-		
-		return forum;
+		result = this.repository.getForumById(id);
+
+		return result;
 	}
 
 	@Override
-	public void validate(Request<Forum> request, Forum entity, Errors errors) {
+	public void validate(final Request<Forum> request, final Forum entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-		
+
 	}
 
 	@Override
-	public void delete(Request<Forum> request, Forum entity) {
+	public void delete(final Request<Forum> request, final Forum entity) {
 		assert request != null;
 		assert entity != null;
-		
+
+		Collection<Message> messages = this.repository.findAllMessagesByForumId(entity.getId());
+		this.repository.deleteAll(messages);
 		this.repository.delete(entity);
-		
+
 	}
-	
 
 }

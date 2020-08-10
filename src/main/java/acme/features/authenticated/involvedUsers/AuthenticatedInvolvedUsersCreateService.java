@@ -1,3 +1,4 @@
+
 package acme.features.authenticated.involvedUsers;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,87 +13,86 @@ import acme.framework.entities.Authenticated;
 import acme.framework.services.AbstractCreateService;
 
 @Service
-public class AuthenticatedInvolvedUsersCreateService implements AbstractCreateService<Authenticated, InvolvedUser>{
+public class AuthenticatedInvolvedUsersCreateService implements AbstractCreateService<Authenticated, InvolvedUser> {
 
 	@Autowired
 	private AuthenticatedInvolvedUsersRepository repository;
-	
+
+
 	@Override
-	public boolean authorise(Request<InvolvedUser> request) {
+	public boolean authorise(final Request<InvolvedUser> request) {
 		assert request != null;
-		
+
 		boolean res = false;
 		int forumId = request.getModel().getInteger("forumId");
-		
+
 		Forum forum = this.repository.findForumById(forumId);
-		
+
 		if (forum.getCreator().getId() == request.getPrincipal().getAccountId()) {
 			res = true;
 		}
-		
+
 		return res;
 	}
 
 	@Override
-	public void bind(Request<InvolvedUser> request, InvolvedUser entity, Errors errors) {
+	public void bind(final Request<InvolvedUser> request, final InvolvedUser entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-		
+
 		request.bind(entity, errors);
-		
+
 	}
 
 	@Override
-	public void unbind(Request<InvolvedUser> request, InvolvedUser entity, Model model) {
+	public void unbind(final Request<InvolvedUser> request, final InvolvedUser entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
-		
+
 		request.unbind(entity, model, "authenticatedUserName");
-		
+
 	}
 
 	@Override
-	public InvolvedUser instantiate(Request<InvolvedUser> request) {
+	public InvolvedUser instantiate(final Request<InvolvedUser> request) {
 		assert request != null;
-		
+
 		InvolvedUser result = new InvolvedUser();
 		int forumdId;
 		Authenticated authenticated;
 		Forum forum;
-		
+
 		forumdId = request.getModel().getInteger("forumId");
 		forum = this.repository.findForumById(forumdId);
 		authenticated = this.repository.findAuthenticatedByName(request.getModel().getString("searchUser"));
-		
+
 		result.setForum(forum);
 		result.setAuthenticated(authenticated);
-		
+
 		return result;
 	}
 
 	@Override
-	public void validate(Request<InvolvedUser> request, InvolvedUser entity, Errors errors) {
+	public void validate(final Request<InvolvedUser> request, final InvolvedUser entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-		
-		if (!errors.hasErrors("searchUer")) {
+
+		if (!errors.hasErrors("searchUser")) {
 			errors.state(request, this.repository.countSearchUser(entity.getSearchUser()) == 1, "searchUser", "authenticated.involvedIn.error.searchUser");
-			
-			errors.state(request, this.repository.countSearchUserInInvolvedUser(entity.getSearchUser(), request.getModel().getInteger("forumId")) < 1, "searchUser", "authenticated.involvedIn.error.searchUserInInvolved");					
+
+			errors.state(request, this.repository.countSearchUserInInvolvedUser(entity.getSearchUser(), request.getModel().getInteger("forumId")) < 1, "searchUser", "authenticated.involvedIn.error.searchUserInInvolved");
 		}
 	}
 
 	@Override
-	public void create(Request<InvolvedUser> request, InvolvedUser entity) {
+	public void create(final Request<InvolvedUser> request, final InvolvedUser entity) {
 		assert request != null;
 		assert entity != null;
-		
+
 		this.repository.save(entity);
 	}
-	
-	
 
 }

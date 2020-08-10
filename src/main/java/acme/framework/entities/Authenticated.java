@@ -43,4 +43,9 @@ public class Authenticated extends UserRole {
 	@ManyToMany(mappedBy = "users", fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
 	private Collection<Forum> forums;
+
+	//	@OneToMany(mappedBy = "creator", fetch = FetchType.EAGER)
+	//	@Fetch(value = FetchMode.SUBSELECT)
+	//	private Collection<Forum>	createdForums;
+
 }
