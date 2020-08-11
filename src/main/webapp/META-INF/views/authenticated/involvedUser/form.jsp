@@ -12,7 +12,7 @@
 		
 		<jstl:if test="${command == 'create'}">
 			<acme:form-textbox code="authenticated.involvedUser.form.label.searchUser" path="searchUser"/>
-			<acme:form-submit code="authenticated.thread.form.button.create" action="/authenticated/involvedUser/create?threadId=${param.forumId}"/>
+			<acme:form-submit code="authenticated.thread.form.button.create" action="/authenticated/involved-user/create?forumId=${param.forumId}"/>
 		</jstl:if>
 			
 			<acme:form-submit test="${command == 'delete'}" code="authenticated.involvedUser.form.button.delete" action="/authenticated/involvedUser/delete?id=${id}"/>

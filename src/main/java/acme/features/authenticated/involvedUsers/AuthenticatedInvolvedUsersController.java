@@ -1,3 +1,4 @@
+
 package acme.features.authenticated.involvedUsers;
 
 import javax.annotation.PostConstruct;
@@ -12,27 +13,28 @@ import acme.framework.controllers.AbstractController;
 import acme.framework.entities.Authenticated;
 
 @Controller
-@RequestMapping("/authenticated/involvedUser")
-public class AuthenticatedInvolvedUsersController extends AbstractController<Authenticated, InvolvedUser>{
+@RequestMapping("/authenticated/involved-user")
+public class AuthenticatedInvolvedUsersController extends AbstractController<Authenticated, InvolvedUser> {
 
 	@Autowired
-	private AuthenticatedInvolvedUsersListService listService;
-	
+	private AuthenticatedInvolvedUsersListService	listService;
+
 	@Autowired
-	private AuthenticatedInvolvedUsersShowService showServie;
-	
+	private AuthenticatedInvolvedUsersShowService	showService;
+
 	@Autowired
-	private AuthenticatedInvolvedUsersCreateService createService;
-	
+	private AuthenticatedInvolvedUsersCreateService	createService;
+
 	@Autowired
-	private AuthenticatedInvolvedUsersDeleteService deleteService;
-	/*
+	private AuthenticatedInvolvedUsersDeleteService	deleteService;
+
+
 	@PostConstruct
 	private void initialise() {
-		super.addBasicCommand(BasicCommand.LIST, listService);
-		super.addBasicCommand(BasicCommand.SHOW, showService);
-		super.addBasicCommand(BasicCommand.CREATE, createService);
-		super.addBasicCommand(BasicCommand.DELETE, deleteService);
+		super.addBasicCommand(BasicCommand.LIST, this.listService);
+		super.addBasicCommand(BasicCommand.SHOW, this.showService);
+		super.addBasicCommand(BasicCommand.CREATE, this.createService);
+		super.addBasicCommand(BasicCommand.DELETE, this.deleteService);
 	}
-	*/
+
 }

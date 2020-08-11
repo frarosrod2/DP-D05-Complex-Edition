@@ -6,51 +6,45 @@
 
 
 <acme:form>
-		<c:if test="${ command == 'show' }">	
-		<acme:form-textbox code="authenticated.forum.show.label.title" path="title" readonly="true" />
-		</c:if>
-		
-		<c:if test="${ command == 'create' }">	
-		<acme:form-textbox code="authenticated.forum.show.label.title" path="title" />
-		</c:if>
-	<c:if test="${ command == 'show' }">	
+	
+	<c:if test="${ command == 'create' }">
+		<acme:form-textbox code="authenticated.forum.show.label.title" path="title"/>		
+	</c:if>
+	<acme:form-submit test="${ command == 'create' }" code="authenticated.forum.form.button.create" action="/authenticated/forum/create" />
+	
+	<c:if test="${ command == 'show' }">
+		<acme:form-textbox code="authenticated.forum.show.label.title" path="title" readonly="true"/>
+	
 		<acme:form-moment code="authenticated.forum.show.label.moment" path="moment" readonly="true" />
-	</c:if>
-
-	<c:if test="${ command == 'create' }">	
-	<div class="form-group">
 		
-		<label for="users-involved"><acme:message code="authenticated.thread.form.label.usersInvolved"/></label>
-		<select name="users" id="users-involved" class="form-control" multiple>
-			<c:forEach var="authenticatedUser" items="${ authenticatedUsers }">
-				<option value="${authenticatedUser.userAccount.username}" <c:if test="${fn:contains(users, authenticatedUser)}">selected</c:if>>${authenticatedUser.userAccount.username}</option>
-			</c:forEach>
-		</select>
-		 <small class="text-muted">
-	      <strong><acme:message code="authenticated.thread.form.label.usersInvolved"/></strong>: <span id="users-involved-help-text"></span>
-	    </small>
-	    <acme:form-errors path="users"/>
-    </div>
-
-	</c:if>
-	
-	<c:if test="${ command == 'show' }">	
-<div class="form-group">
+		<acme:form-textbox code="authenticated.forum.form.label.creator" path="creator.userAccount.username" readonly="true"/>
 		
-		<label for="users-involved"><acme:message code="authenticated.thread.form.label.usersInvolved"/></label>
-		<select name="users" id="users-involved" class="form-control" multiple>
-			<c:forEach var="authenticatedUser" items="${ authenticatedUsers }">
-				<option value="${authenticatedUser.userAccount.username}" <c:if test="${fn:contains(users, authenticatedUser)}">selected</c:if>>${authenticatedUser.userAccount.username}</option>
-			</c:forEach>
-		</select>
-		 <small class="text-muted">
-	      <strong><acme:message code="authenticated.thread.form.label.usersInvolved"/></strong>: <span id="users-involved-help-text"></span>
-	    </small>
-	    <acme:form-errors path="users"/>
-    </div>
-	</c:if>
 	
-	<c:if test="${ command != 'create' }">
+		<acme:form-panel code="authenticated.forum.show.legend.users">
+			<table class="table table-striped mt-3">
+			<thead>
+				<tr>
+					<th><acme:message code="authenticated.forum.show.user.label.username"/></th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:if test="${empty users}">
+					<tr>
+						<td colspan="4"><acme:message code="authenticated.forum.show.message.noUsers"/></td>
+					</tr>
+				</c:if>
+				<c:if test="${not empty users }">
+					<c:forEach items="${users}" var="user">
+						<tr>
+							<td><acme:print value="${user.userAccount.username}" /></td>
+						</tr>
+					</c:forEach>
+				</c:if>
+			</tbody>
+		</table>
+	</acme:form-panel>
+	
+	
 	<acme:form-panel code="authenticated.forum.show.legend.messages">
 <%-- 		<acme:form-return code="authenticated.forum.form.button.addMessage" action="/authenticated/message/create/?forumId=${id}"/> --%>
 		<table class="table table-striped mt-3">
@@ -88,17 +82,14 @@
 	
 	</c:if>
 	
-	<acme:form-submit test="${command != 'create'}" code="authenticated.forum.form.button.delete" action="/authenticated/forum/delete" />
-
-	
+	<acme:form-submit test="${command != 'create'}" code="authenticated.forum.form.button.delete" action="/authenticated/forum/delete"/>	
 	<acme:form-return code="authenticated.forum.form.button.return"/>
-
-
-	<acme:form-submit test="${ command == 'create' }" code="authenticated.forum.form.button.create" action="/authenticated/forum/create" />
+	
+	<acme:form-submit test="${command == 'show' && requestScope['creator.id'] == principal.getActiveRoleId()}" code="authenticated.forum.form.button.add-involvedUSer" action="/authenticated/involved-user/create?forumId=${id}"
+		method="get" />
 </acme:form>
 
 <script>
-
 $( document ).ready(function() {
     
 	function updateUsersHelptext() {
@@ -108,5 +99,4 @@ $( document ).ready(function() {
 	$("#users-involved").on("change", updateUsersHelptext);
 	updateUsersHelptext();
 });
-
 </script>

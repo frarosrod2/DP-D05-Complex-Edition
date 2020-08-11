@@ -197,8 +197,8 @@
        `id` integer not null,
         `version` integer not null,
         `search_user` varchar(255),
-        `authenticated_id` integer,
-        `forum_id` integer,
+        `authenticated_id` integer not null,
+        `forum_id` integer not null,
         primary key (`id`)
     ) engine=InnoDB;
 

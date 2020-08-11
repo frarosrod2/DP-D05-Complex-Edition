@@ -57,7 +57,7 @@ public class AuthenticatedForumDeleteService implements AbstractDeleteService<Au
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "title", "moment", "messages");
+		request.unbind(entity, model, "title", "moment", "messages", "users");
 
 	}
 

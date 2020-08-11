@@ -39,13 +39,6 @@
 
 	<bean name="authenticatedAuthenticated1" class="acme.framework.entities.Authenticated">
 		<property name="userAccount" ref="authenticatedUserAccount1" />
-		<property name="forums">
-		<list>
-				<ref bean="forum1" />
-				<ref bean="forum2" />
-				<ref bean="forum3" />				
-			</list>
-		</property>
 	<!--	<property name="createdForums">
 		<list>
 				<ref bean="forum1" />
@@ -624,13 +617,6 @@
 				<ref bean="message3"/>
 			</list>
 		</property>
-		<property name="users">
-			<list>
-				<ref bean="investor1Authenticated"/>
-				<ref bean="entrepreneur1Authenticated"/>
-				<ref bean="authenticatedAuthenticated1"/>
-			</list>
-		</property>
 		<property name="creator" ref="authenticatedAuthenticated1"/>
 	</bean>
 	
@@ -640,13 +626,6 @@
 		<property name="messages">
 			<list>
 				<ref bean="message2"/>
-			</list>
-		</property>
-		<property name="users">
-			<list>
-				<ref bean="investor1Authenticated"/>
-				<ref bean="investor2Authenticated"/>
-				<ref bean="authenticatedAuthenticated1"/>
 			</list>
 		</property>
 		<property name="creator" ref="authenticatedAuthenticated1"/>
@@ -661,12 +640,6 @@
 				<ref bean="message5"/>
 			</list>
 		</property>	
-		<property name="users">
-			<list>
-				<ref bean="investor2Authenticated"/>
-				<ref bean="authenticatedAuthenticated1"/>
-			</list>
-		</property>
 		<property name="creator" ref="authenticatedAuthenticated1"/>
 		
 	</bean>

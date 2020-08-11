@@ -38,9 +38,8 @@ public class AuthenticatedForumShowService implements AbstractShowService<Authen
 		assert model != null;
 
 		Collection<Authenticated> authenticatedUsers = this.repository.getAuthenticatedUsers();
-		request.unbind(entity, model, "title", "moment", "messages", "users", "creator");
+		request.unbind(entity, model, "title", "moment", "messages", "users", "creator.userAccount.username", "creator.id");
 
-		model.setAttribute("authenticatedUsers", authenticatedUsers);
 	}
 
 	@Override
