@@ -51,14 +51,6 @@
        drop 
        foreign key `FK49evxvl11kdqxjybm2sn41x6f`;
 
-    alter table `forum_authenticated` 
-       drop 
-       foreign key `FKbfu7rkr4imldqrkswlqieb4dv`;
-
-    alter table `forum_authenticated` 
-       drop 
-       foreign key `FK7ipmqcvdjx9afmyy3ynv2j11j`;
-
     alter table `forum_message` 
        drop 
        foreign key `FK1sp7ne3hl23g01ggrp329i71c`;
@@ -120,8 +112,6 @@
     drop table if exists `entrepreneur`;
 
     drop table if exists `forum`;
-
-    drop table if exists `forum_authenticated`;
 
     drop table if exists `forum_message`;
 

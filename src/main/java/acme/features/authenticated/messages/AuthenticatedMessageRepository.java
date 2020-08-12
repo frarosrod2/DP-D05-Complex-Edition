@@ -14,7 +14,7 @@ import acme.framework.repositories.AbstractRepository;
 @Repository
 public interface AuthenticatedMessageRepository extends AbstractRepository {
 
-	@Query("SELECT a.forums FROM Authenticated a WHERE a.id = ?1")
+	@Query("SELECT i.forum FROM InvolvedUser i WHERE i.id = ?1")
 	Collection<Forum> getUserInvolvedForums(int authenticatedId);
 
 	@Query("SELECT a FROM Authenticated a")

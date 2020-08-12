@@ -142,11 +142,6 @@
         primary key (`id`)
     ) engine=InnoDB;
 
-    create table `forum_authenticated` (
-       `forums_id` integer not null,
-        `users_id` integer not null
-    ) engine=InnoDB;
-
     create table `forum_message` (
        `forum_id` integer not null,
         `messages_id` integer not null
@@ -416,16 +411,6 @@ create index IDX3qtg1fe48q71u218rdyieeurl on `investment_round` (`creation_momen
        add constraint `FK49evxvl11kdqxjybm2sn41x6f` 
        foreign key (`creator_id`) 
        references `authenticated` (`id`);
-
-    alter table `forum_authenticated` 
-       add constraint `FKbfu7rkr4imldqrkswlqieb4dv` 
-       foreign key (`users_id`) 
-       references `authenticated` (`id`);
-
-    alter table `forum_authenticated` 
-       add constraint `FK7ipmqcvdjx9afmyy3ynv2j11j` 
-       foreign key (`forums_id`) 
-       references `forum` (`id`);
 
     alter table `forum_message` 
        add constraint `FK1sp7ne3hl23g01ggrp329i71c` 

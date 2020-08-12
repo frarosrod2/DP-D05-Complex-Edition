@@ -39,13 +39,13 @@
 
 	<bean name="authenticatedAuthenticated1" class="acme.framework.entities.Authenticated">
 		<property name="userAccount" ref="authenticatedUserAccount1" />
-	<!--	<property name="createdForums">
+		<property name="createdForums">
 		<list>
 				<ref bean="forum1" />
 				<ref bean="forum2" />
 				<ref bean="forum3" />				
 			</list>
-		</property> -->
+		</property> 
 	</bean>
 
 	<bean id="inquiry01" class="acme.entities.inquiries.Inquiry">

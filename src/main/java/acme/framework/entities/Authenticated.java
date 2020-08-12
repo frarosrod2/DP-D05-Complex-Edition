@@ -16,7 +16,7 @@ import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -40,12 +40,12 @@ public class Authenticated extends UserRole {
 
 	// Relationships ----------------------------------------------------------
 
-	@ManyToMany(mappedBy = "users", fetch = FetchType.EAGER)
-	@Fetch(value = FetchMode.SUBSELECT)
-	private Collection<Forum> forums;
-
-	//	@OneToMany(mappedBy = "creator", fetch = FetchType.EAGER)
+	//	@ManyToMany(mappedBy = "users", fetch = FetchType.EAGER)
 	//	@Fetch(value = FetchMode.SUBSELECT)
-	//	private Collection<Forum>	createdForums;
+	//	private Collection<Forum> forums;
+
+	@OneToMany(mappedBy = "creator", fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
+	private Collection<Forum> createdForums;
 
 }

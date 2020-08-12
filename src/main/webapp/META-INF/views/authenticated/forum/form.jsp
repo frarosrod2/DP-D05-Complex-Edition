@@ -10,7 +10,7 @@
 	<c:if test="${ command == 'create' }">
 		<acme:form-textbox code="authenticated.forum.show.label.title" path="title"/>		
 	</c:if>
-	<acme:form-submit test="${ command == 'create' }" code="authenticated.forum.form.button.create" action="/authenticated/forum/create" />
+	<acme:form-submit test="${ command == 'create'}" code="authenticated.forum.form.button.create" action="/authenticated/forum/create" />
 	
 	<c:if test="${ command == 'show' }">
 		<acme:form-textbox code="authenticated.forum.show.label.title" path="title" readonly="true"/>
@@ -28,15 +28,15 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:if test="${empty users}">
+				<c:if test="${empty involved}">
 					<tr>
 						<td colspan="4"><acme:message code="authenticated.forum.show.message.noUsers"/></td>
 					</tr>
 				</c:if>
-				<c:if test="${not empty users }">
-					<c:forEach items="${users}" var="user">
+				<c:if test="${not empty involved }">
+					<c:forEach items="${involved}" var="user">
 						<tr>
-							<td><acme:print value="${user.userAccount.username}" /></td>
+							<td><acme:print value="${user}" /></td>
 						</tr>
 					</c:forEach>
 				</c:if>

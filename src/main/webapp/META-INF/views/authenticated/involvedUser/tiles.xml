@@ -7,11 +7,11 @@
 
 <tiles-definitions>
 
-	<definition name="authenticated/involvedUser/form" extends="master">
+	<definition name="authenticated/involved-user/form" extends="master">
 		<put-attribute name="body" type="template" value="../authenticated/involvedUser/form.jsp" />
 	</definition>
 
-	<definition name="authenticated/involvedUser/list" extends="master">
+	<definition name="authenticated/involved-user/list" extends="master">
 		<put-attribute name="body" type="template" value="../authenticated/involvedUser/list.jsp" />
 	</definition>
 

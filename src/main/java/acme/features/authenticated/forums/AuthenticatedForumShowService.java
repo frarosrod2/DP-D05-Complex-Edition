@@ -25,7 +25,7 @@ public class AuthenticatedForumShowService implements AbstractShowService<Authen
 	public boolean authorise(final Request<Forum> request) {
 		assert request != null;
 
-		Collection<Forum> userForums = this.repository.getUserInvolvedForums(request.getPrincipal().getActiveRoleId());
+		Collection<Forum> userForums = this.repository.getInvolvedForums(request.getPrincipal().getActiveRoleId());
 		Forum forum = this.repository.getForumById(request.getModel().getInteger("id"));
 
 		return userForums.contains(forum);
@@ -37,8 +37,12 @@ public class AuthenticatedForumShowService implements AbstractShowService<Authen
 		assert entity != null;
 		assert model != null;
 
-		Collection<Authenticated> authenticatedUsers = this.repository.getAuthenticatedUsers();
-		request.unbind(entity, model, "title", "moment", "messages", "users", "creator.userAccount.username", "creator.id");
+		int idForum;
+		idForum = request.getModel().getInteger("id");
+
+		Collection<String> involved = this.repository.getInvolvedUsers(idForum);
+		model.setAttribute("involved", involved);
+		request.unbind(entity, model, "title", "moment", "messages", "creator.userAccount.username", "creator.id");
 
 	}
 

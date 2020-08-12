@@ -45,7 +45,7 @@ public class AuthenticatedForumListService implements AbstractListService<Authen
 
 		Collection<Forum> result;
 
-		result = this.repository.getUserInvolvedForums(request.getPrincipal().getActiveRoleId());
+		result = this.repository.getInvolvedForums(request.getPrincipal().getActiveRoleId());
 
 		return result;
 	}

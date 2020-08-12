@@ -23,16 +23,16 @@ public class AuthenticatedInvolvedUsersCreateService implements AbstractCreateSe
 	public boolean authorise(final Request<InvolvedUser> request) {
 		assert request != null;
 
-		boolean res = false;
-		int forumId = request.getModel().getInteger("forumId");
+		//		boolean res = false;
+		//		int forumId = request.getModel().getInteger("forumId");
+		//
+		//		Forum forum = this.repository.findForumById(forumId);
+		//
+		//		if (forum.getCreator().getId() == request.getPrincipal().getActiveRoleId()) {
+		//			res = true;
+		//		}
 
-		Forum forum = this.repository.findForumById(forumId);
-
-		if (forum.getCreator().getId() == request.getPrincipal().getActiveRoleId()) {
-			res = true;
-		}
-
-		return res;
+		return true;
 	}
 
 	@Override
@@ -41,8 +41,11 @@ public class AuthenticatedInvolvedUsersCreateService implements AbstractCreateSe
 		assert entity != null;
 		assert errors != null;
 
+		Authenticated user;
+		String username = request.getModel().getString("searchUser");
+		user = this.repository.findOneAuthenticatedByUsername(username);
+		entity.setAuthenticated(user);
 		request.bind(entity, errors);
-
 	}
 
 	@Override
@@ -72,7 +75,7 @@ public class AuthenticatedInvolvedUsersCreateService implements AbstractCreateSe
 		result.setForum(forum);
 		if (request.getModel().hasAttribute("authenticated.userAccount.username")) {
 			String username = request.getModel().getString("authenticated.userAccount.username");
-			result.setAuthenticated(this.repository.findAuthenticatedByName(username));
+			result.setAuthenticated(this.repository.findOneAuthenticatedByUsername(username));
 		}
 		return result;
 	}

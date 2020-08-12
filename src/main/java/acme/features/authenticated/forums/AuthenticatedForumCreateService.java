@@ -36,7 +36,7 @@ public class AuthenticatedForumCreateService implements AbstractCreateService<Au
 		assert entity != null;
 		assert errors != null;
 
-		request.bind(entity, errors, "users", "moment");
+		request.bind(entity, errors, "moment");
 
 	}
 
@@ -46,7 +46,7 @@ public class AuthenticatedForumCreateService implements AbstractCreateService<Au
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "title", "users");
+		request.unbind(entity, model, "title");
 
 	}
 
@@ -65,9 +65,9 @@ public class AuthenticatedForumCreateService implements AbstractCreateService<Au
 
 		moment = new Date(System.currentTimeMillis() - 1);
 		Authenticated user = this.repository.getAuthenticatedByAccountId(id);
-		Collection<Authenticated> c = new ArrayList<Authenticated>();
-		c.add(user);
-		result.setUsers(c);
+		//		Collection<Authenticated> c = new ArrayList<Authenticated>();
+		//		c.add(user);
+		//		result.setUsers(c);
 		result.setMoment(moment);
 		result.setCreator(user);
 		result.setMessages(messages);
@@ -93,12 +93,12 @@ public class AuthenticatedForumCreateService implements AbstractCreateService<Au
 		entity.setMoment(moment);
 
 		Integer accountId = request.getPrincipal().getAccountId();
-		Collection<Authenticated> involved = entity.getUsers();
+		//		Collection<Authenticated> involved = entity.getUsers();
 		Authenticated currentAuthenticated = this.repository.getAuthenticatedByAccountId(accountId);
 
-		if (!involved.contains(currentAuthenticated)) {
-			involved.add(currentAuthenticated);
-		}
+		//		if (!involved.contains(currentAuthenticated)) {
+		//			involved.add(currentAuthenticated);
+		//		}
 		InvolvedUser creator = new InvolvedUser();
 		creator.setForum(entity);
 		creator.setAuthenticated(currentAuthenticated);
