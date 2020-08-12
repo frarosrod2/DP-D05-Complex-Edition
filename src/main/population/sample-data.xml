@@ -562,7 +562,7 @@
 		<property name="title" value="Activity2"/>
 		<property name="start" value="2020/02/04 10:10"/>
 		<property name="end" value="2020/09/09 17:10"/>
-		<property name="budget" value="60.00€"/>
+		<property name="budget" value="60.00€"/> 
 		<property name="investmentRound" ref="investmentRound02"/>
 	</bean>
 	
