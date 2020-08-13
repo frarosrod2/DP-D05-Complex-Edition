@@ -174,7 +174,7 @@
         `ticker` varchar(255),
         `title` varchar(255),
         `entrepreneur_id` integer not null,
-        `forum_id` integer not null,
+        `forum_id` integer,
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -204,6 +204,8 @@
         `moment` datetime(6),
         `tags` varchar(255),
         `title` varchar(255),
+        `creator_id` integer not null,
+        `forum_id` integer not null,
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -341,9 +343,6 @@
        add constraint UK_c0q529r106roshilrmgdn5mq7 unique (`messages_id`);
 create index IDX3qtg1fe48q71u218rdyieeurl on `investment_round` (`creation_moment`);
 
-    alter table `investment_round` 
-       add constraint UK_ti0p3dolmlo4vxkj8f5d6v8po unique (`forum_id`);
-
     alter table `user_account` 
        add constraint UK_castjbvpeeus0r8lbpehiu0e4 unique (`username`);
 
@@ -444,6 +443,16 @@ create index IDX3qtg1fe48q71u218rdyieeurl on `investment_round` (`creation_momen
 
     alter table `involved_user` 
        add constraint `FK83poh8m3ta2omwcedsvh8jxtf` 
+       foreign key (`forum_id`) 
+       references `forum` (`id`);
+
+    alter table `message` 
+       add constraint `FKd8wmf6nghttk2h9gq7v8p9lqo` 
+       foreign key (`creator_id`) 
+       references `authenticated` (`id`);
+
+    alter table `message` 
+       add constraint `FKfwwpivgx5j4vw4594dgrw884q` 
        foreign key (`forum_id`) 
        references `forum` (`id`);
 

@@ -10,6 +10,6 @@
 
 <acme:form>
 	
-	<acme:form-return code="master.menu.authenticated.forums.create" action="/authenticated/forum/create"/>
 	<acme:form-return code="authenticated.forum.list.button.return"/>
+	<acme:form-return code="master.menu.authenticated.forums.create" action="/authenticated/forum/create"/>
 </acme:form>

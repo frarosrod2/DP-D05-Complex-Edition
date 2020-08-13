@@ -23,16 +23,16 @@ public class AuthenticatedInvolvedUsersCreateService implements AbstractCreateSe
 	public boolean authorise(final Request<InvolvedUser> request) {
 		assert request != null;
 
-		//		boolean res = false;
-		//		int forumId = request.getModel().getInteger("forumId");
-		//
-		//		Forum forum = this.repository.findForumById(forumId);
-		//
-		//		if (forum.getCreator().getId() == request.getPrincipal().getActiveRoleId()) {
-		//			res = true;
-		//		}
+		boolean res = false;
+		int forumId = request.getModel().getInteger("forumId");
 
-		return true;
+		Forum forum = this.repository.findForumById(forumId);
+
+		if (forum.getCreator().getId() == request.getPrincipal().getActiveRoleId()) {
+			res = true;
+		}
+
+		return res;
 	}
 
 	@Override
@@ -65,12 +65,10 @@ public class AuthenticatedInvolvedUsersCreateService implements AbstractCreateSe
 
 		InvolvedUser result = new InvolvedUser();
 		int forumdId;
-		Authenticated authenticated;
 		Forum forum;
 
 		forumdId = request.getModel().getInteger("forumId");
 		forum = this.repository.findForumById(forumdId);
-		//authenticated = this.repository.findAuthenticatedByName(request.getModel().getString("searchUser"));
 
 		result.setForum(forum);
 		if (request.getModel().hasAttribute("authenticated.userAccount.username")) {

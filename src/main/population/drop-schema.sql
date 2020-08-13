@@ -79,6 +79,14 @@
        drop 
        foreign key `FK83poh8m3ta2omwcedsvh8jxtf`;
 
+    alter table `message` 
+       drop 
+       foreign key `FKd8wmf6nghttk2h9gq7v8p9lqo`;
+
+    alter table `message` 
+       drop 
+       foreign key `FKfwwpivgx5j4vw4594dgrw884q`;
+
     alter table `patron` 
        drop 
        foreign key FK_8xx5nujhuio3advxc2freyu65;

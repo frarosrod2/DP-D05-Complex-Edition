@@ -17,8 +17,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
 import acme.entities.forums.Forum;
+import acme.framework.entities.Authenticated;
 import acme.framework.entities.DomainEntity;
-import acme.framework.entities.UserAccount;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -46,12 +46,13 @@ public class Message extends DomainEntity {
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
-	private UserAccount			creator;
-	
+	private Authenticated		creator;
+
 	@NotNull
 	@ManyToOne(optional = false)
 	@Valid
 	private Forum				forum;
+
 
 	@Transient
 	public List<String> getTagList() {

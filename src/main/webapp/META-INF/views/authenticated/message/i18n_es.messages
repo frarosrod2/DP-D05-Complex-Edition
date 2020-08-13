@@ -12,3 +12,8 @@ authenticated.message.error.tags.spam = Las etiquetas contienen palabras spam
 authenticated.message.form.button.return = Volver
 authenticated.message.form.button.returnToForum = Volver al hilo
 authenticated.message.form.button.create = Crear
+
+authenticated.message.form.errors.confirmPost = Debe marcar el recuadro
+authenticated.message.form.errors.body-length = El texto es demasiado largo
+authenticated.message.error.tagEmpty = Las etiquetas no pueden estar vacías
+authenticated.message.error.repeatedTag = Hay al menos una etiqueta repetida

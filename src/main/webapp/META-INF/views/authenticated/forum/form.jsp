@@ -11,7 +11,7 @@
 		<acme:form-textbox code="authenticated.forum.show.label.title" path="title"/>		
 	</c:if>
 	<acme:form-submit test="${ command == 'create'}" code="authenticated.forum.form.button.create" action="/authenticated/forum/create" />
-	
+		
 	<c:if test="${ command == 'show' }">
 		<acme:form-textbox code="authenticated.forum.show.label.title" path="title" readonly="true"/>
 	
@@ -44,9 +44,14 @@
 		</table>
 	</acme:form-panel>
 	
+	<acme:form-submit test="${command == 'show' && requestScope['creator.id'] == principal.getActiveRoleId()}" code="authenticated.forum.form.button.add-involvedUser" action="/authenticated/involved-user/create?forumId=${id}"
+		method="get" />	
+	
+	<acme:form-submit test="${command == 'show'}" code="authenticated.forum.form.button.delete-involved" action="/authenticated/involved-user/list?id=${id}"
+	method="get" />
 	
 	<acme:form-panel code="authenticated.forum.show.legend.messages">
-<%-- 		<acme:form-return code="authenticated.forum.form.button.addMessage" action="/authenticated/message/create/?forumId=${id}"/> --%>
+		<acme:form-return code="authenticated.forum.form.button.addMessage" action="/authenticated/message/create/?forumId=${id}"/>
 		<table class="table table-striped mt-3">
 			<thead>
 				<tr>
@@ -82,11 +87,13 @@
 	
 	</c:if>
 	
+	
 	<acme:form-submit test="${command != 'create'}" code="authenticated.forum.form.button.delete" action="/authenticated/forum/delete"/>	
+	
+	
 	<acme:form-return code="authenticated.forum.form.button.return"/>
 	
-	<acme:form-submit test="${command == 'show' && requestScope['creator.id'] == principal.getActiveRoleId()}" code="authenticated.forum.form.button.add-involvedUSer" action="/authenticated/involved-user/create?forumId=${id}"
-		method="get" />
+	
 </acme:form>
 
 <script>

@@ -22,5 +22,5 @@
 	
   	<acme:form-return code="authenticated.message.form.button.return"/>
   	<acme:form-return code="authenticated.message.form.button.returnToForum" action="/authenticated/forum/show/?id=${forum.id}"/>
-<%--   	<acme:form-submit test="${ command == 'create' }" code="authenticated.message.form.button.create" action="/authenticated/message/create" /> --%>
+   	<acme:form-submit test="${ command == 'create' }" code="authenticated.message.form.button.create" action="/authenticated/message/create" /> 
 </acme:form>

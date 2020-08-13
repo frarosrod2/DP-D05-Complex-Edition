@@ -14,7 +14,7 @@ import acme.framework.repositories.AbstractRepository;
 @Repository
 public interface AuthenticatedInvolvedUsersRepository extends AbstractRepository {
 
-	@Query("select i from InvolvedUser i where i.forum = ?1")
+	@Query("select i from InvolvedUser i where i.forum.id = ?1")
 	Collection<InvolvedUser> findMany(int id);
 
 	@Query("select i from InvolvedUser i where i.id = ?1")
@@ -43,5 +43,11 @@ public interface AuthenticatedInvolvedUsersRepository extends AbstractRepository
 
 	@Query("select ua.id from InvolvedUser i, Authenticated a, UserAccount ua where i.id = ?1 and a.id = i.authenticated.id and a.userAccount.id = ua.id")
 	int findAuthenticatedIdByInvolvedUserId(int involvedUserId);
+
+	@Query("select i from InvolvedUser i where i.id = ?1")
+	InvolvedUser findOneInvolvedById(int involvedUserId);
+
+	@Query("select count(i)>0 from InvolvedUser i where i.forum.id = ?1 and i.authenticated.id = ?2")
+	boolean findIsForumUser(int forumId, int authenticatedId);
 
 }

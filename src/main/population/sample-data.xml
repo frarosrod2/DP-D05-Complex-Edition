@@ -581,24 +581,33 @@
 		<property name="moment" value="2019/11/19 10:00" />
 		<property name="tags" value="test, dp"/>
 		<property name="body" value="Testing messages." />
+		<property name="creator" ref="authenticatedAuthenticated1" />
+		<property name="forum" ref="forum1" />
+		
 	</bean>
 	<bean name="message2" class="acme.entities.messages.Message">
 		<property name="title" value="Message 2" />
 		<property name="moment" value="2019/11/19 10:00" />
 		<property name="tags" value="dp, complex"/>
 		<property name="body" value="Complex reporting." />
+		<property name="creator" ref="authenticatedAuthenticated1" />
+		<property name="forum" ref="forum2" />
 	</bean>
 	<bean name="message3" class="acme.entities.messages.Message">
 		<property name="title" value="Message 3" />
 		<property name="moment" value="2019/11/19 10:00" />
 		<property name="tags" value="report, messages"/>
 		<property name="body" value="This is my first message." />
+		<property name="creator" ref="authenticatedAuthenticated1" />
+		<property name="forum" ref="forum1" />
 	</bean>
 	<bean name="message4" class="acme.entities.messages.Message">
 		<property name="title" value="Message 4" />
 		<property name="moment" value="2019/11/19 10:00" />
 		<property name="tags" value="list, menssage"/>
 		<property name="body" value="Another message." />
+		<property name="creator" ref="authenticatedAuthenticated1" />
+		<property name="forum" ref="forum3" />
 	</bean>
 	
 	<bean name="message5" class="acme.entities.messages.Message">
@@ -606,6 +615,8 @@
 		<property name="moment" value="2019/11/19 10:00" />
 		<property name="tags" value="last, testing"/>
 		<property name="body" value="Last message." />
+		<property name="creator" ref="authenticatedAuthenticated1" />
+		<property name="forum" ref="forum3" />
 	</bean>
 	
 	<bean name="forum1" class="acme.entities.forums.Forum">
@@ -643,6 +654,23 @@
 		<property name="creator" ref="authenticatedAuthenticated1"/>
 		
 	</bean>
+	
+	
+	<bean name="involvedUser1" class="acme.entities.involvedUsers.InvolvedUser">
+		<property name="authenticated" ref="authenticatedAuthenticated1" />
+		<property name="forum" ref="forum1" />
+	</bean>
+	
+	<bean name="involvedUser2" class="acme.entities.involvedUsers.InvolvedUser">
+		<property name="authenticated" ref="authenticatedAuthenticated1" />
+		<property name="forum" ref="forum2" />
+	</bean>
+	
+	<bean name="involvedUser3" class="acme.entities.involvedUsers.InvolvedUser">
+		<property name="authenticated" ref="authenticatedAuthenticated1" />
+		<property name="forum" ref="forum3" />
+	</bean>
+	
 	
 		<!-- Bookkeepers -->
 	

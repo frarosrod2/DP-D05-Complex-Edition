@@ -1,9 +1,9 @@
+
 package acme.features.authenticated.involvedUsers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.forums.Forum;
 import acme.entities.involvedUsers.InvolvedUser;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
@@ -12,75 +12,74 @@ import acme.framework.entities.Authenticated;
 import acme.framework.services.AbstractDeleteService;
 
 @Service
-public class AuthenticatedInvolvedUsersDeleteService implements AbstractDeleteService<Authenticated, InvolvedUser>{
+public class AuthenticatedInvolvedUsersDeleteService implements AbstractDeleteService<Authenticated, InvolvedUser> {
 
 	@Autowired
 	private AuthenticatedInvolvedUsersRepository repository;
-	
+
+
 	@Override
-	public boolean authorise(Request<InvolvedUser> request) {
+	public boolean authorise(final Request<InvolvedUser> request) {
 		assert request != null;
-		
+
 		int involvedUserId = request.getModel().getInteger("id");
-		int forumId = this.repository.findForumIdByInvolvedUserId(involvedUserId);
-		Forum forum = this.repository.findForumById(forumId);
-		int authenticatedId = this.repository.findAuthenticatedIdByInvolvedUserId(involvedUserId);
-		
-		boolean isCreator = forum.getCreator().getId() == request.getPrincipal().getAccountId();
-		boolean notCreator = authenticatedId != request.getPrincipal().getAccountId();
-		
-		return isCreator && notCreator;
+		InvolvedUser involved = this.repository.findOne(involvedUserId);
+
+		boolean isCreator = involved.getForum().getCreator().getId() == request.getPrincipal().getActiveRoleId();
+
+		return isCreator;
 	}
 
 	@Override
-	public void bind(Request<InvolvedUser> request, InvolvedUser entity, Errors errors) {
+	public void bind(final Request<InvolvedUser> request, final InvolvedUser entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-		
+
 		request.bind(entity, errors);
-		
+
 	}
 
 	@Override
-	public void unbind(Request<InvolvedUser> request, InvolvedUser entity, Model model) {
+	public void unbind(final Request<InvolvedUser> request, final InvolvedUser entity, final Model model) {
 		assert request != null;
 		assert entity != null;
-		assert model != null;		
+		assert model != null;
 
-		request.unbind(entity, model, "searchUser");
+		request.unbind(entity, model, "authenticated.userAccount.username");
 	}
 
 	@Override
-	public InvolvedUser findOne(Request<InvolvedUser> request) {
+	public InvolvedUser findOne(final Request<InvolvedUser> request) {
 		assert request != null;
-		
+
 		InvolvedUser result;
 		int id;
-		
+
 		id = request.getModel().getInteger("id");
 		result = this.repository.findOne(id);
-		
+		//		request.unbind(result, request.getModel(), "authenticated.userAccount.username"); // Provisional
+
 		return result;
 	}
 
 	@Override
-	public void validate(Request<InvolvedUser> request, InvolvedUser entity, Errors errors) {
+	public void validate(final Request<InvolvedUser> request, final InvolvedUser entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-		
+
+		boolean notCreator = entity.getForum().getCreator().getId() != entity.getAuthenticated().getId();
+		errors.state(request, notCreator, "authenticated.userAccount.username", "authenticated.involvedUser.form.error.delete-creator");
 	}
 
 	@Override
-	public void delete(Request<InvolvedUser> request, InvolvedUser entity) {
+	public void delete(final Request<InvolvedUser> request, final InvolvedUser entity) {
 		assert request != null;
 		assert entity != null;
-		
-		this.repository.save(entity);
-		
+
+		this.repository.delete(entity);
+
 	}
-	
-	
 
 }

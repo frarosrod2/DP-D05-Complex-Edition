@@ -62,8 +62,6 @@ master.menu.patron.createBanners = Create banner
 master.menu.provider = Provider
 master.menu.provider.favourite-link = Favourite link
 
-
-
 # master.menu.bookkeeper ########################################################
 master.menu.bookkeeper = Bookkeeper
 master.menu.bookkeeper.investmentRound.listWritten = Investment rounds with accounting record written 
@@ -117,7 +115,11 @@ master.menu.authenticated.toolRecord.list = List of tool records
 master.menu.authenticated.challenge.list = List of challenges
 master.menu.authenticated.investmentRound.list = List of investment rounds
 master.menu.authenticated.menu.forums = Forums
-master.menu.authenticated.forums.list = List of forums
+master.menu.authenticated.forums.list = List forums where i am involved
+master.menu.authenticated.forums.listMine = List my forums
+master.menu.authenticated.forums.create = Create forum
+
+
 
 # master.menu.anonymous.technologyRecord ###############################################################
 

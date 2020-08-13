@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.forums.Forum;
+import acme.entities.investmentRounds.InvestmentRound;
 import acme.entities.involvedUsers.InvolvedUser;
 import acme.entities.messages.Message;
-import acme.features.authenticated.messages.AuthenticatedMessageRepository;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -21,10 +21,7 @@ import acme.framework.services.AbstractDeleteService;
 public class AuthenticatedForumDeleteService implements AbstractDeleteService<Authenticated, Forum> {
 
 	@Autowired
-	private AuthenticatedForumRepository	repository;
-
-	@Autowired
-	private AuthenticatedMessageRepository	mRepository;
+	private AuthenticatedForumRepository repository;
 
 
 	@Override
@@ -95,7 +92,11 @@ public class AuthenticatedForumDeleteService implements AbstractDeleteService<Au
 
 		Collection<Message> messages = this.repository.findAllMessagesByForumId(entity.getId());
 		Collection<InvolvedUser> iUsers = this.repository.getInvolvedUsersByForum(entity.getId());
+		InvestmentRound invest = this.repository.getInventmentRoundByForum(entity.getId());
 		//this.repository.deleteAll(messages);
+		if (invest != null) {
+			invest.setForum(null);
+		}
 		this.repository.deleteAll(iUsers);
 		this.repository.deleteAll(messages);
 		this.repository.delete(entity);

@@ -4,7 +4,7 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <acme:list>
-	<acme:list-column code="authenticated.involvedUser.list.label.authenticatedUserName" path="authenticatedUserName"/>
+	<acme:list-column code="authenticated.involvedUser.list.label.authenticatedUserName" path="authenticated.userAccount.username"/>
 </acme:list>
 
 	<acme:form-return code="authenticated.involvedUser.list.label.return"/>
