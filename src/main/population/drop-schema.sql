@@ -1,7 +1,11 @@
 
-    alter table `activity` 
+    alter table `accounting_record` 
        drop 
-       foreign key `FK1ufotopeofii4jlefyk9c7os5`;
+       foreign key `FK41jm4vk7runvmg5tderffrele`;
+
+    alter table `accounting_record` 
+       drop 
+       foreign key `FKk1pmfnppwk0kav7xloy8u71uq`;
 
     alter table `administrator` 
        drop 
@@ -23,6 +27,10 @@
        drop 
        foreign key FK_h52w0f3wjoi68b63wv9vwon57;
 
+    alter table `banner` 
+       drop 
+       foreign key `FKdocr1jjfgwx9ef5jbf675l360`;
+
     alter table `bookkeeper` 
        drop 
        foreign key FK_krvjp9eaqyapewl2igugbo9o8;
@@ -30,10 +38,6 @@
     alter table `bookkeeper_request` 
        drop 
        foreign key `FKhdducua8c58xhfrls8oiih3j0`;
-
-    alter table `bookkeeper_request` 
-       drop 
-       foreign key FK_4m34h1uxtm7i0d83g5g2ihq5u;
 
     alter table `consumer` 
        drop 
@@ -43,9 +47,37 @@
        drop 
        foreign key FK_r6tqltqvrlh1cyy8rsj5pev1q;
 
+    alter table `forum_authenticated` 
+       drop 
+       foreign key `FKbfu7rkr4imldqrkswlqieb4dv`;
+
+    alter table `forum_authenticated` 
+       drop 
+       foreign key `FK7ipmqcvdjx9afmyy3ynv2j11j`;
+
+    alter table `forum_message` 
+       drop 
+       foreign key `FK1sp7ne3hl23g01ggrp329i71c`;
+
+    alter table `forum_message` 
+       drop 
+       foreign key `FKsrtj8k65l4o01scnduc07muo5`;
+
     alter table `investment_round` 
        drop 
        foreign key `FKkj1l8c2ftn9c65y061me6t37j`;
+
+    alter table `investment_round` 
+       drop 
+       foreign key `FKidufrenbfe15mdi0cx80oci4v`;
+
+    alter table `investment_round_activity` 
+       drop 
+       foreign key `FKo2rpduv8cnisos31hcrmo99w6`;
+
+    alter table `investment_round_activity` 
+       drop 
+       foreign key `FKfvuiqaq17g9wrgm95fabomjin`;
 
     alter table `investor` 
        drop 
@@ -58,6 +90,8 @@
     alter table `provider` 
        drop 
        foreign key FK_b1gwnjqm6ggy9yuiqm0o4rlmd;
+
+    drop table if exists `accounting_record`;
 
     drop table if exists `activity`;
 
@@ -83,11 +117,21 @@
 
     drop table if exists `entrepreneur`;
 
+    drop table if exists `forum`;
+
+    drop table if exists `forum_authenticated`;
+
+    drop table if exists `forum_message`;
+
     drop table if exists `inquiry`;
 
     drop table if exists `investment_round`;
 
+    drop table if exists `investment_round_activity`;
+
     drop table if exists `investor`;
+
+    drop table if exists `message`;
 
     drop table if exists `murillo_bulletin`;
 

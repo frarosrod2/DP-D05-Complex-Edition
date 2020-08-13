@@ -13,7 +13,7 @@ import acme.framework.repositories.AbstractRepository;
 @Repository
 public interface AuthenticatedForumRepository extends AbstractRepository {
 
-	@Query("SELECT a.forums FROM Authenticated a WHERE a.id = ?1")
+	@Query("SELECT f FROM Forum f JOIN f.users u WHERE u.id = ?1")
 	Collection<Forum> getUserInvolvedForums(int authenticatedId);
 
 	@Query("SELECT a FROM Authenticated a")

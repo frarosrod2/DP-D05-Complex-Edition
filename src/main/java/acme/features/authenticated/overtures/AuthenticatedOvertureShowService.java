@@ -4,7 +4,6 @@ package acme.features.authenticated.overtures;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.inquiries.Inquiry;
 import acme.entities.overtures.Overture;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
