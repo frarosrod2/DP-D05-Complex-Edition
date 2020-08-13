@@ -35,9 +35,11 @@
        drop 
        foreign key `FKdocr1jjfgwx9ef5jbf675l360`;
 
+
     alter table `bookkeeper` 
        drop 
        foreign key FK_krvjp9eaqyapewl2igugbo9o8;
+
 
     alter table `consumer` 
        drop 
@@ -58,6 +60,22 @@
     alter table `forum_message` 
        drop 
        foreign key `FKsrtj8k65l4o01scnduc07muo5`;
+
+    alter table `bookkeeper_request` 
+       drop 
+       foreign key `FKhdducua8c58xhfrls8oiih3j0`;
+
+    alter table `bookkeeper_request` 
+       drop 
+       foreign key FK_4m34h1uxtm7i0d83g5g2ihq5u;
+
+    alter table `consumer` 
+       drop 
+       foreign key FK_6cyha9f1wpj0dpbxrrjddrqed;
+
+    alter table `entrepreneur` 
+       drop 
+       foreign key FK_r6tqltqvrlh1cyy8rsj5pev1q;
 
     alter table `investment_round` 
        drop 
@@ -110,6 +128,9 @@
     drop table if exists `banner`;
 
     drop table if exists `bookkeeper`;
+
+
+    drop table if exists `bookkeeper_request`;
 
     drop table if exists `challenge`;
 

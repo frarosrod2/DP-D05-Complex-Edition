@@ -52,6 +52,7 @@ master.menu.administrator.createTechnologyRecords = Crear registros tecnológico
 master.menu.administrator.listTechnologyRecords = Lista de registros tecnológicos
 master.menu.administrator.createToolRecords = Crear registros de herramientas
 master.menu.administrator.listToolRecords = Lista de registros de herramientas
+master.menu.administrator.acceptBookkeeper = Aceptar petición para ser contable
 
 # master.menu.patron ########################################################
 master.menu.patron = Jefe
@@ -88,6 +89,8 @@ master.menu.user-account.provider = Datos de proveedor
 master.menu.user-account.become-provider = Hazte proveedor
 master.menu.user-account.consumer = Datos de consumidor
 master.menu.user-account.become-consumer = Hazte consumidor
+master.menu.user-account.become-bookkeepeer = Hazte contable
+master.menu.user-account.bookkeeper = Datos de contable
 master.menu.user-account.become-patron = Hazte jefe
 master.menu.user-account.patron = Datos de jefe
 

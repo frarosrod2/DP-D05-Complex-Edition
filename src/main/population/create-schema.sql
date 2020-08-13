@@ -45,6 +45,7 @@
         `investment_offer_currency` varchar(255),
         `statement` varchar(255),
         `status` varchar(255),
+
         `ticker` varchar(255),
         `investment_round_id` integer not null,
         `investor_id` integer not null,
@@ -71,6 +72,7 @@
         `slogan` varchar(255),
         `targeturl` varchar(255),
         `patron_id` integer not null,
+
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -80,6 +82,18 @@
         `user_account_id` integer,
         `name` varchar(255),
         `responsability_statement` varchar(255),
+        primary key (`id`)
+    ) engine=InnoDB;
+
+
+    create table `bookkeeper_request` (
+       `id` integer not null,
+        `version` integer not null,
+        `user_account_id` integer,
+        `name` varchar(255),
+        `responsability_statement` varchar(255),
+        `state` varchar(255),
+        `authenticated_id` integer not null,
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -175,6 +189,7 @@
         `title` varchar(255),
         `entrepreneur_id` integer not null,
         `forum_id` integer,
+
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -341,6 +356,7 @@
 
     alter table `forum_message` 
        add constraint UK_c0q529r106roshilrmgdn5mq7 unique (`messages_id`);
+
 create index IDX3qtg1fe48q71u218rdyieeurl on `investment_round` (`creation_moment`);
 
     alter table `user_account` 
@@ -355,7 +371,7 @@ create index IDX3qtg1fe48q71u218rdyieeurl on `investment_round` (`creation_momen
        add constraint `FKk1pmfnppwk0kav7xloy8u71uq` 
        foreign key (`investment_round_id`) 
        references `investment_round` (`id`);
-
+r
     alter table `activity` 
        add constraint `FK1ufotopeofii4jlefyk9c7os5` 
        foreign key (`investment_round_id`) 
@@ -390,6 +406,7 @@ create index IDX3qtg1fe48q71u218rdyieeurl on `investment_round` (`creation_momen
        add constraint `FKdocr1jjfgwx9ef5jbf675l360` 
        foreign key (`patron_id`) 
        references `patron` (`id`);
+
 
     alter table `bookkeeper` 
        add constraint FK_krvjp9eaqyapewl2igugbo9o8 

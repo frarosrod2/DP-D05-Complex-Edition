@@ -75,10 +75,14 @@ public class PatronBannerUpdateService implements AbstractUpdateService<Patron, 
 		Boolean isSpamPicture = false;
 		Boolean isSpamSlogan = false;
 		Boolean isSpamTargetURL = false;
+		Boolean isSpamCardName = false;
+		Boolean isSpamCardBrand = false;
 		int numberWordsPicture;
 		int numberWordsSlogan;
 		int numberWordsTarget;
 		int numberSpam;
+		int numberWordsCardName;
+		int numberWordsCardBrand;
 		// Check if credit card is in past
 		Calendar calendar;
 		Date present;
@@ -117,6 +121,28 @@ public class PatronBannerUpdateService implements AbstractUpdateService<Patron, 
 			}
 			isSpamTargetURL = numberWordsTarget > 0 && numberSpam * 100 / numberWordsTarget >= threshold;
 			errors.state(request, !isSpamTargetURL, "targetURL", "patron.banner.error.targetUrlSpamWord");
+		}
+
+		if (!errors.hasErrors("creditCard.holderName")) {
+			String holderName = entity.getCreditCard().getHolderName().toLowerCase();
+			numberWordsCardName = holderName.split("\\W+").length;
+			numberSpam = 0;
+			for (String s : spamWords) {
+				numberSpam += StringUtils.countOccurrencesOf(holderName, s);
+			}
+			isSpamCardName = numberWordsCardName > 0 && numberSpam * 100 / numberWordsCardName >= threshold;
+			errors.state(request, !isSpamCardName, "creditCard.holderName", "patron.banner.error.cardNameSpamWord");
+		}
+
+		if (!errors.hasErrors("creditCard.brand")) {
+			String brand = entity.getCreditCard().getBrand().toLowerCase();
+			numberWordsCardBrand = brand.split("\\W+").length;
+			numberSpam = 0;
+			for (String s : spamWords) {
+				numberSpam += StringUtils.countOccurrencesOf(brand, s);
+			}
+			isSpamCardBrand = numberWordsCardBrand > 0 && numberSpam * 100 / numberWordsCardBrand >= threshold;
+			errors.state(request, !isSpamCardBrand, "creditCard.brand", "patron.banner.error.cardBrandSpamWord");
 		}
 
 		// Check if year is in past

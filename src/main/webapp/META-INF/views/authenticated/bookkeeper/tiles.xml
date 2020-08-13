@@ -17,13 +17,9 @@
 	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-	
-	<definition name="authenticated/technology-record/form" extends="master">
-		<put-attribute name="body" type="template" value="../authenticated/technologyRecord/form.jsp" />
-	</definition>
-	
-	<definition name="authenticated/technology-record/list" extends="master">
-		<put-attribute name="body" type="template" value="../authenticated/technologyRecord/list.jsp" />
+
+	<definition name="authenticated/bookkeeper/form" extends="master">
+		<put-attribute name="body" type="template" value="../authenticated/bookkeeper/form.jsp" />
 	</definition>
 	
 </tiles-definitions>
