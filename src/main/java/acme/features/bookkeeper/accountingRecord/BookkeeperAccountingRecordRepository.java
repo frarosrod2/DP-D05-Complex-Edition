@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import acme.entities.accountingRecords.AccountingRecord;
 import acme.entities.investmentRounds.InvestmentRound;
+import acme.entities.roles.Bookkeeper;
 import acme.framework.repositories.AbstractRepository;
 
 @Repository
@@ -22,4 +23,7 @@ public interface BookkeeperAccountingRecordRepository extends AbstractRepository
 	@Query("select a from AccountingRecord a where a.investmentRound.id = ?1 and (a.bookkeeper.userAccount.username = ?2 and a.status = 'PUBLISHED')")
 	Collection<AccountingRecord> findAccountingOfMine(int lastInvestment, String bookkeeperId);
 
+	@Query("select b from Bookkeeper b where b.id = ?1")
+	Bookkeeper findBookkeeperById(int id);
+	
 }
