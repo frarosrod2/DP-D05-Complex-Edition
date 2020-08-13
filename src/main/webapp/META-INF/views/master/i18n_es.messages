@@ -118,8 +118,9 @@ master.menu.authenticated.technologyRecord.list = Lista de registros tecnológic
 master.menu.authenticated.challenge.list = Lista de desafíos
 master.menu.authenticated.investmentRound.list = Lista de ronda de inversiones
 master.menu.authenticated.menu.forums = Foros
-master.menu.authenticated.forums.list = Lista de foros
-
+master.menu.authenticated.forums.list = Listar foros a los que pertenezco
+master.menu.authenticated.forums.listMine = Listar mis foros
+master.menu.authenticated.forums.create = Crear foro
 # master.menu.anonymous.technologyRecord ###############################################################
 
 master.menu.anonymous.technologyRecord = Registros tecnológicos

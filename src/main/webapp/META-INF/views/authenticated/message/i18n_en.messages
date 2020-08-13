@@ -10,5 +10,10 @@ authenticated.message.error.body.spam = Body contains spam words
 authenticated.message.error.tags.spam = Tags contains spam words
 
 authenticated.message.form.button.return = Return
-authenticated.message.form.button.returnToforum = Return to forum
+authenticated.message.form.button.returnToForum = Return to forum
 authenticated.message.form.button.create = Create
+
+authenticated.message.form.errors.confirmPost = The checkbox must be selected
+authenticated.message.form.errors.body-length = The text is too long
+authenticated.message.error.tagEmpty = Tags mustn't be empty
+authenticated.message.error.repeatedTag = There is a repeated tag

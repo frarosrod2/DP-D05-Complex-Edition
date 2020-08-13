@@ -13,7 +13,7 @@ import acme.framework.entities.Authenticated;
 import acme.framework.services.AbstractListService;
 
 @Service
-public class AuthenticatedForumListService implements AbstractListService<Authenticated, Forum> {
+public class AuthenticatedForumListMineService implements AbstractListService<Authenticated, Forum> {
 
 	//Internal state----------------------------------------------
 
@@ -45,7 +45,7 @@ public class AuthenticatedForumListService implements AbstractListService<Authen
 
 		Collection<Forum> result;
 
-		result = this.repository.getInvolvedForums(request.getPrincipal().getActiveRoleId());
+		result = this.repository.getMyForums(request.getPrincipal().getActiveRoleId());
 
 		return result;
 	}

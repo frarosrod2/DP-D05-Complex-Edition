@@ -94,8 +94,6 @@ public class InvestmentRound extends DomainEntity {
 	@Fetch(value = FetchMode.SUBSELECT)
 	private Collection<AccountingRecord>	accountingRecords;
 
-	@NotNull
-	@Valid
-	@OneToOne(optional = false)
+	@OneToOne(optional = true)
 	private Forum							forum;
 }

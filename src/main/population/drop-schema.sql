@@ -1,4 +1,12 @@
 
+    alter table `accounting_record` 
+       drop 
+       foreign key `FK41jm4vk7runvmg5tderffrele`;
+
+    alter table `accounting_record` 
+       drop 
+       foreign key `FKk1pmfnppwk0kav7xloy8u71uq`;
+
     alter table `activity` 
        drop 
        foreign key `FK1ufotopeofii4jlefyk9c7os5`;
@@ -23,9 +31,35 @@
        drop 
        foreign key FK_h52w0f3wjoi68b63wv9vwon57;
 
+    alter table `banner` 
+       drop 
+       foreign key `FKdocr1jjfgwx9ef5jbf675l360`;
+
+
     alter table `bookkeeper` 
        drop 
        foreign key FK_krvjp9eaqyapewl2igugbo9o8;
+
+
+    alter table `consumer` 
+       drop 
+       foreign key FK_6cyha9f1wpj0dpbxrrjddrqed;
+
+    alter table `entrepreneur` 
+       drop 
+       foreign key FK_r6tqltqvrlh1cyy8rsj5pev1q;
+
+    alter table `forum` 
+       drop 
+       foreign key `FK49evxvl11kdqxjybm2sn41x6f`;
+
+    alter table `forum_message` 
+       drop 
+       foreign key `FK1sp7ne3hl23g01ggrp329i71c`;
+
+    alter table `forum_message` 
+       drop 
+       foreign key `FKsrtj8k65l4o01scnduc07muo5`;
 
     alter table `bookkeeper_request` 
        drop 
@@ -47,9 +81,29 @@
        drop 
        foreign key `FKkj1l8c2ftn9c65y061me6t37j`;
 
+    alter table `investment_round` 
+       drop 
+       foreign key `FKidufrenbfe15mdi0cx80oci4v`;
+
     alter table `investor` 
        drop 
        foreign key FK_dcek5rr514s3rww0yy57vvnpq;
+
+    alter table `involved_user` 
+       drop 
+       foreign key `FKtdjfvr1t34oywmymvqnq56f84`;
+
+    alter table `involved_user` 
+       drop 
+       foreign key `FK83poh8m3ta2omwcedsvh8jxtf`;
+
+    alter table `message` 
+       drop 
+       foreign key `FKd8wmf6nghttk2h9gq7v8p9lqo`;
+
+    alter table `message` 
+       drop 
+       foreign key `FKfwwpivgx5j4vw4594dgrw884q`;
 
     alter table `patron` 
        drop 
@@ -58,6 +112,8 @@
     alter table `provider` 
        drop 
        foreign key FK_b1gwnjqm6ggy9yuiqm0o4rlmd;
+
+    drop table if exists `accounting_record`;
 
     drop table if exists `activity`;
 
@@ -73,6 +129,7 @@
 
     drop table if exists `bookkeeper`;
 
+
     drop table if exists `bookkeeper_request`;
 
     drop table if exists `challenge`;
@@ -83,11 +140,19 @@
 
     drop table if exists `entrepreneur`;
 
+    drop table if exists `forum`;
+
+    drop table if exists `forum_message`;
+
     drop table if exists `inquiry`;
 
     drop table if exists `investment_round`;
 
     drop table if exists `investor`;
+
+    drop table if exists `involved_user`;
+
+    drop table if exists `message`;
 
     drop table if exists `murillo_bulletin`;
 

@@ -130,7 +130,8 @@
 		</acme:menu-option>
 		<acme:menu-option code="master.menu.authenticated.menu.forums" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.authenticated.forums.list" action="/authenticated/forum/list"/>
-<%-- 			<acme:menu-suboption code="master.menu.authenticated.forums.create" action="/authenticated/forum/create"/> --%>
+			<acme:menu-suboption code="master.menu.authenticated.forums.listMine" action="/authenticated/forum/list-mine"/>
+			<acme:menu-suboption code="master.menu.authenticated.forums.create" action="/authenticated/forum/create"/>
 		</acme:menu-option>
 		
 	</acme:menu-left>
