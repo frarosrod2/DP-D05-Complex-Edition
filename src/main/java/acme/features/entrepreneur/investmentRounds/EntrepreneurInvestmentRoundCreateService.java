@@ -108,9 +108,9 @@ public class EntrepreneurInvestmentRoundCreateService implements AbstractCreateS
 		Money salary = entity.getMoney();
 		if (!errors.hasErrors("money")) {
 			boolean isPositive = salary.getAmount() > 0;
-			errors.state(request, isPositive, "salary", "entrepreneur.investmentRound.error.negative-money");
+			errors.state(request, isPositive, "money", "entrepreneur.investmentRound.error.negative-money");
 			boolean isEUR = salary.getCurrency().equals("EUR") || salary.getCurrency().equals("€");
-			errors.state(request, isEUR, "salary", "entrepreneur.investmentRound.error.money-not-EUR");
+			errors.state(request, isEUR, "money", "entrepreneur.investmentRound.error.money-not-EUR");
 		}
 
 	}
