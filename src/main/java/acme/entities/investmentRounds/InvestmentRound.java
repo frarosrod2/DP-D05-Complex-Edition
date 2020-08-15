@@ -100,6 +100,6 @@ public class InvestmentRound extends DomainEntity {
 
 	@NotNull
 	@Valid
-	@OneToOne(optional = true, fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+	@OneToOne(optional = false)
 	private Forum							forum;
 }

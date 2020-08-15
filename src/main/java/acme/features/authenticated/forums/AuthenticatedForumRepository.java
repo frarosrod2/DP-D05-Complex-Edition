@@ -19,6 +19,9 @@ public interface AuthenticatedForumRepository extends AbstractRepository {
 	@Query("SELECT i.forum FROM InvolvedUser i WHERE i.authenticated.id = ?1")
 	Collection<Forum> getUserInvolvedForums(int authenticatedId);
 
+	@Query("SELECT i.forum FROM InvestmentRound i WHERE i.entrepreneur.id = ?1")
+	Forum getForumByEntrepreneur(int entrepreneurId);
+
 	@Query("select i.authenticated.userAccount.username from InvolvedUser i where i.forum.id = ?1")
 	Collection<String> getInvolvedUsers(int id);
 
@@ -43,6 +46,6 @@ public interface AuthenticatedForumRepository extends AbstractRepository {
 	@Query("select i from InvolvedUser i where exists (select f from Forum f where i.forum.id = ?1 and i.forum.id=f.id)")
 	Collection<InvolvedUser> getInvolvedUsersByForum(int forumId);
 
-	@Query("select i from InvestmentRound i where exists (select f from Forum f where i.forum.id = ?1 and i.forum.id=f.id)")
+	@Query("select i from InvestmentRound i where i.forum.id=?1")
 	InvestmentRound getInventmentRoundByForum(int forumId);
 }

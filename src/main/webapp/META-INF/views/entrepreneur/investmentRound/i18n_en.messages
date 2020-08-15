@@ -22,10 +22,13 @@ entrepreneur.investmentRound.list.label.ticker = Ticker
 
 entrepreneur.investmentRound.form.button.return = Return
 
-entrepreneur.investmentRound.error.negative-money = Negative money
-entrepreneur.investmentRound.error.money-not-EUR = Money not EUR
+entrepreneur.investmentRound.error.negative-salary = Negative money
+entrepreneur.investmentRound.error.salary-not-EUR = Money not EUR
 entrepreneur.investmentRound.error.investmentRound-published = Investment round is published
 entrepreneur.investmentRound.error.workProgrammeSum = Work programme don't sum the same that investment round money
 entrepreneur.investmentRound.error.no-description = Don't have description
 entrepreneur.investmentRound.error.isSpam = This investment round contains spam
 entrepreneur.investmentRound.error.applied = Investment round has applied
+entrepreneur.investmentRound.error.must-be-different-ticker = Ticker must be different
+entrepreneur.investmentRound.error.investmentRound-published = Investment not in final mode
+entrepreneur.investmentRound.error.workProgrammeSum = Work programme amount is not equal to salary

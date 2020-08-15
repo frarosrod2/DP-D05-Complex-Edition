@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.accountingRecords.AccountingRecord;
 import acme.entities.activities.Activity;
+import acme.entities.forums.Forum;
 import acme.entities.investmentRounds.InvestmentRound;
+import acme.entities.involvedUsers.InvolvedUser;
 import acme.entities.roles.Entrepreneur;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
@@ -88,10 +90,14 @@ public class EntrepreneurInvestmentRoundDeleteService implements AbstractDeleteS
 		assert entity != null;
 		Collection<Activity> workProgramme = this.repository.findAllActivitiesByInvestmentRoundId(entity.getId());
 		Collection<AccountingRecord> accountingRecords = this.repository.findAllAccountingRecordsByInvestmentRoundId(entity.getId());
-
+		Forum forum = this.repository.findForumByInvestmentRoundId(entity.getId());
+		Collection<InvolvedUser> iU = this.repository.findById(forum.getId());
+		//forum.setInvestmentRound(null);
 		this.repository.deleteAll(workProgramme);
 		this.repository.deleteAll(accountingRecords);
 		this.repository.delete(entity);
+		this.repository.deleteAll(iU);
+		this.repository.delete(forum);
 
 	}
 

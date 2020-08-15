@@ -25,3 +25,7 @@ entrepreneur.investmentRound.form.button.return = Volver
 
 entrepreneur.investmentRound.error.negative-salary = Salario negativo
 entrepreneur.investmentRound.error.salary-not-EUR = Salario no en EUR
+entrepreneur.investmentRound.error.must-be-different-ticker = El ticker debe ser diferente
+entrepreneur.investmentRound.error.investmentRound-published = No está en modo final
+entrepreneur.investmentRound.error.no-description = No tiene descripción
+entrepreneur.investmentRound.error.workProgrammeSum = La suma de dinero del programa de trabajo no es igual al salario

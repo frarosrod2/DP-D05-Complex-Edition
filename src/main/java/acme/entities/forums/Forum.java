@@ -42,14 +42,14 @@ public class Forum extends DomainEntity {
 	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	private Collection<Message>	messages;
 
-	//	@ManyToMany(fetch = FetchType.EAGER)
-	//	@Fetch(value = FetchMode.SUBSELECT)
-	//	private Collection<Authenticated>	users;
-
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
 	private Authenticated		creator;
+
+	//	@Valid
+	//	@OneToOne(optional = true, fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+	//	private InvestmentRound		investmentRound;
 
 
 	@Transient

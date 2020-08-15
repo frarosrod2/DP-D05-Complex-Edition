@@ -31,6 +31,7 @@ public class AuthenticatedForumDeleteService implements AbstractDeleteService<Au
 		boolean result;
 		int forumId;
 		Forum forum;
+		Forum forumEntre;
 		Authenticated authenticated;
 		Principal principal;
 
@@ -38,7 +39,9 @@ public class AuthenticatedForumDeleteService implements AbstractDeleteService<Au
 		forum = this.repository.getForumById(forumId);
 		authenticated = forum.getCreator();
 		principal = request.getPrincipal();
-		result = authenticated.getUserAccount().getId() == principal.getAccountId();
+		forumEntre = this.repository.getForumByEntrepreneur(principal.getActiveRoleId());
+
+		result = authenticated.getUserAccount().getId() == principal.getAccountId() && !forum.equals(forumEntre);
 
 		return result;
 	}
@@ -95,7 +98,7 @@ public class AuthenticatedForumDeleteService implements AbstractDeleteService<Au
 		InvestmentRound invest = this.repository.getInventmentRoundByForum(entity.getId());
 		//this.repository.deleteAll(messages);
 		if (invest != null) {
-			invest.setForum(null);
+			this.repository.delete(invest);
 		}
 		this.repository.deleteAll(iUsers);
 		this.repository.deleteAll(messages);

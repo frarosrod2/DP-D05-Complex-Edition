@@ -13,6 +13,7 @@ import acme.entities.activities.Activity;
 import acme.entities.applications.Application;
 import acme.entities.forums.Forum;
 import acme.entities.investmentRounds.InvestmentRound;
+import acme.entities.involvedUsers.InvolvedUser;
 import acme.entities.messages.Message;
 import acme.entities.roles.Entrepreneur;
 import acme.features.authenticated.forums.AuthenticatedForumRepository;
@@ -20,7 +21,6 @@ import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.datatypes.Money;
-import acme.framework.entities.Authenticated;
 import acme.framework.services.AbstractCreateService;
 
 @Service
@@ -80,16 +80,18 @@ public class EntrepreneurInvestmentRoundCreateService implements AbstractCreateS
 
 		Forum forum = new Forum();
 		Collection<Message> messages = new ArrayList<Message>();
-		Collection<Authenticated> users = new ArrayList<Authenticated>();
 		forum.setMessages(messages);
 
 		//Create forum
 		forum.setTitle("Temporal");
 		forum.setMoment(creation);
 		//Add User
-		users.add(this.repository.findAuthenticatedUserById(entrepreneur.getId()));
-		forum.setUsers(users);
+		forum.setCreator(this.repository.getAuthenticatedByAccountId(request.getPrincipal().getAccountId()));
 		result.setForum(forum);
+
+		InvolvedUser i = new InvolvedUser();
+		i.setForum(forum);
+		i.setAuthenticated(this.repository.getAuthenticatedByAccountId(request.getPrincipal().getAccountId()));
 
 		return result;
 	}
@@ -128,12 +130,14 @@ public class EntrepreneurInvestmentRoundCreateService implements AbstractCreateS
 		Date creation;
 		creation = new Date(System.currentTimeMillis() - 1);
 		forum.setMoment(creation);
+		//forum.setInvestmentRound(entity);
 		//Add Users
-		Collection<Authenticated> users = new ArrayList<Authenticated>();
-		users.add(this.repository.findAuthenticatedUserById(entrepreneur.getId()));
-		forum.setUsers(users);
-
+		forum.setCreator(this.repository.getAuthenticatedByAccountId(request.getPrincipal().getAccountId()));
+		InvolvedUser i = new InvolvedUser();
+		i.setForum(forum);
+		i.setAuthenticated(this.repository.getAuthenticatedByAccountId(request.getPrincipal().getAccountId()));
 		this.forumRepository.save(forum);
+		this.repository.save(i);
 
 		entity.setForum(forum);
 

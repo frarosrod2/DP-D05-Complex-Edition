@@ -8,8 +8,10 @@ import org.springframework.stereotype.Repository;
 
 import acme.entities.customisations.Customisation;
 import acme.entities.forums.Forum;
+import acme.entities.investmentRounds.InvestmentRound;
 import acme.entities.involvedUsers.InvolvedUser;
 import acme.entities.messages.Message;
+import acme.entities.roles.Investor;
 import acme.framework.entities.Authenticated;
 import acme.framework.repositories.AbstractRepository;
 
@@ -42,6 +44,12 @@ public interface AuthenticatedMessageRepository extends AbstractRepository {
 
 	@Query("select a from Authenticated a where a.id = ?1")
 	Authenticated findOneAuthenticatedById(int authId);
+
+	@Query("select i from InvestmentRound i where i.forum.id = ?1")
+	InvestmentRound findOneInvestmentByForumId(int forumId);
+
+	@Query("select a.investor from Application a where a.investmentRound.id = ?1 and a.status='accepted'")
+	Investor findInvestorByInvestmentId(int investId);
 
 	@Query("select c.spamWords from Customisation c")
 	String getSpamWords();
