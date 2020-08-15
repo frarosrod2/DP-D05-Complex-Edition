@@ -7,4 +7,8 @@ bookkeeper.accountingRecord.list.label.title = Título
 bookkeeper.accountingRecord.list.label.status = Estatus
 bookkeeper.accountingRecord.list.label.creationMoment = Momento de creación
 
+bookkeeper.accountingRecord.form.label.status.draft = Borrador
+bookkeeper.accountingRecord.form.label.status.published = Publicado
+
 bookkeeper.accountingRecord.form.button.return = Volver
+bookkeeper.accountingRecord.form.button.create = Crear

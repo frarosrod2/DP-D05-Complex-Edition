@@ -13,5 +13,6 @@ bookkeeper.investmentRound.list.label.round = Ronda
 bookkeeper.investmentRound.list.label.ticker = Ticker
 
 bookkeeper.investmentRound.form.button.return = Volver
+bookkeeper.accountingRecord.form.button.createAccounting = Crear registro de contabilidad
 
 bookkeeper.investmentRound.form.button.accountings = Cuentas

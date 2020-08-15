@@ -35,6 +35,10 @@
 		</table>
 	</acme:form-panel>
 
+	<button type="button" onclick="javascript: redirect('/bookkeeper/accounting-record/create?investmentRoundId=${id}')" class="btn btn-primary">
+		<acme:message code="bookkeeper.accountingRecord.form.button.createAccounting" />
+	</button>
+
 	<button type="button" formmethod="get" onclick="javascript: redirect('/bookkeeper/accounting-record/list_mine?id=${param.id}')" class="btn btn-primary">
 		<acme:message code="bookkeeper.investmentRound.form.button.accountings"/>
 	</button>	

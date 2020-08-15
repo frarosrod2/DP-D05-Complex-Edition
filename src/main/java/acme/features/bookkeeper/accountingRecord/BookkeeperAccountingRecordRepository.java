@@ -17,7 +17,7 @@ public interface BookkeeperAccountingRecordRepository extends AbstractRepository
 	@Query("select a from AccountingRecord a where a.id=?1")
 	AccountingRecord findOneById(int id);
 
-	@Query("select i from InvestmentRound i join i.accountingRecords a where a.id=?1")
+	@Query("select i from InvestmentRound i where i.id=?1")
 	InvestmentRound findInvestmentRound(int id);
 
 	@Query("select a from AccountingRecord a where a.investmentRound.id = ?1 and (a.bookkeeper.userAccount.username = ?2 and a.status = 'PUBLISHED')")
@@ -25,5 +25,5 @@ public interface BookkeeperAccountingRecordRepository extends AbstractRepository
 
 	@Query("select b from Bookkeeper b where b.id = ?1")
 	Bookkeeper findBookkeeperById(int id);
-	
+
 }
