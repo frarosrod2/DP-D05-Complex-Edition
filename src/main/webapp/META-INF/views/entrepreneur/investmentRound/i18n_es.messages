@@ -6,6 +6,15 @@ entrepreneur.investmentRound.form.label.description = Descripción
 entrepreneur.investmentRound.form.label.money = Cantidad de dinero
 entrepreneur.investmentRound.form.label.link = Enlace
 entrepreneur.investmentRound.form.label.workProgramme = Programa de trabajo
+entrepreneur.investmentRound.form.label.finalMode = Modo final
+
+entrepreneur.investmentRound.form.button.update-activities = Actualizar actividades
+entrepreneur.investmentRound.form.button.delete-activities = Borrar actividades
+entrepreneur.investmentRound.form.button.accountingRecords = Registros contables
+entrepreneur.investmentRound.form.button.add-activities = Añadir actividades
+entrepreneur.investmentRound.form.button.create = Crear
+entrepreneur.investmentRound.form.button.update = Actualizar
+entrepreneur.investmentRound.form.button.delete = Borrar
 
 
 entrepreneur.investmentRound.list.label.title = Título
@@ -13,3 +22,6 @@ entrepreneur.investmentRound.list.label.round = Ronda
 entrepreneur.investmentRound.list.label.ticker = Ticker
 
 entrepreneur.investmentRound.form.button.return = Volver
+
+entrepreneur.investmentRound.error.negative-salary = Salario negativo
+entrepreneur.investmentRound.error.salary-not-EUR = Salario no en EUR

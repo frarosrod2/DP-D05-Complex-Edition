@@ -19,7 +19,6 @@
         `end` datetime(6),
         `start` datetime(6),
         `title` varchar(255),
-        `investment_round_id` integer not null,
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -89,7 +88,6 @@
     create table `bookkeeper_request` (
        `id` integer not null,
         `version` integer not null,
-        `user_account_id` integer,
         `name` varchar(255),
         `responsability_statement` varchar(255),
         `state` varchar(255),
@@ -181,6 +179,7 @@
         `version` integer not null,
         `creation_moment` datetime(6),
         `description` varchar(255),
+        `final_mode` bit not null,
         `link` varchar(255),
         `money_amount` double precision,
         `money_currency` varchar(255),
@@ -191,6 +190,11 @@
         `forum_id` integer,
 
         primary key (`id`)
+    ) engine=InnoDB;
+
+    create table `investment_round_activity` (
+       `investment_round_id` integer not null,
+        `work_programme_id` integer not null
     ) engine=InnoDB;
 
     create table `investor` (
@@ -358,6 +362,9 @@
        add constraint UK_c0q529r106roshilrmgdn5mq7 unique (`messages_id`);
 
 create index IDX3qtg1fe48q71u218rdyieeurl on `investment_round` (`creation_moment`);
+
+    alter table `investment_round_activity` 
+       add constraint UK_r7iyfis9wnm52dspjcv1qpqh5 unique (`work_programme_id`);
 
     alter table `user_account` 
        add constraint UK_castjbvpeeus0r8lbpehiu0e4 unique (`username`);

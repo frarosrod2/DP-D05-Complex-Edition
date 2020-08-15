@@ -4,6 +4,7 @@ package acme.entities.investmentRounds;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Index;
@@ -69,6 +70,9 @@ public class InvestmentRound extends DomainEntity {
 	@URL
 	private String							link;
 
+	@NotNull
+	private boolean							finalMode;
+
 	//Relations
 
 	@NotNull
@@ -78,7 +82,7 @@ public class InvestmentRound extends DomainEntity {
 
 	@NotNull
 	@Valid
-	@OneToMany(mappedBy = "investmentRound", fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
 	private Collection<Activity>			workProgramme;
 
@@ -94,6 +98,8 @@ public class InvestmentRound extends DomainEntity {
 	@Fetch(value = FetchMode.SUBSELECT)
 	private Collection<AccountingRecord>	accountingRecords;
 
-	@OneToOne(optional = true)
+	@NotNull
+	@Valid
+	@OneToOne(optional = true, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Forum							forum;
 }

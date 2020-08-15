@@ -6,7 +6,6 @@ import java.util.Collection;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import acme.entities.inquiries.Inquiry;
 import acme.entities.overtures.Overture;
 import acme.framework.repositories.AbstractRepository;
 

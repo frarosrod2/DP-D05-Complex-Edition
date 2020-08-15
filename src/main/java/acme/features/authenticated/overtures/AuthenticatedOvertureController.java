@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import acme.entities.inquiries.Inquiry;
 import acme.entities.overtures.Overture;
 import acme.framework.components.BasicCommand;
 import acme.framework.controllers.AbstractController;
@@ -21,7 +20,7 @@ public class AuthenticatedOvertureController extends AbstractController<Authenti
 	private AuthenticatedOvertureListService	listService;
 
 	@Autowired
-	private AuthenticatedOvertureShowService			showService;
+	private AuthenticatedOvertureShowService	showService;
 
 
 	@PostConstruct
