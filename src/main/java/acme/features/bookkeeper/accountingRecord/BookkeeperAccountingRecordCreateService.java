@@ -44,7 +44,7 @@ public class BookkeeperAccountingRecordCreateService implements AbstractCreateSe
 		assert model != null;
 
 		model.setAttribute("investmentRoundId", request.getModel().getInteger("investmentRoundId"));
-		request.unbind(entity, model, "title", "status", "body");
+		request.unbind(entity, model, "title", "creationMoment", "status", "body");
 	}
 
 	@Override
