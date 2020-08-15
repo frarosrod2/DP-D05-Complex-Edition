@@ -42,6 +42,9 @@ public interface EntrepreneurInvestmentRoundRepository extends AbstractRepositor
 	@Query("select c from Customisation c")
 	Customisation findCustomisation();
 
+	@Query("select ir from InvestmentRound ir where ir.ticker = ?1")
+	InvestmentRound findOneByTicker(String ticker);
+
 	@Query("select ir from InvestmentRound ir join ir.accountingRecords a where a.id=?1")
 	Collection<AccountingRecord> findAllAccountingRecordsByInvestmentRoundId(int id);
 

@@ -100,13 +100,17 @@ public class EntrepreneurInvestmentRoundCreateService implements AbstractCreateS
 		assert entity != null;
 		assert errors != null;
 
+		// Check if the new reference is duplicated
+		boolean isDuplicated = this.repository.findOneByTicker(entity.getTicker()) != null;
+		errors.state(request, !isDuplicated, "ticker", "entrepreneur.investmentRound.error.must-be-different-ticker");
+
 		// Check if salary is > 0 and its currency is in EUR
 		Money salary = entity.getMoney();
-		if (!errors.hasErrors("salary")) {
+		if (!errors.hasErrors("money")) {
 			boolean isPositive = salary.getAmount() > 0;
-			errors.state(request, isPositive, "salary", "entrepreneur.investmentRound.error.negative-salary");
+			errors.state(request, isPositive, "salary", "entrepreneur.investmentRound.error.negative-money");
 			boolean isEUR = salary.getCurrency().equals("EUR") || salary.getCurrency().equals("€");
-			errors.state(request, isEUR, "salary", "entrepreneur.investmentRound.error.salary-not-EUR");
+			errors.state(request, isEUR, "salary", "entrepreneur.investmentRound.error.money-not-EUR");
 		}
 
 	}
