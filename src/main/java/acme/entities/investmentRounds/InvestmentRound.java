@@ -82,7 +82,7 @@ public class InvestmentRound extends DomainEntity {
 
 	@NotNull
 	@Valid
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	@Fetch(value = FetchMode.SUBSELECT)
 	private Collection<Activity>			workProgramme;
 
@@ -94,12 +94,12 @@ public class InvestmentRound extends DomainEntity {
 
 	@NotNull
 	@Valid
-	@OneToMany(mappedBy = "investmentRound", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "investmentRound", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	@Fetch(value = FetchMode.SUBSELECT)
 	private Collection<AccountingRecord>	accountingRecords;
 
 	@NotNull
 	@Valid
-	@OneToOne(optional = true, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToOne(optional = true, fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	private Forum							forum;
 }

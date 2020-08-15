@@ -22,5 +22,10 @@
 			</tbody>
 		</table>
 	</acme:form-panel>
+	
+	<button type="button" formmethod="get" onclick="javascript: redirect('/authenticated/accounting-record/list_mine?id=${param.id}')" class="btn btn-primary">
+		<acme:message code="entrepreneur.investmentRound.form.button.accountingRecords" />
+	</button>
+	
 	<acme:form-return code="authenticated.investmentRound.form.button.return" />	
 </acme:form> 
