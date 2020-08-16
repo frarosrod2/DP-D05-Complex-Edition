@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.entities.accountingRecords.AccountingRecord;
+import acme.entities.customisations.Customisation;
 import acme.entities.investmentRounds.InvestmentRound;
 import acme.entities.roles.Bookkeeper;
 import acme.framework.repositories.AbstractRepository;
@@ -25,5 +26,8 @@ public interface BookkeeperAccountingRecordRepository extends AbstractRepository
 
 	@Query("select b from Bookkeeper b where b.id = ?1")
 	Bookkeeper findBookkeeperById(int id);
+
+	@Query("select c from Customisation c")
+	Customisation findCustomisation();
 
 }

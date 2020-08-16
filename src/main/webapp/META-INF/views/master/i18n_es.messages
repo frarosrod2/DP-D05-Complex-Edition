@@ -80,7 +80,8 @@ master.menu.entrepreneur.investment-round.create = Crear ronda de inversión
 
 # master.menu.investor ##########################################################
 master.menu.investor = Inversor
-master.menu.investor.application.list_mine = List my applications
+master.menu.investor.application.list_mine = Lista de mis aplicaciones
+master.menu.investor.investmentRound.list = Listar rondas de inversión publicadas
 
 # master.menu.user-account ####################################################
 

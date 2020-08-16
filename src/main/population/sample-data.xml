@@ -435,6 +435,7 @@
 		<property name="link" value="https://www.ev.us.es" />
 		<property name="entrepreneur" ref="entrepreneur1Entrepreneur"/>
 		<property name="forum" ref="forum1"/>
+		<property name="finalMode" value="true" />
 		<property name="workProgramme">
 			<list> 
 				<ref bean="activity1"/>
@@ -462,6 +463,7 @@
 		<property name="link" value="https://www.google.es" />
 		<property name="entrepreneur" ref="entrepreneur2Entrepreneur"/>
 		<property name="forum" ref="forum2"/>
+		<property name="finalMode" value="true" />
 		<property name="workProgramme">
 			<list> 
 				<ref bean="activity2"/>

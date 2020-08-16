@@ -73,9 +73,13 @@ public class EntrepreneurInvestmentRoundUpdateService implements AbstractUpdateS
 		assert errors != null;
 
 		// Check if the new reference is duplicated
-		boolean isDuplicated = this.repository.findOneByTicker(entity.getTicker()) != null;
-		errors.state(request, !isDuplicated, "ticker", "entrepreneur.investmentRound.error.must-be-different-ticker");
-
+		InvestmentRound i = this.repository.findOneByTicker(entity.getTicker());
+		if (i != null) {
+			if (i.getId() != entity.getId()) {
+				boolean isDuplicated = true;
+				errors.state(request, !isDuplicated, "ticker", "entrepreneur.investmentRound.error.must-be-different-ticker");
+			}
+		}
 		// Check if the investmentRound is in final mode
 		InvestmentRound investmentRound;
 		investmentRound = this.repository.findOneInvestmentRoundById(entity.getId());

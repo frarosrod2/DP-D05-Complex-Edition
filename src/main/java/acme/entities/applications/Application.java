@@ -47,6 +47,8 @@ public class Application extends DomainEntity {
 	@Valid
 	private Money				investmentOffer;
 
+	private String				justification;
+
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)

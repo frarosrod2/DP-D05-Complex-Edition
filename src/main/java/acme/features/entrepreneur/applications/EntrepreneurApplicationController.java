@@ -23,6 +23,12 @@ public class EntrepreneurApplicationController extends AbstractController<Entrep
 	@Autowired
 	private EntrepreneurApplicationShowService		showService;
 
+	@Autowired
+	private EntrepreneurApplicationAcceptService	acceptService;
+
+	@Autowired
+	private EntrepreneurApplicationRejectService	rejectService;
+
 
 	//Constructors
 
@@ -30,5 +36,7 @@ public class EntrepreneurApplicationController extends AbstractController<Entrep
 	private void initialise() {
 		super.addBasicCommand(BasicCommand.SHOW, this.showService);
 		super.addCustomCommand(CustomCommand.LIST_MINE, BasicCommand.LIST, this.listMineService);
+		super.addCustomCommand(CustomCommand.ACCEPT, BasicCommand.UPDATE, this.acceptService);
+		super.addCustomCommand(CustomCommand.REJECT, BasicCommand.UPDATE, this.rejectService);
 	}
 }

@@ -5,8 +5,10 @@ import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import acme.entities.accountingRecords.AccountingRecord;
+import acme.entities.customisations.Customisation;
 import acme.entities.investmentRounds.InvestmentRound;
 import acme.entities.roles.Bookkeeper;
 import acme.framework.components.Errors;
@@ -79,6 +81,40 @@ public class BookkeeperAccountingRecordCreateService implements AbstractCreateSe
 		assert entity != null;
 		assert errors != null;
 
+		// Check spam
+
+		Customisation customisation = this.repository.findCustomisation();
+
+		String[] spamWords = customisation.getSpamWords().split(", ");
+		Double threshold = customisation.getSpamThreshold();
+		Boolean isSpamTitle = false;
+		Boolean isSpamBody = false;
+
+		int numberWordsTitle;
+		int numberSpam;
+		int numberBody;
+
+		if (!errors.hasErrors("title")) {
+			String title = entity.getTitle().toLowerCase();
+			numberWordsTitle = title.split("\\W+").length;
+			numberSpam = 0;
+			for (String s : spamWords) {
+				numberSpam += StringUtils.countOccurrencesOf(title, s);
+			}
+			isSpamTitle = numberWordsTitle > 0 && numberSpam * 100 / numberWordsTitle >= threshold;
+			errors.state(request, !isSpamTitle, "title", "entrepreneur.investmentRound.error.isSpam");
+		}
+
+		if (!errors.hasErrors("body")) {
+			String ticker = entity.getBody().toLowerCase();
+			numberBody = ticker.split("\\W+").length;
+			numberSpam = 0;
+			for (String s : spamWords) {
+				numberSpam += StringUtils.countOccurrencesOf(ticker, s);
+			}
+			isSpamBody = numberBody > 0 && numberSpam * 100 / numberBody >= threshold;
+			errors.state(request, !isSpamBody, "body", "entrepreneur.investmentRound.error.isSpam");
+		}
 	}
 
 	@Override

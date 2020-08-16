@@ -42,9 +42,9 @@
         `creation_moment` datetime(6),
         `investment_offer_amount` double precision,
         `investment_offer_currency` varchar(255),
+        `justification` varchar(255),
         `statement` varchar(255),
         `status` varchar(255),
-
         `ticker` varchar(255),
         `investment_round_id` integer not null,
         `investor_id` integer not null,
@@ -71,7 +71,6 @@
         `slogan` varchar(255),
         `targeturl` varchar(255),
         `patron_id` integer not null,
-
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -83,7 +82,6 @@
         `responsability_statement` varchar(255),
         primary key (`id`)
     ) engine=InnoDB;
-
 
     create table `bookkeeper_request` (
        `id` integer not null,
@@ -187,8 +185,7 @@
         `ticker` varchar(255),
         `title` varchar(255),
         `entrepreneur_id` integer not null,
-        `forum_id` integer,
-
+        `forum_id` integer not null,
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -360,8 +357,10 @@
 
     alter table `forum_message` 
        add constraint UK_c0q529r106roshilrmgdn5mq7 unique (`messages_id`);
-
 create index IDX3qtg1fe48q71u218rdyieeurl on `investment_round` (`creation_moment`);
+
+    alter table `investment_round` 
+       add constraint UK_ti0p3dolmlo4vxkj8f5d6v8po unique (`forum_id`);
 
     alter table `investment_round_activity` 
        add constraint UK_r7iyfis9wnm52dspjcv1qpqh5 unique (`work_programme_id`);
@@ -376,11 +375,6 @@ create index IDX3qtg1fe48q71u218rdyieeurl on `investment_round` (`creation_momen
 
     alter table `accounting_record` 
        add constraint `FKk1pmfnppwk0kav7xloy8u71uq` 
-       foreign key (`investment_round_id`) 
-       references `investment_round` (`id`);
-r
-    alter table `activity` 
-       add constraint `FK1ufotopeofii4jlefyk9c7os5` 
        foreign key (`investment_round_id`) 
        references `investment_round` (`id`);
 
@@ -414,11 +408,15 @@ r
        foreign key (`patron_id`) 
        references `patron` (`id`);
 
-
     alter table `bookkeeper` 
        add constraint FK_krvjp9eaqyapewl2igugbo9o8 
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
+
+    alter table `bookkeeper_request` 
+       add constraint `FKhdducua8c58xhfrls8oiih3j0` 
+       foreign key (`authenticated_id`) 
+       references `authenticated` (`id`);
 
     alter table `consumer` 
        add constraint FK_6cyha9f1wpj0dpbxrrjddrqed 
@@ -454,6 +452,16 @@ r
        add constraint `FKidufrenbfe15mdi0cx80oci4v` 
        foreign key (`forum_id`) 
        references `forum` (`id`);
+
+    alter table `investment_round_activity` 
+       add constraint `FKo2rpduv8cnisos31hcrmo99w6` 
+       foreign key (`work_programme_id`) 
+       references `activity` (`id`);
+
+    alter table `investment_round_activity` 
+       add constraint `FKfvuiqaq17g9wrgm95fabomjin` 
+       foreign key (`investment_round_id`) 
+       references `investment_round` (`id`);
 
     alter table `investor` 
        add constraint FK_dcek5rr514s3rww0yy57vvnpq 

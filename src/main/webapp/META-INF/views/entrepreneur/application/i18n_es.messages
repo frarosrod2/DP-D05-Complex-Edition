@@ -11,4 +11,7 @@ entrepreneur.application.form.label.status = Estado
 
 entrepreneur.application.form.button.return = Volver
 
-
+entrepreneur.application.form.label.justification = Justificación
+entrepreneur.application.form.label.accept = Aceptar
+entrepreneur.application.form.label.reject = Rechazar
+entrepreneur.application.form.label.investmentRound = Ronda de inversión

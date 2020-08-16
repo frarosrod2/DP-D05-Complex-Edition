@@ -82,6 +82,7 @@ master.menu.entrepreneur.investment-round.create = Create investment round
 # master.menu.investor ##########################################################
 master.menu.investor = Investor
 master.menu.investor.application.list_mine = List my applications
+master.menu.investor.investmentRound.list = List investment round published
 
 # master.menu.user-account ####################################################
 

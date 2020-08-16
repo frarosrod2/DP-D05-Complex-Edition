@@ -11,3 +11,5 @@ investor.application.form.label.status = Status
 
 investor.application.form.button.return = Return
 
+investor.application.form.button.createApplication = Create
+investor.ticker.error.ticker = Duplicated ticker

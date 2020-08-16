@@ -7,14 +7,6 @@
        drop 
        foreign key `FKk1pmfnppwk0kav7xloy8u71uq`;
 
-    alter table `activity` 
-       drop 
-       foreign key `FK41jm4vk7runvmg5tderffrele`;
-
-    alter table `accounting_record` 
-       drop 
-       foreign key `FKk1pmfnppwk0kav7xloy8u71uq`;
-
     alter table `administrator` 
        drop 
        foreign key FK_2a5vcjo3stlfcwadosjfq49l1;
@@ -39,11 +31,13 @@
        drop 
        foreign key `FKdocr1jjfgwx9ef5jbf675l360`;
 
-
     alter table `bookkeeper` 
        drop 
        foreign key FK_krvjp9eaqyapewl2igugbo9o8;
 
+    alter table `bookkeeper_request` 
+       drop 
+       foreign key `FKhdducua8c58xhfrls8oiih3j0`;
 
     alter table `consumer` 
        drop 
@@ -65,34 +59,6 @@
        drop 
        foreign key `FKsrtj8k65l4o01scnduc07muo5`;
 
-    alter table `bookkeeper_request` 
-       drop 
-       foreign key `FKhdducua8c58xhfrls8oiih3j0`;
-
-    alter table `consumer` 
-       drop 
-       foreign key FK_6cyha9f1wpj0dpbxrrjddrqed;
-
-    alter table `entrepreneur` 
-       drop 
-       foreign key FK_r6tqltqvrlh1cyy8rsj5pev1q;
-
-    alter table `forum_authenticated` 
-       drop 
-       foreign key `FKbfu7rkr4imldqrkswlqieb4dv`;
-
-    alter table `forum_authenticated` 
-       drop 
-       foreign key `FK7ipmqcvdjx9afmyy3ynv2j11j`;
-
-    alter table `forum_message` 
-       drop 
-       foreign key `FK1sp7ne3hl23g01ggrp329i71c`;
-
-    alter table `forum_message` 
-       drop 
-       foreign key `FKsrtj8k65l4o01scnduc07muo5`;
-
     alter table `investment_round` 
        drop 
        foreign key `FKkj1l8c2ftn9c65y061me6t37j`;
@@ -100,6 +66,14 @@
     alter table `investment_round` 
        drop 
        foreign key `FKidufrenbfe15mdi0cx80oci4v`;
+
+    alter table `investment_round_activity` 
+       drop 
+       foreign key `FKo2rpduv8cnisos31hcrmo99w6`;
+
+    alter table `investment_round_activity` 
+       drop 
+       foreign key `FKfvuiqaq17g9wrgm95fabomjin`;
 
     alter table `investor` 
        drop 
@@ -144,7 +118,6 @@
     drop table if exists `banner`;
 
     drop table if exists `bookkeeper`;
-
 
     drop table if exists `bookkeeper_request`;
 
