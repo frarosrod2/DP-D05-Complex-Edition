@@ -6,6 +6,9 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.accountingRecords.AccountingRecord;
+import acme.entities.activities.Activity;
+import acme.entities.applications.Application;
 import acme.entities.forums.Forum;
 import acme.entities.investmentRounds.InvestmentRound;
 import acme.entities.involvedUsers.InvolvedUser;
@@ -96,8 +99,14 @@ public class AuthenticatedForumDeleteService implements AbstractDeleteService<Au
 		Collection<Message> messages = this.repository.findAllMessagesByForumId(entity.getId());
 		Collection<InvolvedUser> iUsers = this.repository.getInvolvedUsersByForum(entity.getId());
 		InvestmentRound invest = this.repository.getInventmentRoundByForum(entity.getId());
-		//this.repository.deleteAll(messages);
+		Collection<Activity> workProgramme = this.repository.findAllActivitiesByInvestmentRoundId(invest.getId());
+		Collection<AccountingRecord> accountingRecords = this.repository.findAllAccountingRecordsByInvestmentRoundId(invest.getId());
+		Collection<Application> applications = this.repository.findAllApplicationsByInvestmentRoundId(invest.getId());
+
 		if (invest != null) {
+			this.repository.deleteAll(workProgramme);
+			this.repository.deleteAll(accountingRecords);
+			this.repository.deleteAll(applications);
 			this.repository.delete(invest);
 		}
 		this.repository.deleteAll(iUsers);

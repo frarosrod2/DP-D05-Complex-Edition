@@ -18,8 +18,8 @@
 <acme:form>
 	<acme:form-textbox code="authenticated.entrepreneur.form.label.company" path="name"/>
 	<acme:form-textbox code="authenticated.entrepreneur.form.label.activitySector" path="activitySector"/>
-	<acme:form-textbox code="authenticated.entrepreneur.form.label.profile" path="qualificationRecord"/>
-	<acme:form-textbox code="authenticated.entrepreneur.form.label.profile" path="skillsRecord"/>
+	<acme:form-textbox code="authenticated.entrepreneur.form.label.qualification" path="qualificationRecord"/>
+	<acme:form-textbox code="authenticated.entrepreneur.form.label.skills" path="skillsRecord"/>
 
 	<acme:form-submit test="${command == 'create'}" code="authenticated.entrepreneur.form.button.create" action="create"/>
 	<acme:form-submit test="${command == 'update'}" code="authenticated.entrepreneur.form.button.update" action="update"/>

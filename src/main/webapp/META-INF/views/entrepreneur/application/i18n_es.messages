@@ -15,3 +15,6 @@ entrepreneur.application.form.label.justification = Justificación
 entrepreneur.application.form.label.accept = Aceptar
 entrepreneur.application.form.label.reject = Rechazar
 entrepreneur.application.form.label.investmentRound = Ronda de inversión
+
+entrepreneur.justification.error.justified = La justificación es necesaria para rechazar la aplicación
+entrepreneur.investmentRound.error.isSpam = Tiene spam

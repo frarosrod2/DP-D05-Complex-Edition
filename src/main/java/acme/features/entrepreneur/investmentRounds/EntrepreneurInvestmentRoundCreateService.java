@@ -127,8 +127,10 @@ public class EntrepreneurInvestmentRoundCreateService implements AbstractCreateS
 		Boolean isSpamDescription = false;
 		Boolean isSpamActivityTitle = false;
 		Boolean isSpamTicker = false;
+		Boolean isSpamLink = false;
 
 		int numberWordsTitle;
+		int numberWordsLink;
 		int numberWordsDescription;
 		int numberWordsActivityTitle;
 		int numberSpam;
@@ -184,6 +186,19 @@ public class EntrepreneurInvestmentRoundCreateService implements AbstractCreateS
 
 			}
 
+		}
+
+		String link = entity.getLink().toLowerCase();
+		if (!link.isEmpty()) {
+			if (!errors.hasErrors("link")) {
+				numberWordsLink = link.split("\\W+").length;
+				numberSpam = 0;
+				for (String s : spamWords) {
+					numberSpam += StringUtils.countOccurrencesOf(link, s);
+				}
+				isSpamLink = numberWordsLink > 0 && numberSpam * 100 / numberWordsLink >= threshold;
+				errors.state(request, !isSpamLink, "link", "entrepreneur.investmentRound.error.isSpam");
+			}
 		}
 
 	}

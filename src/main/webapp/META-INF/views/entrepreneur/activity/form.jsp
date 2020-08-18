@@ -17,8 +17,8 @@
 <acme:form>
 	<input id="investmentRoundId" name="investmentRoundId" type="hidden" value="${param.investmentRoundId}"/> 
 	<acme:form-textbox code="entrepreneur.workProgramme.form.label.activity.title" path="title" />
-	<acme:form-textbox code="entrepreneur.workProgramme.form.label.activity.start" path="start" />
-	<acme:form-textbox code="entrepreneur.workProgramme.form.label.activity.end" path="end" />
+	<acme:form-moment code="entrepreneur.workProgramme.form.label.activity.start" path="start" />
+	<acme:form-moment code="entrepreneur.workProgramme.form.label.activity.end" path="end" />
 	<acme:form-money code="entrepreneur.workProgramme.form.label.activity.budget" path="budget" />
 	
 	<acme:form-submit test="${command == 'create'}" code="entrepreneur.investmentRound.form.button.create" action="/entrepreneur/activity/create"/>

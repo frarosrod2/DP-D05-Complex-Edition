@@ -1,6 +1,8 @@
 
 package acme.features.entrepreneur.applications;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -83,7 +85,7 @@ public class EntrepreneurApplicationRejectService implements AbstractUpdateServi
 		assert errors != null;
 		if (!errors.hasErrors("justification")) {
 			Boolean isJustified = !entity.getJustification().equals("");
-			errors.state(request, isJustified, "justification", "employer.justification.error.justified");
+			errors.state(request, isJustified, "justification", "entrepreneur.justification.error.justified");
 		}
 		// Check spam
 
@@ -114,10 +116,10 @@ public class EntrepreneurApplicationRejectService implements AbstractUpdateServi
 		assert request != null;
 		assert entity != null;
 
-		//		Date moment = new Date(System.currentTimeMillis() - 1);
+		Date moment = new Date(System.currentTimeMillis() - 1);
 
 		entity.setStatus("rejected");
-		//		entity.setUpdateStatusMoment(moment);
+		entity.setUpdateStatusMoment(moment);
 		this.repository.save(entity);
 
 	}

@@ -11,10 +11,10 @@
 authenticated.entrepreneur.form.title.create = Become an entrepreneur
 authenticated.entrepreneur.form.title.update = Update your entrepreneur data
 
-authenticated.entrepreneur.form.label.name = Firm name
+authenticated.entrepreneur.form.label.company = Company name
 authenticated.entrepreneur.form.label.activitySector = Activity sector
-authenticated.entrepreneur.form.label.qualificationRecord = Qualification record
-authenticated.entrepreneur.form.label.skillsRecord = Skills record
+authenticated.entrepreneur.form.label.qualification = Qualification record
+authenticated.entrepreneur.form.label.skills = Skills record
 
 authenticated.entrepreneur.form.button.create = Register
 authenticated.entrepreneur.form.button.update = Update

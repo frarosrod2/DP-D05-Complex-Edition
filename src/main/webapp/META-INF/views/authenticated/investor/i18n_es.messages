@@ -12,7 +12,7 @@
 authenticated.investor.form.title.create = Hazte inversor
 authenticated.investor.form.title.update = Actualizar tus datos de inversor
 
-authenticated.investor.form.label.name = Nombre de la empresa
+authenticated.investor.form.label.company = Nombre de compañía
 authenticated.investor.form.label.activitySector = Sector de actividad
 authenticated.investor.form.label.profile = Perfil
 

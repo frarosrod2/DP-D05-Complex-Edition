@@ -6,6 +6,9 @@ import java.util.Collection;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import acme.entities.accountingRecords.AccountingRecord;
+import acme.entities.activities.Activity;
+import acme.entities.applications.Application;
 import acme.entities.forums.Forum;
 import acme.entities.investmentRounds.InvestmentRound;
 import acme.entities.involvedUsers.InvolvedUser;
@@ -48,4 +51,13 @@ public interface AuthenticatedForumRepository extends AbstractRepository {
 
 	@Query("select i from InvestmentRound i where i.forum.id=?1")
 	InvestmentRound getInventmentRoundByForum(int forumId);
+
+	@Query("select ir from InvestmentRound ir join ir.accountingRecords a where a.id=?1")
+	Collection<AccountingRecord> findAllAccountingRecordsByInvestmentRoundId(int id);
+
+	@Query("select ir.applications from InvestmentRound ir where ir.id = ?1")
+	Collection<Application> findAllApplicationsByInvestmentRoundId(int id);
+
+	@Query("select ir.workProgramme from InvestmentRound ir where ir.id = ?1")
+	Collection<Activity> findAllActivitiesByInvestmentRoundId(int id);
 }

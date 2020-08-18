@@ -22,8 +22,8 @@ entrepreneur.investmentRound.list.label.ticker = Ticker
 
 entrepreneur.investmentRound.form.button.return = Volver
 
-entrepreneur.investmentRound.error.negative-salary = Salario negativo
-entrepreneur.investmentRound.error.salary-not-EUR = Salario no en EUR
+entrepreneur.investmentRound.error.negative-money = Salario negativo
+entrepreneur.investmentRound.error.money-not-EUR = Salario no en EUR
 entrepreneur.investmentRound.error.must-be-different-ticker = El ticker debe ser diferente
 entrepreneur.investmentRound.error.investmentRound-published = No está en modo final
 entrepreneur.investmentRound.error.no-description = No tiene descripción

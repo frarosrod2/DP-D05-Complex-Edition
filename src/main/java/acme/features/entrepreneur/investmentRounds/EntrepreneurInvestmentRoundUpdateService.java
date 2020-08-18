@@ -87,11 +87,11 @@ public class EntrepreneurInvestmentRoundUpdateService implements AbstractUpdateS
 
 		// Check if salary is > 0 and its currency is in EUR
 		Money salary = entity.getMoney();
-		if (!errors.hasErrors("salary")) {
+		if (!errors.hasErrors("money")) {
 			boolean isPositive = salary.getAmount() > 0;
-			errors.state(request, isPositive, "salary", "entrepreneur.investmentRound.error.negative-salary");
+			errors.state(request, isPositive, "money", "entrepreneur.investmentRound.error.negative-money");
 			boolean isEUR = salary.getCurrency().equals("EUR") || salary.getCurrency().equals("€");
-			errors.state(request, isEUR, "salary", "entrepreneur.investmentRound.error.salary-not-EUR");
+			errors.state(request, isEUR, "money", "entrepreneur.investmentRound.error.money-not-EUR");
 		}
 
 		if (!errors.hasErrors("finalMode")) {
@@ -130,8 +130,10 @@ public class EntrepreneurInvestmentRoundUpdateService implements AbstractUpdateS
 				Boolean isSpamDescription = false;
 				Boolean isSpamActivityTitle = false;
 				Boolean isSpamTicker = false;
+				Boolean isSpamLink = false;
 
 				int numberWordsTitle;
+				int numberWordsLink;
 				int numberWordsDescription;
 				int numberWordsActivityTitle;
 				int numberSpam;
@@ -187,6 +189,19 @@ public class EntrepreneurInvestmentRoundUpdateService implements AbstractUpdateS
 
 					}
 
+				}
+
+				String link = entity.getLink().toLowerCase();
+				if (!link.isEmpty()) {
+					if (!errors.hasErrors("link")) {
+						numberWordsLink = link.split("\\W+").length;
+						numberSpam = 0;
+						for (String s : spamWords) {
+							numberSpam += StringUtils.countOccurrencesOf(link, s);
+						}
+						isSpamLink = numberWordsLink > 0 && numberSpam * 100 / numberWordsLink >= threshold;
+						errors.state(request, !isSpamLink, "link", "entrepreneur.investmentRound.error.isSpam");
+					}
 				}
 
 			}

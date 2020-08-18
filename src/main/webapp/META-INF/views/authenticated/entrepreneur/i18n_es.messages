@@ -12,10 +12,10 @@
 authenticated.entrepreneur.form.title.create = Hazte empresario
 authenticated.entrepreneur.form.title.update = Actualizar tus datos de empresario
 
-authenticated.entrepreneur.form.label.name = Nombre de inicio
+authenticated.entrepreneur.form.label.company = Nombre de compañía
 authenticated.entrepreneur.form.label.activitySector = Sector de actividad
-authenticated.entrepreneur.form.label.qualificationRecord = Registro de calificación
-authenticated.entrepreneur.form.label.skillsRecord = Registro de habilidades
+authenticated.entrepreneur.form.label.qualification = Registro de calificación
+authenticated.entrepreneur.form.label.skills = Registro de habilidad
 
 authenticated.entrepreneur.form.button.create = Registrar
 authenticated.entrepreneur.form.button.update = Actualizar

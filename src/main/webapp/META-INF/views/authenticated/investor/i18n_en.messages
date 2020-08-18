@@ -11,7 +11,7 @@
 authenticated.investor.form.title.create = Become an investor
 authenticated.investor.form.title.update = Update your investor data
 
-authenticated.investor.form.label.name = Firm name
+authenticated.investor.form.label.company = Company name
 authenticated.investor.form.label.activitySector = Activity sector
 authenticated.investor.form.label.profile = Profile
 

@@ -2,10 +2,11 @@
 package acme.entities.roles;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 
-import acme.datatypes.CreditCard;
+import acme.entities.creditCards.CreditCard;
 import acme.framework.entities.UserRole;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,5 +23,6 @@ public class Patron extends UserRole {
 	private String				name;
 
 	@Valid
+	@OneToOne(optional = true)
 	private CreditCard			creditCard;
 }

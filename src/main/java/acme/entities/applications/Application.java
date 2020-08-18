@@ -40,6 +40,10 @@ public class Application extends DomainEntity {
 	@Pattern(regexp = "^(accepted)?(rejected)?(pending)?$")
 	private String				status;
 
+	@Past
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				updateStatusMoment;
+
 	@NotBlank
 	private String				statement;
 

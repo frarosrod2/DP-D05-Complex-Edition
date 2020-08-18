@@ -19,7 +19,7 @@
 	<acme:form-textbox code="bookkeeper.investmentRound.form.label.ticker" path="ticker"/>
 	<acme:form-textbox code="bookkeeper.investmentRound.form.label.round" path="round"/>
 	<acme:form-textbox code="bookkeeper.investmentRound.form.label.title" path="title"/>
-	<acme:form-textbox code="bookkeeper.investmentRound.form.label.creationMoment" path="creationMoment"/>
+	<acme:form-moment code="bookkeeper.investmentRound.form.label.creationMoment" path="creationMoment"/>
 	<acme:form-textarea code="bookkeeper.investmentRound.form.label.description" path="description"/>
 	<acme:form-money code="bookkeeper.investmentRound.form.label.money" path="money"/>
 	<acme:form-textbox code="bookkeeper.investmentRound.form.label.link" path="link"/>

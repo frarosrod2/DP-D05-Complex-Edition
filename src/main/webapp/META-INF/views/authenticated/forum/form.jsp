@@ -47,7 +47,7 @@
 	<acme:form-submit test="${command == 'show' && requestScope['creator.id'] == principal.getActiveRoleId()}" code="authenticated.forum.form.button.add-involvedUser" action="/authenticated/involved-user/create?forumId=${id}"
 		method="get" />	
 	
-	<acme:form-submit test="${command == 'show'}" code="authenticated.forum.form.button.delete-involved" action="/authenticated/involved-user/list?id=${id}"
+	<acme:form-submit test="${command == 'show' && requestScope['creator.id'] == principal.getActiveRoleId()}" code="authenticated.forum.form.button.delete-involved" action="/authenticated/involved-user/list?id=${id}"
 	method="get" />
 	
 	<acme:form-panel code="authenticated.forum.show.legend.messages">
@@ -88,7 +88,7 @@
 	</c:if>
 	
 	
-	<acme:form-submit test="${command != 'create'}" code="authenticated.forum.form.button.delete" action="/authenticated/forum/delete"/>	
+	<acme:form-submit test="${command != 'create' && requestScope['creator.id'] == principal.getActiveRoleId()}" code="authenticated.forum.form.button.delete" action="/authenticated/forum/delete"/>	
 	
 	
 	<acme:form-return code="authenticated.forum.form.button.return"/>

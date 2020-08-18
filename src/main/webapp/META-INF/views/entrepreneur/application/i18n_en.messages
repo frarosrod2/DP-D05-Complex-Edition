@@ -16,3 +16,5 @@ entrepreneur.application.form.label.accept = Accept
 entrepreneur.application.form.label.reject = Reject
 entrepreneur.application.form.label.investmentRound = Investment Round
 
+entrepreneur.justification.error.justified = Justification is necessary to reject
+entrepreneur.investmentRound.error.isSpam = It has spam

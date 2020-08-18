@@ -108,13 +108,14 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 
 	//D05
 
-	@Query("select count(a), date_format(a.creationMoment, '%d/%m/%Y') from Application a " + "where datediff(now(), date(a.creationMoment)) < 15 and a.status = 'pending'" + "group by date(creationMoment)")
+	@Query("select count(a), date_format(a.creationMoment, '%d/%m/%Y') from Application a " + "where datediff(now(), date(a.creationMoment)) < 15" + "and (a.updateStatusMoment is null or date(a.creationMoment) != date(a.updateStatusMoment)) "
+		+ "group by date(creationMoment)")
 	Object[] getPendingApplicationsPerDay();
 
-	@Query("select count(a), date_format(a.creationMoment, '%d/%m/%Y') from Application a " + "where datediff(now(), date(a.creationMoment)) < 15 and a.status = 'rejected' " + "group by date(creationMoment)")
+	@Query("select count(a), date_format(a.updateStatusMoment, '%d/%m/%Y') from Application a " + "where datediff(now(), date(a.creationMoment)) < 15 and a.status = 'rejected' " + "group by date(updateStatusMoment)")
 	Object[] getRejectedApplicationsPerDay();
 
-	@Query("select count(a), date_format(a.creationMoment, '%d/%m/%Y') from Application a " + "where datediff(now(), date(a.creationMoment)) < 15 and a.status = 'accepted' " + "group by date(creationMoment)")
+	@Query("select count(a), date_format(a.updateStatusMoment, '%d/%m/%Y') from Application a " + "where datediff(now(), date(a.creationMoment)) < 15 and a.status = 'accepted' " + "group by date(updateStatusMoment)")
 	Object[] getAcceptedApplicationsPerDay();
 
 }

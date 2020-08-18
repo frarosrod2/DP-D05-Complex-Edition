@@ -7,7 +7,7 @@
 	<acme:form-textbox code="authenticated.investmentRound.form.label.ticker" path="ticker"/>
 	<acme:form-textbox code="authenticated.investmentRound.form.label.round" path="round"/>
 	<acme:form-textbox code="authenticated.investmentRound.form.label.title" path="title"/>
-	<acme:form-textbox code="authenticated.investmentRound.form.label.creationMoment" path="creationMoment"/>
+	<acme:form-moment code="authenticated.investmentRound.form.label.creationMoment" path="creationMoment"/>
 	<acme:form-textarea code="authenticated.investmentRound.form.label.description" path="description"/>
 	<acme:form-money code="authenticated.investmentRound.form.label.money" path="money"/>
 	<acme:form-textbox code="authenticated.investmentRound.form.label.link" path="link"/>
