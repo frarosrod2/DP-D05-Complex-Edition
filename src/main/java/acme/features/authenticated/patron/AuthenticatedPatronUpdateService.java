@@ -1,10 +1,6 @@
 
 package acme.features.authenticated.patron;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,7 +45,15 @@ public class AuthenticatedPatronUpdateService implements AbstractUpdateService<A
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "name", "creditCard.holderName", "creditCard.brand", "creditCard.number", "creditCard.cvv", "creditCard.expMonth", "creditCard.expYear");
+		model.setAttribute("hasCard", !(entity.getCreditCard() == null));
+		int patronId = entity.getId();
+
+		model.setAttribute("patronId", patronId);
+		if (entity.getCreditCard() != null) {
+			model.setAttribute("creditCard", entity.getCreditCard().getId());
+		}
+
+		request.unbind(entity, model, "name");
 
 	}
 
@@ -74,41 +78,6 @@ public class AuthenticatedPatronUpdateService implements AbstractUpdateService<A
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-
-		// Check if credit card is in past
-		Calendar calendar;
-		Date present;
-		Calendar test;
-		Date check;
-
-		if (!errors.hasErrors("creditCard.expYear")) {
-			calendar = new GregorianCalendar();
-			test = new GregorianCalendar();
-			present = calendar.getTime();
-			test.set(2000 + entity.getCreditCard().getExpYear(), entity.getCreditCard().getExpMonth(), 1);
-			check = test.getTime();
-			boolean isExpiredYear = check.after(present);
-			// Check if year is current year
-			if (!isExpiredYear) {
-				calendar.set(Calendar.MONTH, entity.getCreditCard().getExpMonth());
-				calendar.set(Calendar.DATE, 1);
-				Date testing = calendar.getTime();
-				if (testing.equals(check)) {
-					// Check if month is in past
-					if (!errors.hasErrors("creditCard.expMonth")) {
-						calendar = new GregorianCalendar();
-						test = new GregorianCalendar();
-						present = calendar.getTime();
-						test.set(2000 + entity.getCreditCard().getExpYear(), entity.getCreditCard().getExpMonth(), 1);
-						check = test.getTime();
-						boolean isExpiredMonth = check.after(present);
-						errors.state(request, isExpiredMonth, "creditCard.expMonth", "administrator.banner.error.past-month");
-					}
-				} else {
-					errors.state(request, isExpiredYear, "creditCard.expYear", "administrator.banner.error.past-month");
-				}
-			}
-		}
 
 	}
 

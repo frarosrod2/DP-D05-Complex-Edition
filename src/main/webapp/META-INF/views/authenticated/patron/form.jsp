@@ -17,9 +17,18 @@
 
 <acme:form>
 	<acme:form-textbox code="authenticated.patron.form.label.name" path="name"/>
-	<acme:form-creditcard code="authenticated.patron.form.legend.creditCard" path="creditCard"/>
 	
 	<acme:form-submit test="${command == 'create'}" code="authenticated.patron.form.button.create" action="/authenticated/patron/create"/>
 	<acme:form-submit test="${command == 'update'}" code="authenticated.patron.form.button.update" action="/authenticated/patron/update"/>
+	
+	<jstl:if test="${command != 'create' and not hasCard}">
+		<acme:form-submit method="get" code="authenticated.banner.form.button.creditCard.create" action="/authenticated/credit-card/create?patronId=${patronId}"/>	
+	</jstl:if>
+	<jstl:if test="${command != 'create' and hasCard}">
+		<acme:form-submit method="get" code="authenticated.banner.form.button.creditCard.update" action="/authenticated/credit-card/update?creditCard=${creditCard}"/>
+		<acme:form-submit method="get" code="authenticated.banner.form.button.creditCard.show" action="/authenticated/credit-card/show?creditCard=${creditCard}"/>		
+	</jstl:if>	
+	
+	
 	<acme:form-return code="authenticated.patron.form.button.return"/>
 </acme:form>

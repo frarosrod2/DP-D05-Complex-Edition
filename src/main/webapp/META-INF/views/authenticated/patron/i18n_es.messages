@@ -16,3 +16,6 @@ authenticated.patron.form.legend.creditCard = Tarjeta de crédito
 authenticated.patron.form.button.create = Registrar
 authenticated.patron.form.button.update = Actualizar
 authenticated.patron.form.button.return = Volver
+authenticated.banner.form.button.creditCard.create = Crear tarjeta de crédito
+authenticated.banner.form.button.creditCard.update = Actualizar tarjeta
+authenticated.banner.form.button.creditCard.show = Mostrar tarjeta

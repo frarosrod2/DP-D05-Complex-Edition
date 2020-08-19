@@ -29,6 +29,10 @@
 
     alter table `banner` 
        drop 
+       foreign key `FKr19baq0bri0akndc7ruwhngy4`;
+
+    alter table `banner` 
+       drop 
        foreign key `FKdocr1jjfgwx9ef5jbf675l360`;
 
     alter table `bookkeeper` 
@@ -97,6 +101,10 @@
 
     alter table `patron` 
        drop 
+       foreign key `FKpj4cod0bcxwxg4nqv4f2xkikg`;
+
+    alter table `patron` 
+       drop 
        foreign key FK_8xx5nujhuio3advxc2freyu65;
 
     alter table `provider` 
@@ -124,6 +132,8 @@
     drop table if exists `challenge`;
 
     drop table if exists `consumer`;
+
+    drop table if exists `credit_card`;
 
     drop table if exists `customisation`;
 

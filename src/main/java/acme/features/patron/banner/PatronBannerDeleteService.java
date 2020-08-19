@@ -40,7 +40,7 @@ public class PatronBannerDeleteService implements AbstractDeleteService<Patron, 
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "picture", "slogan", "targetURL", "creditCard");
+		request.unbind(entity, model, "picture", "slogan", "targetURL");
 	}
 
 	@Override

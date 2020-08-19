@@ -6,6 +6,10 @@ patron.banner.form.button.return = Volver
 patron.banner.form.button.update = Actualizar
 patron.banner.form.button.delete = Eliminar
 patron.banner.form.button.create = Crear
+patron.banner.form.button.creditCard.create = Crear tarjeta de crédito
+patron.banner.form.button.creditCard.update = Actualizar tarjeta
+patron.banner.form.button.creditCard.show = Mostrar tarjeta
+
 
 patron.banner.list.label.picture = Imagen
 patron.banner.list.label.slogan = Eslogan

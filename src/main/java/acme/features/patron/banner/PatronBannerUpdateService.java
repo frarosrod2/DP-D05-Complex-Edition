@@ -1,10 +1,6 @@
 
 package acme.features.patron.banner;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -46,7 +42,7 @@ public class PatronBannerUpdateService implements AbstractUpdateService<Patron, 
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "picture", "slogan", "targetURL", "creditCard.holderName", "creditCard.brand", "creditCard.number", "creditCard.cvv", "creditCard.expMonth", "creditCard.expYear");
+		request.unbind(entity, model, "picture", "slogan", "targetURL");
 	}
 
 	@Override
@@ -75,19 +71,10 @@ public class PatronBannerUpdateService implements AbstractUpdateService<Patron, 
 		Boolean isSpamPicture = false;
 		Boolean isSpamSlogan = false;
 		Boolean isSpamTargetURL = false;
-		Boolean isSpamCardName = false;
-		Boolean isSpamCardBrand = false;
 		int numberWordsPicture;
 		int numberWordsSlogan;
 		int numberWordsTarget;
 		int numberSpam;
-		int numberWordsCardName;
-		int numberWordsCardBrand;
-		// Check if credit card is in past
-		Calendar calendar;
-		Date present;
-		Calendar test;
-		Date check;
 
 		//Check spam
 		if (!errors.hasErrors("picture")) {
@@ -121,58 +108,6 @@ public class PatronBannerUpdateService implements AbstractUpdateService<Patron, 
 			}
 			isSpamTargetURL = numberWordsTarget > 0 && numberSpam * 100 / numberWordsTarget >= threshold;
 			errors.state(request, !isSpamTargetURL, "targetURL", "patron.banner.error.targetUrlSpamWord");
-		}
-
-		if (!errors.hasErrors("creditCard.holderName")) {
-			String holderName = entity.getCreditCard().getHolderName().toLowerCase();
-			numberWordsCardName = holderName.split("\\W+").length;
-			numberSpam = 0;
-			for (String s : spamWords) {
-				numberSpam += StringUtils.countOccurrencesOf(holderName, s);
-			}
-			isSpamCardName = numberWordsCardName > 0 && numberSpam * 100 / numberWordsCardName >= threshold;
-			errors.state(request, !isSpamCardName, "creditCard.holderName", "patron.banner.error.cardNameSpamWord");
-		}
-
-		if (!errors.hasErrors("creditCard.brand")) {
-			String brand = entity.getCreditCard().getBrand().toLowerCase();
-			numberWordsCardBrand = brand.split("\\W+").length;
-			numberSpam = 0;
-			for (String s : spamWords) {
-				numberSpam += StringUtils.countOccurrencesOf(brand, s);
-			}
-			isSpamCardBrand = numberWordsCardBrand > 0 && numberSpam * 100 / numberWordsCardBrand >= threshold;
-			errors.state(request, !isSpamCardBrand, "creditCard.brand", "patron.banner.error.cardBrandSpamWord");
-		}
-
-		// Check if year is in past
-		if (!errors.hasErrors("creditCard.expYear")) {
-			calendar = new GregorianCalendar();
-			test = new GregorianCalendar();
-			present = calendar.getTime();
-			test.set(2000 + entity.getCreditCard().getExpYear(), entity.getCreditCard().getExpMonth(), 1);
-			check = test.getTime();
-			boolean isExpiredYear = check.after(present);
-			// Check if year is current year
-			if (!isExpiredYear) {
-				calendar.set(Calendar.MONTH, entity.getCreditCard().getExpMonth());
-				calendar.set(Calendar.DATE, 1);
-				Date testing = calendar.getTime();
-				if (testing.equals(check)) {
-					// Check if month is in past
-					if (!errors.hasErrors("creditCard.expMonth")) {
-						calendar = new GregorianCalendar();
-						test = new GregorianCalendar();
-						present = calendar.getTime();
-						test.set(2000 + entity.getCreditCard().getExpYear(), entity.getCreditCard().getExpMonth(), 1);
-						check = test.getTime();
-						boolean isExpiredMonth = check.after(present);
-						errors.state(request, isExpiredMonth, "creditCard.expMonth", "administrator.banner.error.past-month");
-					}
-				} else {
-					errors.state(request, isExpiredYear, "creditCard.expYear", "administrator.banner.error.past-year");
-				}
-			}
 		}
 
 	}
