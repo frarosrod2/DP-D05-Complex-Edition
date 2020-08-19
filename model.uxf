@@ -865,4 +865,26 @@ m2=1
 &lt; Composed by</panel_attributes>
     <additional_attributes>10.0;60.0;10.0;20.0;580.0;20.0;580.0;130.0</additional_attributes>
   </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>553</x>
+      <y>623</y>
+      <w>252</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+CreditCard
+--
++ holderName: String {NotBlank}
++ brand: String {NotBlank}
++ number: String {NotBlank, CreditCardNumber}
++ cvv: Integer {NotNull, Range(min = 1, max = 999)}
++ expMonth: Integer {NotNull, Range(min = 1, max = 12)}
++ expYear: Integer {NotNull, Range(min = 1, max = 99)}
+
+bg=white
+</panel_attributes>
+    <additional_attributes/>
+  </element>
 </diagram>
